@@ -8,14 +8,24 @@ import Details from "./Navbar/Main2/Details";
 import Profile from "./component/Profile";
 
 import Loginprofile from "./component/Loginprofile";
+import Dashboard from "./component/Dashboard/Dashboard";
+import Userlist from "./component/Users/Userlist";
+import MainNav from "./component/Dashboard/MainNav";
+import AddCity from "./component/Add Data/AddCity";
+import Booking from "./component/Booking/Booking";
+import Contactus from "./Navbar/Contact us/Contactus";
 
 function App() {
   return (
-    <div className="App">
-      <div>
+    <div className="App w-full flex">
+      <div className="">
+        <MainNav />
+      </div>
+      <div className="h-full w-full  bg-gray-200 relative overflow-y-auto lg:ml-64 mt-16">
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/home" element={<Home />} />
         </Routes>
+
         <Routes>
           <Route exact path="/Trip" element={<Main />} />
         </Routes>
@@ -31,6 +41,18 @@ function App() {
         </Routes>
         <Routes>
           <Route exact path="/loginprofile" element={<Loginprofile />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/userlist" element={<Userlist />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/addcity" element={<AddCity />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/booking" element={<Booking />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/contactus" element={<Contactus />} />
         </Routes>
       </div>
     </div>

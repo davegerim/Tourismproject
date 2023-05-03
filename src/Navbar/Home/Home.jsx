@@ -13,10 +13,10 @@ function Home() {
     navigate("/Flight");
   }
   function Contact() {
-    navigate("/Contact");
+    navigate("/contactus");
   }
   return (
-    <div>
+    <div class="pt-8 px-8">
       <Navbarss />
       {/* <div>
         <video
