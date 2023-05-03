@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function MainNav() {
   const [detail, setDetail] = useState(false);
+  const [detail1, setDetail1] = useState(false);
   return (
     <div>
       <nav class="bg-white border-b border-gray-200 fixed z-30 w-full">
@@ -194,6 +195,7 @@ function MainNav() {
                       <span class="ml-3">Dashboard</span>
                     </a>
                   </li>
+
                   <li>
                     <button
                       class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
@@ -208,9 +210,6 @@ function MainNav() {
                         <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                       </svg>
                       <span class="ml-3 flex-1 whitespace-nowrap">city</span>
-                      <span class="bg-gray-200 text-gray-800 ml-3 text-sm font-medium inline-flex items-center justify-center px-2 rounded-full">
-                        Pro
-                      </span>
                     </button>
                   </li>
                   <div class={` ${!detail && "hidden"} ml-8`}>
@@ -260,7 +259,7 @@ function MainNav() {
                   <li>
                     <button
                       class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
-                      onClick={() => setDetail((prev) => !prev)}
+                      onClick={() => setDetail1((prev) => !prev)}
                     >
                       <svg
                         class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
@@ -270,16 +269,15 @@ function MainNav() {
                       >
                         <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                       </svg>
-                      <span class="ml-3 flex-1 whitespace-nowrap">city</span>
-                      <span class="bg-gray-200 text-gray-800 ml-3 text-sm font-medium inline-flex items-center justify-center px-2 rounded-full">
-                        Pro
+                      <span class="ml-3 flex-1 whitespace-nowrap">
+                        Attraction place
                       </span>
                     </button>
                   </li>
-                  <div class={` ${!detail && "hidden"} ml-8`}>
+                  <div class={` ${!detail1 && "hidden"} ml-8`}>
                     <li>
                       <a
-                        href="/addcity"
+                        href="/addattractionplace"
                         target="_blank"
                         class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                       >
@@ -293,7 +291,7 @@ function MainNav() {
                           <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path>
                         </svg>
                         <span class="ml-3 flex-1 whitespace-nowrap">
-                          add city
+                          add Attraction place
                         </span>
                       </a>
                     </li>
@@ -315,7 +313,7 @@ function MainNav() {
                           ></path>
                         </svg>
                         <span class="ml-3 flex-1 whitespace-nowrap">
-                          city list
+                          Attraction place list
                         </span>
                       </a>
                     </li>

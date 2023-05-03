@@ -14,6 +14,7 @@ import MainNav from "./component/Dashboard/MainNav";
 import AddCity from "./component/Add Data/AddCity";
 import Booking from "./component/Booking/Booking";
 import Contactus from "./Navbar/Contact us/Contactus";
+import Addattractionplace from "./component/Add Data/Addattractionplace";
 
 function App() {
   return (
@@ -53,6 +54,13 @@ function App() {
         </Routes>
         <Routes>
           <Route exact path="/contactus" element={<Contactus />} />
+        </Routes>
+        <Routes>
+          <Route
+            exact
+            path="/addattractionplace"
+            element={<Addattractionplace />}
+          />
         </Routes>
       </div>
     </div>
