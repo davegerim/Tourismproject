@@ -1,18 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function CityList() {
+function PlaceList() {
   const navigate = useNavigate();
 
   function go() {
-    navigate("/addcity");
+    navigate("/placelist");
   }
   return (
     <div className="px-8 py-8">
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="flex mb-8">
           <div className="flex-1">
-            <h1 className="font-medium"> City List</h1>
+            <h1 className="font-medium">Attraction Place List</h1>
           </div>
           <div>
             <button
@@ -283,4 +283,4 @@ function CityList() {
   );
 }
 
-export default CityList;
+export default PlaceList;

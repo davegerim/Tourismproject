@@ -1,26 +1,17 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
-function CityList() {
-  const navigate = useNavigate();
-
-  function go() {
-    navigate("/addcity");
-  }
+function BookingList() {
   return (
     <div className="px-8 py-8">
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="flex mb-8">
           <div className="flex-1">
-            <h1 className="font-medium"> City List</h1>
+            <h1 className="font-medium"> Book List</h1>
           </div>
           <div>
-            <button
-              className="mb-2 md:mb-0 border   border-gray-700 hover:border-none hover:bg-blue-500 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-gray-900  hover:text-white  rounded-xl hover:shadow-lg "
-              onClick={go}
-            >
+            {/* <button className="mb-2 md:mb-0 border   border-gray-700 hover:border-none hover:bg-blue-500 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-gray-900  hover:text-white  rounded-xl hover:shadow-lg ">
               Add Place
-            </button>
+            </button> */}
           </div>
         </div>
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -283,4 +274,4 @@ function CityList() {
   );
 }
 
-export default CityList;
+export default BookingList;

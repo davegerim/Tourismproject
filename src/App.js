@@ -74,6 +74,10 @@ import MainNav from "./component/Dashboard/MainNav";
 import AddCity from "./component/Add Data/AddCity";
 import Booking from "./component/Booking/Booking";
 import Contactus from "./Navbar/Contact us/Contactus";
+import AddPlace from "./component/Attraction Place/AddPlace";
+import PlaceList from "./component/Attraction Place/PlaceList";
+import CityList from "./component/Add Data/CityList";
+import BookingList from "./component/Booking/BookingList";
 function App() {
   const location = useLocation();
   const [showSidebar, setShowSidebar] = useState(true);
@@ -106,16 +110,8 @@ function App() {
           "md:w-full"
         }`}
       >
-        {location.pathname !== "/Trip" &&
-          location.pathname !== "/newreset" &&
-          location.pathname !== "/newsignup" && (
-            <div className="sticky top-0 border-b shadow-md  h-16 bg-white ">
-              <MainNav
-                showSidebar={showSidebar}
-                setShowSidebar={setShowSidebar}
-              />
-            </div>
-          )}
+        <div className="sticky top-0   h-16  "></div>
+
         <Routes>
           <Route exact path="/home" element={<Home />} />
         </Routes>
@@ -145,15 +141,29 @@ function App() {
         </Routes>
 
         <Routes>
-          <Route exact path="/addcity" element={<AddCity />} />
-        </Routes>
-
-        <Routes>
           <Route exact path="/booking" element={<Booking />} />
         </Routes>
 
         <Routes>
           <Route exact path="/contactus" element={<Contactus />} />
+        </Routes>
+        {/* about city */}
+        <Routes>
+          <Route exact path="/addcity" element={<AddCity />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/citylist" element={<CityList />} />
+        </Routes>
+        {/* about attraction place */}
+        <Routes>
+          <Route exact path="/addplace" element={<AddPlace />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/placelist" element={<PlaceList />} />
+        </Routes>
+        {/* booking list */}
+        <Routes>
+          <Route exact path="/bookinglist" element={<BookingList />} />
         </Routes>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-function AddCity() {
+function AddPlace() {
   return (
     <div className=" flex mt-8 justify-center items-center  ">
       <form class="w-full max-w-lg  pl-10 mt-5 bg-white p-8 rounded-xl ">
@@ -13,12 +13,10 @@ function AddCity() {
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               for="grid-first-name"
             >
-              City Name
+              Place Name
             </label>
             <input
               type="text"
-              name="fName"
-              id="fName"
               placeholder="City Name"
               class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
             />
@@ -56,12 +54,12 @@ function AddCity() {
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               for="grid-city"
             >
-              Date
+              Price
             </label>
             <input
               class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-city"
-              type="date"
+              type="birr"
             />
           </div>
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -69,12 +67,12 @@ function AddCity() {
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               for="grid-zip"
             >
-              Time
+              Rate
             </label>
             <input
               class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-zip"
-              type="time"
+              type="rate"
             ></input>
           </div>
         </div>
@@ -88,4 +86,4 @@ function AddCity() {
   );
 }
 
-export default AddCity;
+export default AddPlace;
