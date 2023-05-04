@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-
+import { BsBell } from "react-icons/bs";
 function MainNav() {
   const [detail, setDetail] = useState(false);
+<<<<<<< HEAD
   const [detail1, setDetail1] = useState(false);
+=======
+  const [details, setDetails] = useState(false);
+  const [show, setShow] = useState(false);
+  const [shownotf, setShownotf] = useState(false);
+
+>>>>>>> 397fa22762ac5e47a8c42d62573d3fa6b035f359
   return (
     <div>
       <nav class="bg-white border-b border-gray-200 fixed z-30 w-full">
@@ -42,7 +49,7 @@ function MainNav() {
                   ></path>
                 </svg>
               </button>
-              <a href="#" class="text-xl font-bold flex items-center lg:ml-2.5">
+              <a href="/" class="text-xl font-bold flex items-center lg:ml-2.5">
                 <img
                   src="https://demo.themesberg.com/windster/images/logo.svg"
                   class="h-6 mr-2"
@@ -99,45 +106,130 @@ function MainNav() {
                   ></path>
                 </svg>
               </button>
-              <div class="hidden lg:flex items-center">
-                <span class="text-base font-normal text-gray-500 mr-5">
-                  Open source ❤️
-                </span>
-                <div class="-mb-1">
-                  <a
-                    class="github-button"
-                    href="#"
-                    data-color-scheme="no-preference: dark; light: light; dark: light;"
-                    data-icon="octicon-star"
-                    data-size="large"
-                    data-show-count="true"
-                    aria-label="Star themesberg/windster-tailwind-css-dashboard on GitHub"
+
+              <div className="relative mr-4 bg-cyan-600 rounded-full p-2 hover:bg-red-600">
+                <BsBell
+                  size="20"
+                  className=" cursor-pointer text-white"
+                  onClick={() => setShownotf((prev) => !prev)}
+                />
+
+                <div
+                  className={`${
+                    !shownotf && "hidden"
+                  } w-44 z-40 absolute top-o right-[60%] bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600 block `}
+                >
+                  <div className="py-3 px-4 text-sm text-gray-900 dark:text-white">
+                    <div>Dawit Gerim</div>
+                    <div className="font-medium truncate">
+                      heranigraphics.com
+                    </div>
+                  </div>
+                  <ul
+                    className="py-1 text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="avatarButton"
                   >
-                    Star
-                  </a>
+                    <li>
+                      <a
+                        href="/"
+                        className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Dashboard
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/"
+                        className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Settings
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/"
+                        className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Report
+                      </a>
+                    </li>
+                  </ul>
+                  <div className="py-1">
+                    <a
+                      href="/"
+                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Log out
+                    </a>
+                  </div>
                 </div>
               </div>
-              <a
-                href="#"
-                class="hidden sm:inline-flex ml-5 text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-3"
-              >
-                <svg
-                  class="svg-inline--fa fa-gem -ml-1 mr-2 h-4 w-4"
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="gem"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
+
+              <div className="relative">
+                <img
+                  type="button"
+                  data-dropdown-toggle="userDropdown"
+                  data-dropdown-placement="bottom-start"
+                  className="w-10 h-10 rounded-full cursor-pointer"
+                  src="./image/gondar2.jpg"
+                  alt="User dropdown"
+                  onClick={() => setShow((prev) => !prev)}
+                />
+
+                <div
+                  id="userDropdown"
+                  className={`${
+                    !show && "hidden"
+                  } z-10 w-44 absolute top-o right-[60%] bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 block `}
+                  data-popper-reference-hidden=""
+                  data-popper-escaped=""
+                  data-popper-placement="bottom-start"
                 >
-                  <path
-                    fill="currentColor"
-                    d="M378.7 32H133.3L256 182.7L378.7 32zM512 192l-107.4-141.3L289.6 192H512zM107.4 50.67L0 192h222.4L107.4 50.67zM244.3 474.9C247.3 478.2 251.6 480 256 480s8.653-1.828 11.67-5.062L510.6 224H1.365L244.3 474.9z"
-                  ></path>
-                </svg>
-                Upgrade to Pro
-              </a>
+                  <div className="py-3 px-4 text-sm text-gray-900 dark:text-white">
+                    <div>Dawit Mezgebu</div>
+                    <div className="font-medium truncate">
+                      heranigraphics.com
+                    </div>
+                  </div>
+                  <ul
+                    className="py-1 text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="avatarButton"
+                  >
+                    <li>
+                      <a
+                        href="/"
+                        className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Dashboard
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/"
+                        className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Settings
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/"
+                        className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        Report
+                      </a>
+                    </li>
+                  </ul>
+                  <div className="py-1">
+                    <li
+                      href="/login"
+                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                    >
+                      Log out
+                    </li>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -145,7 +237,7 @@ function MainNav() {
       <div class="flex overflow-hidden bg-white pt-16">
         <aside
           id="sidebar"
-          class="fixed hidden z-20 h-full top-0 left-0 pt-16 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75"
+          class="fixed  z-20 h-full top-0 left-0 pt-16 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75"
           aria-label="Sidebar"
         >
           <div class="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
@@ -172,7 +264,7 @@ function MainNav() {
                           type="text"
                           name="email"
                           id="mobile-search"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-600 focus:ring-cyan-600 block w-full pl-10 p-2.5"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:ring-cyan-600 block w-full pl-10 p-2.5"
                           placeholder="Search"
                         />
                       </div>
@@ -180,7 +272,7 @@ function MainNav() {
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="/"
                       class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group"
                     >
                       <svg
@@ -197,8 +289,9 @@ function MainNav() {
                   </li>
 
                   <li>
-                    <button
-                      class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                    <a
+                      href
+                      class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group"
                       onClick={() => setDetail((prev) => !prev)}
                     >
                       <svg
@@ -209,14 +302,18 @@ function MainNav() {
                       >
                         <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                       </svg>
+<<<<<<< HEAD
                       <span class="ml-3 flex-1 whitespace-nowrap">city</span>
                     </button>
+=======
+                      <span class="ml-3 ">city</span>
+                    </a>
+>>>>>>> 397fa22762ac5e47a8c42d62573d3fa6b035f359
                   </li>
                   <div class={` ${!detail && "hidden"} ml-8`}>
                     <li>
                       <a
                         href="/addcity"
-                        target="_blank"
                         class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                       >
                         <svg
@@ -235,7 +332,7 @@ function MainNav() {
                     </li>
                     <li>
                       <a
-                        href="/userlist"
+                        href="/citylist"
                         class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                       >
                         <svg
@@ -321,7 +418,69 @@ function MainNav() {
 
                   <li>
                     <a
-                      href="#"
+                      href
+                      class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                      onClick={() => setDetails((prev) => !prev)}
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                      </svg>
+                      <span class="ml-3 flex-1 whitespace-nowrap">
+                        Attraction Place
+                      </span>
+                    </a>
+                  </li>
+                  <div class={` ${!details && "hidden"} ml-8`}>
+                    <li>
+                      <a
+                        href="/addplace"
+                        class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                      >
+                        <svg
+                          class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path>
+                          <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path>
+                        </svg>
+                        <span class="ml-3 flex-1 whitespace-nowrap">
+                          add Place
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/placelist"
+                        class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                      >
+                        <svg
+                          class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                        <span class="ml-3 flex-1 whitespace-nowrap">
+                          Place list
+                        </span>
+                      </a>
+                    </li>
+                  </div>
+                  <li>
+                    <a
+                      href="/bookinglist"
                       class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                     >
                       <svg
@@ -337,14 +496,14 @@ function MainNav() {
                         ></path>
                       </svg>
                       <span class="ml-3 flex-1 whitespace-nowrap">
-                        Products
+                        Booking List
                       </span>
                     </a>
                   </li>
 
                   <li>
                     <a
-                      href="#"
+                      href="/"
                       class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                     >
                       <svg

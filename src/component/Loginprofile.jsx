@@ -56,7 +56,7 @@ function Loginprofile() {
                     <div class="text-center">
                       <a
                         class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                        href="#"
+                        href="/"
                       >
                         Forgot Password?
                       </a>
