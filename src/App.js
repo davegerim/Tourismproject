@@ -1,84 +1,23 @@
-// import { Route, Routes } from "react-router-dom";
-// import "./App.css";
-// import Home from "./Navbar/Home/Home";
-// import Main from "./Navbar/Main/Main";
-// import Main2 from "./Navbar/Main2/Main2";
-// import Details from "./Navbar/Main2/Details";
-// import Profile from "./component/Profile";
-
-// import Loginprofile from "./component/Loginprofile";
-// import Userlist from "./component/Users/Userlist";
-// import MainNav from "./component/Dashboard/MainNav";
-// import AddCity from "./component/Add Data/AddCity";
-// import Booking from "./component/Booking/Booking";
-// import Contactus from "./Navbar/Contact us/Contactus";
-
-// function App() {
-//   return (
-//     <div className="App w-full flex">
-//       <div className="">
-//         <MainNav />
-//       </div>
-//       <div className="h-full w-full  bg-gray-200 relative overflow-y-auto lg:ml-64 mt-16">
-//         <Routes>
-//           <Route exact path="/home" element={<Home />} />
-//         </Routes>
-
-//         <Routes>
-//           <Route exact path="/Trip" element={<Main />} />
-//         </Routes>
-//         <Routes>
-//           <Route exact path="/detail" element={<Main2 />} />
-//         </Routes>
-//         <Routes>
-//           <Route exact path="/details" element={<Details />} />
-//         </Routes>
-
-//         <Routes>
-//           <Route exact path="/profile" element={<Profile />} />
-//         </Routes>
-//         <Routes>
-//           <Route exact path="/loginprofile" element={<Loginprofile />} />
-//         </Routes>
-//         <Routes>
-//           <Route exact path="/userlist" element={<Userlist />} />
-//         </Routes>
-//         <Routes>
-//           <Route exact path="/addcity" element={<AddCity />} />
-//         </Routes>
-//         <Routes>
-//           <Route exact path="/booking" element={<Booking />} />
-//         </Routes>
-//         <Routes>
-//           <Route exact path="/contactus" element={<Contactus />} />
-//         </Routes>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import { Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useRef, useState } from "react";
 import "./App.css";
-import Home from "./Navbar/Home/Home";
-import Main from "./Navbar/Main/Main";
-import Main2 from "./Navbar/Main2/Main2";
-import Details from "./Navbar/Main2/Details";
-import Profile from "./component/Profile";
-import Loginprofile from "./component/Loginprofile";
-import Userlist from "./component/Users/Userlist";
-import MainNav from "./component/Dashboard/MainNav";
-import AddCity from "./component/Add Data/AddCity";
-import Booking from "./component/Booking/Booking";
-import Contactus from "./Navbar/Contact us/Contactus";
-import Addattractionplace from "./component/Add Data/Addattractionplace";
-import AddPlace from "./component/Attraction Place/AddPlace";
-import PlaceList from "./component/Attraction Place/PlaceList";
-import CityList from "./component/Add Data/CityList";
-import BookingList from "./component/Booking/BookingList";
+import Main from "./component/User Page/Trip/Main";
+import Profile from "./component/Basic/Profile";
+import MainNav from "./component/Admin/Dashboard/MainNav";
+import AddCity from "./component/Admin/Add Data/AddCity";
+import Booking from "./component/Admin/Booking/Booking";
+import Contactus from "./component/User Page/Contact us/Contactus";
+import AddPlace from "./component/Admin/Attraction Place/AddPlace";
+import PlaceList from "./component/Admin/Attraction Place/PlaceList";
+import CityList from "./component/Admin/Add Data/CityList";
+import BookingList from "./component/Admin/Booking/BookingList";
+import Dash from "./component/Admin/Dashboard/Dash";
+import Home from "./component/User Page/Home/Home";
+import Details from "./component/User Page/Trip/Details";
+import Flight from "./component/User Page/Flight/Flight";
+import Login from "./component/Basic/Login";
+import Hotel from "./component/User Page/Hotel/Hotel";
 function App() {
   const location = useLocation();
   const [showSidebar, setShowSidebar] = useState(true);
@@ -86,8 +25,13 @@ function App() {
   return (
     <div className="App w-full flex  bg-gray-100">
       {location.pathname !== "/Trip" &&
-        location.pathname !== "/newreset" &&
-        location.pathname !== "/newsignup" && (
+        location.pathname !== "/Details" &&
+        location.pathname !== "/contactus" &&
+        location.pathname !== "/flight" &&
+        location.pathname !== "/hotel" &&
+        location.pathname !== "/profile" &&
+        location.pathname !== "/login" &&
+        location.pathname !== "/home" && (
           <div
             ref={ref}
             className={`md:w-[20%]  h-[100vh]  shadow top-0 ${
@@ -106,23 +50,27 @@ function App() {
           !showSidebar && "md:w-full"
         } ${
           (location.pathname === "/Trip" ||
-            location.pathname === "/newreset" ||
-            location.pathname === "/newsignup") &&
+            location.pathname === "/Details" ||
+            location.pathname === "/contactus" ||
+            location.pathname === "/flight" ||
+            location.pathname === "/hotel" ||
+            location.pathname === "/profile" ||
+            location.pathname === "/login" ||
+            location.pathname === "/home") &&
           "md:w-full"
         }`}
       >
-        <div className="sticky top-0   h-16  "></div>
+        <div className="sticky top-0 "></div>
 
+        <Routes>
+          <Route exact path="/" element={<Dash />} />
+        </Routes>
         <Routes>
           <Route exact path="/home" element={<Home />} />
         </Routes>
 
         <Routes>
           <Route exact path="/Trip" element={<Main />} />
-        </Routes>
-
-        <Routes>
-          <Route exact path="/detail" element={<Main2 />} />
         </Routes>
 
         <Routes>
@@ -134,17 +82,20 @@ function App() {
         </Routes>
 
         <Routes>
-          <Route exact path="/loginprofile" element={<Loginprofile />} />
-        </Routes>
-
-        <Routes>
-          <Route exact path="/userlist" element={<Userlist />} />
+          <Route exact path="/login" element={<Login />} />
         </Routes>
 
         <Routes>
           <Route exact path="/booking" element={<Booking />} />
         </Routes>
+        <Routes>
+          <Route exact path="/flight" element={<Flight />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/hotel" element={<Hotel />} />
+        </Routes>
 
+        {/* contact us */}
         <Routes>
           <Route exact path="/contactus" element={<Contactus />} />
         </Routes>
@@ -165,13 +116,6 @@ function App() {
         {/* booking list */}
         <Routes>
           <Route exact path="/bookinglist" element={<BookingList />} />
-        </Routes>
-        <Routes>
-          <Route
-            exact
-            path="/addattractionplace"
-            element={<Addattractionplace />}
-          />
         </Routes>
       </div>
     </div>
