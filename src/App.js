@@ -74,15 +74,11 @@ import MainNav from "./component/Dashboard/MainNav";
 import AddCity from "./component/Add Data/AddCity";
 import Booking from "./component/Booking/Booking";
 import Contactus from "./Navbar/Contact us/Contactus";
-<<<<<<< HEAD
 import Addattractionplace from "./component/Add Data/Addattractionplace";
-
-=======
 import AddPlace from "./component/Attraction Place/AddPlace";
 import PlaceList from "./component/Attraction Place/PlaceList";
 import CityList from "./component/Add Data/CityList";
 import BookingList from "./component/Booking/BookingList";
->>>>>>> 397fa22762ac5e47a8c42d62573d3fa6b035f359
 function App() {
   const location = useLocation();
   const [showSidebar, setShowSidebar] = useState(true);

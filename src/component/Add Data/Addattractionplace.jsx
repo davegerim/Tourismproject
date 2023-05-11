@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Addattractionplace() {
+  const [attractionplacename, setAttractionplacename] = useState();
+  const [description, setDescription] = useState();
+  const [image, setImage] = useState();
+  const [price, setPrice] = useState();
+  const [rate, setRate] = useState();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch("http://localhost:3000/attractionplace/new", {
+      method: "POST",
+      headers: { "Content-Type": "application/JSON" },
+      body: JSON.stringify({
+        placeName: attractionplacename,
+        description: description,
+        image: image,
+        price: price,
+        rate: rate,
+      }),
+    }).then(() => {
+      console.log("posted");
+    });
+  };
   return (
     <div>
       <div className=" flex mt-8 justify-center items-center  ">
-        <form class="w-full max-w-lg  pl-10 mt-5 bg-white p-8 rounded-xl ">
+        <form
+          onSubmit={handleSubmit}
+          class="w-full max-w-lg  pl-10 mt-5 bg-white p-8 rounded-xl "
+        >
           <div className="flex   mb-10 text-center items-center justify-center font-bold text-xl">
             <h1>Add Attraction place</h1>
           </div>
@@ -22,6 +47,8 @@ function Addattractionplace() {
                 id="fName"
                 placeholder="Name"
                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                value={attractionplacename}
+                onChange={(e) => setAttractionplacename(e.target.value)}
               />
             </div>
             <div class="w-full md:w-1/2 px-3">
@@ -34,6 +61,8 @@ function Addattractionplace() {
               <input
                 class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 type="file"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
               />
             </div>
           </div>
@@ -47,6 +76,8 @@ function Addattractionplace() {
             <textarea
               class="block p-2.5 w-full text-sm   rounded-lg border      dark:placeholder-gray-400 text-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Write a description about the city..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             ></textarea>
             <label class="block mb-2 text-sm font-bold text-gray-700" for="Age">
               Price
@@ -57,6 +88,8 @@ function Addattractionplace() {
               type="number"
               placeholder="price"
               min="5"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
             />
             <label class="block mb-2 text-sm font-bold text-gray-700" for="Age">
               Rating
@@ -66,6 +99,8 @@ function Addattractionplace() {
               id="price"
               type="ratio"
               placeholder=""
+              value={rate}
+              onChange={(e) => setRate(e.target.value)}
             />
           </div>
           <div class="flex flex-wrap -mx-3 mb-2"></div>
