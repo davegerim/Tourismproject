@@ -4,9 +4,15 @@ function AddCity() {
   const [cityname, setCityname] = useState();
   const [description, setDescription] = useState();
   const [image, setImage] = useState();
+
+  const resetForm = () => {
+    setCityname("");
+    setDescription("");
+    setImage("");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    resetForm();
     fetch("http://localhost:3000/cities/new", {
       method: "POST",
       headers: { "Content-Type": "application/JSON" },
