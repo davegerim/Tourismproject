@@ -47,7 +47,7 @@ function Contactus() {
                     possible
                   </p>
                   <span class="block text-sm text-orange-900 mb-8">
-                    hello@yourdomain.com
+                    davegerim@gmail.com
                   </span>
                   <a
                     class="relative group inline-block py-4 px-6 text-white font-semibold bg-blue-500 rounded-full overflow-hidden"
@@ -91,7 +91,7 @@ function Contactus() {
                     possible
                   </p>
                   <span class="block text-sm text-orange-900 mb-8">
-                    +08 128 903427
+                    +251985392862
                   </span>
                   <a
                     class="relative group inline-block py-4 px-6 text-white font-semibold bg-blue-500 rounded-full overflow-hidden"

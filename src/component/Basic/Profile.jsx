@@ -14,9 +14,25 @@ function Profile() {
   const [age, setAge] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const resetForm = () => {
+    setName("");
+    setMiddlename("");
+    setLastname("");
+    setCountry("");
+    setCity("");
+    setSubcity("");
+    setWoreda("");
+    setNumber("");
+    setBirthdate("");
+    setGender("");
+    setAge("");
+    setEmail("");
+    setPassword("");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    resetForm();
 
     fetch("http://localhost:3000/profile/new", {
       method: "POST",
@@ -41,7 +57,7 @@ function Profile() {
     <div>
       <div class=" px-1">
         <div class=" p-6 ">
-          <div class="w-full lg:w-11/12 ">
+          <div class="grid h-screen place-items-center ">
             <div class=" w-full lg:w-3/5 justify-center items-center bg-white p-5 rounded-lg lg:rounded-l-none">
               <h3 class="pt-4 text-2xl text-center">Create an Account!</h3>
               <form

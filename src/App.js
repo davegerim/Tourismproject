@@ -18,6 +18,7 @@ import Details from "./component/User Page/Trip/Details";
 import Flight from "./component/User Page/Flight/Flight";
 import Login from "./component/Basic/Login";
 import Hotel from "./component/User Page/Hotel/Hotel";
+import Home2 from "./component/User Page/homeedited/Home2";
 function App() {
   const location = useLocation();
   const [showSidebar, setShowSidebar] = useState(true);
@@ -31,6 +32,8 @@ function App() {
         location.pathname !== "/hotel" &&
         location.pathname !== "/profile" &&
         location.pathname !== "/login" &&
+        location.pathname !== "/Booking" &&
+        location.pathname !== "/home2" &&
         location.pathname !== "/home" && (
           <div
             ref={ref}
@@ -55,7 +58,9 @@ function App() {
             location.pathname === "/flight" ||
             location.pathname === "/hotel" ||
             location.pathname === "/profile" ||
+            location.pathname === "/Booking" ||
             location.pathname === "/login" ||
+            location.pathname === "/home2" ||
             location.pathname === "/home") &&
           "md:w-full"
         }`}
@@ -116,6 +121,10 @@ function App() {
         {/* booking list */}
         <Routes>
           <Route exact path="/bookinglist" element={<BookingList />} />
+        </Routes>
+
+        <Routes>
+          <Route exact path="/home2" element={<Home2 />} />
         </Routes>
       </div>
     </div>

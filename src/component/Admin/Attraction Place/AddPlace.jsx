@@ -6,8 +6,17 @@ function AddPlace() {
   const [image, setImage] = useState();
   const [price, setPrice] = useState();
   const [rate, setRate] = useState();
+
+  const resetForm = () => {
+    setAttractionplacename("");
+    setDescription("");
+    setImage("");
+    setPrice("");
+    setRate("");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    resetForm();
 
     fetch("http://localhost:3000/attractionplace/new", {
       method: "POST",
