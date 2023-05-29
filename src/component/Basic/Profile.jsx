@@ -282,7 +282,7 @@ function Profile() {
                 </div>
                 <div class="mb-6 text-center">
                   <button
-                    class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                    class="text-white w-full px-4 py-2 bg-rose-900 border hover:border-rose-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                     type="submit"
                   >
                     Register Account
@@ -294,7 +294,7 @@ function Profile() {
               <div class="text-center flex justify-center items-center ">
                 <span className="mr-2">Already have an account? </span>
                 <a
-                  class="inline-block  text-blue-500 align-baseline hover:text-blue-800"
+                  class="inline-block  text-rose-800 align-baseline hover:text-rose-500"
                   href="/login"
                 >
                   Login!

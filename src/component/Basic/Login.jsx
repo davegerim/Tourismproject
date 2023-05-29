@@ -42,7 +42,7 @@ function Login() {
                 <div class="text-sm">
                   <a
                     href="."
-                    class="font-semibold text-indigo-600 hover:text-indigo-500"
+                    class="font-semibold text-rose-800 hover:text-rose-500"
                   >
                     Forgot password?
                   </a>
@@ -63,7 +63,7 @@ function Login() {
             <div>
               <button
                 type="submit"
-                class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                class="flex w-full justify-center rounded-md bg-rose-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-rose-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign in
               </button>
@@ -74,7 +74,7 @@ function Login() {
             If you don't have account? {""}
             <a
               href="/profile"
-              class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+              class="font-semibold leading-6 text-rose-800 hover:text-rose-500"
             >
               Sign Up
             </a>

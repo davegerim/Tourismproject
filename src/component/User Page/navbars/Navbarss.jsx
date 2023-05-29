@@ -10,8 +10,8 @@ function Navbarss() {
   return (
     <nav class="fixed  w-full shadow  bg-white border-gray-200 px-4 lg:px-6 py-4 dark:bg-gray-800">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-        <a href="https://github.com/davegerim" class="flex items-center">
-          <img src="./image/logos.png" class="mr-3 h-6 sm:h-9" alt=" Logo" />
+        <a href="https://github.com/davegerim" class="flex  items-center">
+          <img src="./image/zuret.png" class="mr-3 h-12 w-24 " alt=" Logo" />
         </a>
         <div class="flex items-center lg:order-2">
           <a
@@ -71,8 +71,7 @@ function Navbarss() {
             <li>
               <a
                 href="/home2"
-                class="block py-2 pr-4 pl-3 text-white rounded bg-rose-900 lg:bg-transparent lg:text-rose-900 lg:p-0 dark:text-white"
-                aria-current="page"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-rose-900 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Home
               </a>
@@ -87,7 +86,7 @@ function Navbarss() {
             </li>
             <li>
               <a
-                href="/"
+                href="/hotel"
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-rose-900 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Hotel
@@ -95,7 +94,7 @@ function Navbarss() {
             </li>
             <li>
               <a
-                href="/"
+                href="/flight"
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-rose-900 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Flight
@@ -104,7 +103,7 @@ function Navbarss() {
 
             <li>
               <a
-                href="/"
+                href="/contactus"
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-rose-900 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Contact

@@ -87,7 +87,7 @@ function AddCity() {
         <div class="flex flex-wrap -mx-3 mb-2"></div>
         <div className="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
           <button
-            className="mb-2 md:mb-0 bg-blue-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-2xl hover:shadow-lg "
+            className="mb-2 md:mb-0 bg-rose-900 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-2xl hover:shadow-lg "
             type="submit"
           >
             Save

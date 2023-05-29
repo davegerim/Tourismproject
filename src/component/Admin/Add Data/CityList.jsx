@@ -10,6 +10,7 @@ function CityList() {
   function go() {
     navigate("/addcity");
   }
+
   const deleted = (id, e) => {
     e.preventDefault();
     axios.delete(`http://localhost:3000/cities/${id}`).then((res) => {
@@ -36,7 +37,7 @@ function CityList() {
           </div>
           <div>
             <button
-              className="mb-2 md:mb-0 border   border-gray-700 hover:border-none hover:bg-blue-500 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-gray-900  hover:text-white  rounded-xl hover:shadow-lg "
+              className="mb-2 md:mb-0 border   border-gray-700 hover:border-none hover:bg-rose-900 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-white bg-rose-900 hover:text-white  rounded-xl hover:shadow-lg "
               onClick={go}
             >
               Add Place
@@ -53,7 +54,7 @@ function CityList() {
           />
         </div>
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-200 uppercase bg-gray-800 dark:bg-gray-700 dark:text-gray-400">
+          <thead class="text-xs text-gray-200 uppercase bg-rose-900 dark:bg-rose-900 dark:text-gray-400">
             <tr>
               <th scope="col" class="p-4">
                 <div class="flex items-center">
@@ -133,7 +134,7 @@ function CityList() {
                           Edit user
                         </a>
                         <button
-                          className="mb-2 ml-10 md:mb-0 border   border-gray-700 hover:border-none hover:bg-blue-500 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-gray-900  hover:text-white  rounded-xl hover:shadow-lg "
+                          className="mb-2 ml-10 md:mb-0 border bg-rose-900   border-gray-700 hover:border-none hover:bg-rose-700 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-white  hover:text-white  rounded-xl hover:shadow-lg "
                           onClick={(e) => deleted(user.id, e)}
                         >
                           Delete

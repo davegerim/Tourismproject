@@ -5,7 +5,7 @@ function Contactus() {
   return (
     <div>
       <Navbarss />
-      <section class="relative py-20 md:py-32 overflow-hidden">
+      <section class=" py-20 md:py-32 overflow-hidden">
         <img
           class="absolute top-0 left-0 md:mt-24"
           src="saturn-assets/images/contact/dots-side-1.svg"
@@ -16,11 +16,8 @@ function Contactus() {
           src="saturn-assets/images/contact/dots-side-2.svg"
           alt=""
         />
-        <div class="relative container px-4 mx-auto">
+        <div class=" container px-4 mx-auto">
           <div class="max-w-2xl mx-auto mb-18 text-center">
-            <span class="inline-block py-1 px-3 mb-4 text-xs font-semibold text-orange-900 bg-orange-50 rounded-full">
-              READY TO SUPPORT
-            </span>
             <h1 class="font-heading text-5xl xs:text-6xl font-bold text-gray-900 mb-4">
               <span>Anything unclear or </span>
               <span class="font-serif italic">need help</span>
@@ -50,10 +47,10 @@ function Contactus() {
                     davegerim@gmail.com
                   </span>
                   <a
-                    class="relative group inline-block py-4 px-6 text-white font-semibold bg-blue-500 rounded-full overflow-hidden"
+                    class="relative group inline-block py-4 px-6 text-white font-semibold bg-rose-800 rounded-full overflow-hidden"
                     href="."
                   >
-                    <div class="absolute top-0 right-full w-full h-full bg-gray-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
+                    <div class="absolute top-0 right-full w-full h-full bg-rose-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                     <div class="relative flex items-center justify-center">
                       <span class="mr-4">Contact</span>
                       <span>
@@ -94,10 +91,10 @@ function Contactus() {
                     +251985392862
                   </span>
                   <a
-                    class="relative group inline-block py-4 px-6 text-white font-semibold bg-blue-500 rounded-full overflow-hidden"
+                    class="relative group inline-block py-4 px-6 text-white font-semibold bg-rose-800 rounded-full overflow-hidden"
                     href="."
                   >
-                    <div class="absolute top-0 right-full w-full h-full bg-gray-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
+                    <div class="absolute top-0 right-full w-full h-full bg-rose-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                     <div class="relative flex items-center justify-center">
                       <span class="mr-4">Call Now</span>
                       <span>

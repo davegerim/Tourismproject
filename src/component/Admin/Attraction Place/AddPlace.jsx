@@ -52,7 +52,7 @@ function AddPlace() {
             <input
               type="text"
               placeholder="Attractionplace Name"
-              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-gray-700 focus:shadow-md"
               value={attractionplacename}
               onChange={(e) => setAttractionplacename(e.target.value)}
             />
@@ -75,14 +75,14 @@ function AddPlace() {
         <div class="flex flex-wrap -mx-3 mb-6">
           <label
             for="message"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            class="block mb-2 text-sm font-medium text-gray-700 dark:text-white"
           >
             Description
           </label>
           <textarea
             id="message"
             rows="4"
-            class="block p-2.5 w-full text-sm   rounded-lg border      dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="block p-2.5 w-full text-sm   rounded-lg border      dark:placeholder-gray-700 dark:text-white dark:focus:ring-gray-700 dark:focus:border-gray-700"
             placeholder="Write a description about the attraction place..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -121,7 +121,7 @@ function AddPlace() {
           </div>
         </div>
         <div className="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
-          <button className="mb-2 md:mb-0 bg-blue-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-2xl hover:shadow-lg ">
+          <button className="mb-2 md:mb-0 bg-rose-900 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-2xl hover:shadow-lg ">
             Save
           </button>
         </div>

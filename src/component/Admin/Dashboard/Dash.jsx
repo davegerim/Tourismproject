@@ -3,7 +3,7 @@ import React from "react";
 function Dash() {
   return (
     <div className="px-8 mt-20">
-      <div class=" bg-gray-600 w-full min-h-screen text-slate-300  py-4">
+      <div class=" bg-rose-900 w-full min-h-screen text-slate-300  py-4">
         <div class="grid grid-cols-8 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
           {/* <div id="menu" class="bg-white/10 col-span-3 rounded-lg p-4 ">
             <h1 class="font-bold text-lg lg:text-3xl bg-gradient-to-br from-white via-white/50 to-transparent bg-clip-text text-transparent">

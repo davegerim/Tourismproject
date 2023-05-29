@@ -51,7 +51,9 @@ function MainNav() {
                   class="h-6 mr-2"
                   alt="Windster Logo"
                 />
-                <span class="self-center whitespace-nowrap">Tour app</span>
+                <span class="self-center whitespace-nowrap">
+                  Zuret tour agency
+                </span>
               </a>
               <form action="#" method="GET" class="hidden lg:block lg:pl-32">
                 <label for="topbar-search" class="sr-only">
@@ -103,7 +105,7 @@ function MainNav() {
                 </svg>
               </button>
 
-              <div className="relative mr-4 bg-cyan-600 rounded-full p-2 hover:bg-red-600">
+              <div className="relative mr-4 bg-rose-900 rounded-full p-2 hover:bg-rose-900">
                 <BsBell
                   size="20"
                   className=" cursor-pointer text-white"
@@ -118,7 +120,7 @@ function MainNav() {
                   <div className="py-3 px-4 text-sm text-gray-900 dark:text-white">
                     <div>Dawit Gerim</div>
                     <div className="font-medium truncate">
-                      heranigraphics.com
+                      Zurat tour agency
                     </div>
                   </div>
                   <ul
@@ -181,9 +183,9 @@ function MainNav() {
                   data-popper-placement="bottom-start"
                 >
                   <div className="py-3 px-4 text-sm text-gray-900 dark:text-white">
-                    <div>Dawit Mezgebu</div>
+                    <div>Dawit Gerim</div>
                     <div className="font-medium truncate">
-                      heranigraphics.com
+                      Zurat tour agency
                     </div>
                   </div>
                   <ul
@@ -229,7 +231,7 @@ function MainNav() {
           </div>
         </div>
       </nav>
-      <div class="flex overflow-hidden bg-white pt-16">
+      <div class="flex overflow-hidden bg-rose-900 pt-16">
         <aside
           id="sidebar"
           class="fixed  z-20 h-full top-0 left-0 pt-16 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75"

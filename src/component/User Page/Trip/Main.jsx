@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "animate.css";
 import Navbarss from "../navbars/Navbarss";
 import axios from "axios";
+import Search from "../navbars/Search";
 function Main() {
   const [files, setFiles] = useState([]);
   useEffect(() => {
@@ -11,18 +12,22 @@ function Main() {
     });
   }, []);
   return (
-    <div className="">
+    <div className="fixed">
       <Navbarss />
-      <div className="px-10">
+
+      <div className="px-20 ">
+        <div className="mt-20  mr-20 ml-20">
+          <Search />
+        </div>
         <div className="pb-8">
           <h1 className="text-2xl text-black font-extrabold">
             Where To go, Right Now
           </h1>
         </div>
-        <div className="md:flex flex-row md:space-x-4 w-full text-xs mt-8">
+        <div className="md:flex pb-20 flex-row md:space-x-4 w-full text-xs ">
           {files.map((user) => {
             return (
-              <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full flex flex-col mb-3 animate__animated animate__backInRight">
+              <div class="max-w-sm mb-20 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full flex flex-col  animate__animated animate__backInRight">
                 <a href="/">
                   <img
                     class="rounded-t-lg object-fill h-auto w-96 ..."
@@ -41,7 +46,7 @@ function Main() {
                   </p>
                   <a
                     href="/Details"
-                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-900 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none"
                   >
                     Read more
                     <svg
