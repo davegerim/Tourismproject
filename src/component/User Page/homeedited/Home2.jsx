@@ -90,7 +90,7 @@ function Home2() {
                   is north of Lake Tana on the ...
                 </p>
                 <a
-                  href="/Details"
+                  href="/details"
                   class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-900 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none "
                 >
                   Read more
@@ -300,7 +300,11 @@ function Home2() {
               />
             </a>
 
-            <a href="/" class="flex justify-center items-center">
+            <a
+              href="https://www.ahadubank.com/"
+              class="flex justify-center items-center"
+              target="_blank "
+            >
               <img
                 src="./image/ahadu.png"
                 alt="ahadu"

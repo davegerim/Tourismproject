@@ -1,6 +1,71 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 function Search() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [countries, setCountries] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get("https://restcountries.com/v2/all")
+      .then((response) => {
+        setCountries(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const handleSearch = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    setShowResults(value !== "");
+    if (value === "") {
+      setFilteredCountries([]);
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      setShowResults(true);
+    }
+  };
+
+  const handleResultClick = (name) => {
+    setSearchTerm(name);
+    setShowResults(false);
+    setFilteredCountries(
+      countries.filter((country) =>
+        country.name.toLowerCase().includes(name.toLowerCase())
+      )
+    );
+  };
+
+  const handleBlur = () => {
+    if (
+      !filteredCountries.length &&
+      !countries.find(
+        (country) => country.name.toLowerCase() === searchTerm.toLowerCase()
+      )
+    ) {
+      setSearchTerm("");
+    }
+  };
+
+  const handleListClick = (name) => {
+    setSearchTerm(name);
+    setShowResults(false);
+    setFilteredCountries([]);
+  };
+
+  const filteredList = filteredCountries.length
+    ? filteredCountries
+    : countries.filter((country) =>
+        country.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
   return (
     <div>
       <form class="flex items-center pt-10 pb-5 ml-20 ">
@@ -27,9 +92,27 @@ function Search() {
             type="text"
             id="voice-search"
             class="  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search Mockups, Logos, Design Templates..."
+            placeholder="Search any travel places..."
             required
+            value={searchTerm}
+            onChange={handleSearch}
+            onKeyDown={handleKeyDown}
           />
+          {showResults && filteredList.length > 0 && (
+            <ul>
+              {filteredList.map((country) => (
+                <li
+                  key={country.alpha2Code}
+                  onClick={() => handleListClick(country.name)}
+                >
+                  {country.name}
+                </li>
+              ))}
+            </ul>
+          )}
+          {showResults && filteredList.length === 0 && (
+            <p>No countries found</p>
+          )}
           {/* <button
             type="button"
             class="absolute inset-y-0 right-0 flex items-center pr-3"

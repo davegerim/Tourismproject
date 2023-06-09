@@ -85,7 +85,9 @@ function CityList() {
           <tbody>
             {files &&
               files
+                // .slice(4)
                 .filter((user) => user.cityName.toLowerCase().includes(abel))
+
                 .map((user) => {
                   return (
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -107,7 +109,9 @@ function CityList() {
                       >
                         <img
                           class="w-10 h-10 rounded-full"
-                          src="./image/gondar2.jpg"
+                          // src="./image/gondar2.jpg"
+                          //src={}
+                          src={user?.image.replace(/\\/g, "").replace(/"/g, "")}
                           alt=""
                         />
                         <div class="pl-3" key={user.id}>
@@ -134,7 +138,7 @@ function CityList() {
                           Edit user
                         </a>
                         <button
-                          className="mb-2 ml-10 md:mb-0 border bg-rose-900   border-gray-700 hover:border-none hover:bg-rose-700 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-white  hover:text-white  rounded-xl hover:shadow-lg "
+                          className="mb-4 ml-26  mt-2 md:mb-0 border bg-rose-900   border-gray-700 hover:border-none hover:bg-rose-700 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-white  hover:text-white  rounded-xl hover:shadow-lg "
                           onClick={(e) => deleted(user.id, e)}
                         >
                           Delete

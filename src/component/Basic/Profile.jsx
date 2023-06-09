@@ -57,12 +57,15 @@ function Profile() {
     <div>
       <div class=" px-1">
         <div class=" p-6 ">
-          <div class="grid h-screen place-items-center ">
-            <div class=" w-full lg:w-3/5 justify-center items-center bg-white p-5 rounded-lg lg:rounded-l-none">
-              <h3 class="pt-4 text-2xl text-center">Create an Account!</h3>
+          <div class="grid h-4 place-items-center ">
+            <div class=" w-full lg:w-3/5 justify-center items-center bg-white p-5 hover:shadow-xl rounded-lg lg:rounded-l-none">
+              <div class="sm:mx-auto sm:w-full sm:max-w-sm pl-16">
+                <img src="./image/zuret.png" className="w-64 h-32" />
+              </div>
+              <h3 class="pt-2 text-2xl text-center">Create an Account!</h3>
               <form
                 onSubmit={handleSubmit}
-                class="px-8 pt-6 pb-8 mb-4 bg-white rounded"
+                class="px-8 pt-4  mb-2 bg-white rounded"
               >
                 <div class="mb-4 md:flex md:justify-between">
                   <div class="mb-4 md:mr-2 md:mb-0">
@@ -289,10 +292,10 @@ function Profile() {
                   </button>
                 </div>
               </form>
-              <hr class="mb-6 border-t" />
+              <hr class=" border-t" />
 
               <div class="text-center flex justify-center items-center ">
-                <span className="mr-2">Already have an account? </span>
+                <span className="mr-2 ">Already have an account? </span>
                 <a
                   class="inline-block  text-rose-800 align-baseline hover:text-rose-500"
                   href="/login"

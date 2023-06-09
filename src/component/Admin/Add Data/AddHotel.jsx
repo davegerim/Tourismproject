@@ -1,20 +1,7 @@
 import React, { useState } from "react";
 
-// function getBuffer(path){
-//   console.log("path", path);
-//   const file = path.target.files[0];
-// const reader = new FileReader();
-// reader.readAsArrayBuffer(file);
-// var byteArray = "";
-// reader.onload = () => {
-//   byteArray = new Uint8Array(reader.result);
-//   // send the byteArray to your backend server using fetch or Axios
-// };
-// console.log("bytw" , byteArray);
-// return byteArray;
-// }
-function AddCity() {
-  const [cityname, setCityname] = useState();
+function AddHotel() {
+  const [hotelname, setHotelname] = useState();
   const [description, setDescription] = useState();
   const [image, setImage] = useState(null);
 
@@ -34,18 +21,18 @@ function AddCity() {
     reader.readAsDataURL(file);
   };
   const resetForm = () => {
-    setCityname("");
+    setHotelname("");
     setDescription("");
     setImage("");
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     resetForm();
-    fetch("http://localhost:3000/cities/new", {
+    fetch("http://localhost:3000/hotel/new", {
       method: "POST",
       headers: { "Content-Type": "application/JSON" },
       body: JSON.stringify({
-        cityName: cityname,
+        hotelName: hotelname,
         description: description,
         image: image,
       }),
@@ -53,7 +40,6 @@ function AddCity() {
       console.log("posted");
     });
   };
-
   return (
     <div className=" flex mt-20 justify-center items-center  ">
       <form
@@ -61,24 +47,24 @@ function AddCity() {
         class="w-full max-w-lg  pl-10 mt-5 bg-white p-8 rounded-xl "
       >
         <div className="flex   mb-10 text-center items-center justify-center font-bold text-xl">
-          <h1>Add City</h1>
+          <h1>Add Hotel</h1>
         </div>
         <div class="flex  -mx-3 mb-6 ">
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              class="block  tracking-wide text-gray-900 text-sm font-medium mb-2"
               for="grid-first-name"
             >
-              City Name
+              Hotel Name
             </label>
             <input
               type="text"
               name="fName"
               id="fName"
-              placeholder="City Name"
+              placeholder="Hotel Name"
               class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              value={cityname}
-              onChange={(e) => setCityname(e.target.value)}
+              value={hotelname}
+              onChange={(e) => setHotelname(e.target.value)}
             />
           </div>
           <div class="w-full md:w-1/2 px-3">
@@ -107,7 +93,7 @@ function AddCity() {
             id="message"
             rows="4"
             class="block p-2.5 w-full text-sm   rounded-lg border      dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Write a description about the city..."
+            placeholder="Write a description about the Hotel..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
@@ -126,4 +112,4 @@ function AddCity() {
   );
 }
 
-export default AddCity;
+export default AddHotel;

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 function AddPlace() {
   const [attractionplacename, setAttractionplacename] = useState();
@@ -6,7 +7,8 @@ function AddPlace() {
   const [image, setImage] = useState();
   const [price, setPrice] = useState();
   const [rate, setRate] = useState();
-
+  const [doc, setDoc] = useState([]);
+  const [selectedDoc, setSelectedDoc] = useState();
   const resetForm = () => {
     setAttractionplacename("");
     setDescription("");
@@ -27,10 +29,26 @@ function AddPlace() {
         image: image,
         price: price,
         rate: rate,
+        City1: selectedDoc,
       }),
     }).then(() => {
       console.log("posted");
     });
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/cities")
+      .then((res) => {
+        setDoc(res.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  }, []);
+
+  const handleUserChanges = (e) => {
+    setSelectedDoc(e.target.value);
   };
   return (
     <div className=" flex mt-20 justify-center items-center  ">
@@ -118,6 +136,26 @@ function AddPlace() {
               value={rate}
               onChange={(e) => setRate(e.target.value)}
             ></input>
+          </div>
+          <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <label
+              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              for="grid-zip"
+            >
+              cities
+            </label>
+            <select
+              className="w-full h-10 px-3 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-0 border border-gray-300 rounded-md"
+              value={selectedDoc}
+              onChange={handleUserChanges}
+            >
+              <option value="">Select Doctor</option>
+              {doc.map((user) => (
+                <option key={user.id} value={user.id}>
+                  {user.cityName}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <div className="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
