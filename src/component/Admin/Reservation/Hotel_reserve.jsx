@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import useOutsideAlerter from "../../../Hooks/useOutSideHandler";
 import { useReactToPrint } from "react-to-print";
 
 function Hotel_reserve() {
@@ -8,7 +7,7 @@ function Hotel_reserve() {
 
   const [files, setFiles] = useState([]);
   const [abel, setAbel] = useState([]);
-  const ref = useRef(null);
+  const refs = useRef(null);
 
   function getUsers() {
     axios.get("http://localhost:3000/hotelreservation").then((res) => {
@@ -30,7 +29,7 @@ function Hotel_reserve() {
     });
   };
 
-  const exports = useRef;
+  const exports = useRef();
   const change = useReactToPrint({
     content: () => exports.current,
     documentTitle: "user List",
@@ -138,136 +137,139 @@ function Hotel_reserve() {
                         </a>
 
                         <div
-                          ref={ref}
+                          ref={refs}
                           tabindex="-1"
                           class={`${
                             !choose && "hidden"
                           } overflow-y-auto overflow-x-hidden fixed mt-22 pl-96 ml-64 md:inset-0 h-modal md:h-full justify-center items-center`}
                           aria-hidden="true"
                         >
-                          <div class="relative p-4 w-full max-w-md h-full md:h-auto">
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                              <img
-                                src="./image/zuret.png"
-                                class="ml-10 h-12 w-24 "
-                                alt="Windster Logo"
-                              />
-                              <button
-                                type="button"
-                                class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                onClick={() => {
-                                  setChoose(false);
-                                }}
-                                data-modal-toggle="popup-modal"
-                              >
-                                <svg
-                                  aria-hidden="true"
-                                  class="w-5 h-5"
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                  xmlns="http://www.w3.org/2000/svg"
+                          <div ref={exports} style={{ width: "100%" }}>
+                            <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                              <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <img
+                                  src="./image/zuret.png"
+                                  class="ml-10 h-12 w-24 "
+                                  alt="Windster Logo"
+                                />
+                                <button
+                                  type="button"
+                                  class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                  onClick={() => {
+                                    setChoose(false);
+                                  }}
+                                  data-modal-toggle="popup-modal"
                                 >
-                                  <path
-                                    fill-rule="evenodd"
-                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"
-                                  ></path>
-                                </svg>
-                                <span class="sr-only">Close modal</span>
-                              </button>
-                              <div class="flex items-center justify-center  p-10 ">
-                                <div class="  ">
-                                  <form className="text-start">
-                                    <div className="ml-28 mb-10 text-base font-bold">
-                                      Flight detail
-                                    </div>
-
-                                    <div class="w-full  sm:w-1/2">
-                                      <div class=" md:items-center mb-6">
-                                        <label
-                                          for="fName"
-                                          class=" block  text-base  font-normal text-[#07074D]"
-                                        >
-                                          First Name
-                                        </label>
-
-                                        <div class="rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none  "></div>
+                                  <svg
+                                    aria-hidden="true"
+                                    class="w-5 h-5"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                      clip-rule="evenodd"
+                                    ></path>
+                                  </svg>
+                                  <span class="sr-only">Close modal</span>
+                                </button>
+                                <div class="flex items-center justify-center  p-10 ">
+                                  <div class="  ">
+                                    <form className="text-start">
+                                      <div className="ml-28 mb-10 text-base font-bold">
+                                        Flight detail
                                       </div>
-                                    </div>
-                                    <div class="w-full  sm:w-1/2">
-                                      <div class="mb-6">
+
+                                      <div class="w-full  sm:w-1/2">
+                                        <div class=" md:items-center mb-6">
+                                          <label
+                                            for="fName"
+                                            class=" block  text-base  font-normal text-[#07074D]"
+                                          >
+                                            First Name
+                                          </label>
+
+                                          <div class="rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none  "></div>
+                                        </div>
+                                      </div>
+                                      <div class="w-full  sm:w-1/2">
+                                        <div class="mb-6">
+                                          <div>
+                                            <label
+                                              for="lName"
+                                              class="   font-normal text-base  text-[#07074D]"
+                                            >
+                                              Last Name
+                                            </label>
+                                          </div>
+                                          <div>
+                                            <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f"></div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="md:flex md:items-center mb-6">
                                         <div>
                                           <label
-                                            for="lName"
-                                            class="   font-normal text-base  text-[#07074D]"
+                                            class="block mb-2 text-base font-normal text-gray-700"
+                                            for="email"
                                           >
-                                            Last Name
+                                            Phone number
                                           </label>
                                         </div>
                                         <div>
-                                          <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f"></div>
+                                          <div class="w-full rounded-md  border-[#e0e0e0] bg-white py-2 px-6 text-base font-normal text-[#6B7280] outline-none  "></div>
                                         </div>
                                       </div>
-                                    </div>
-                                    <div class="md:flex md:items-center mb-6">
-                                      <div>
+                                      <div class="md:flex md:items-center mb-6">
                                         <label
                                           class="block mb-2 text-base font-normal text-gray-700"
-                                          for="email"
+                                          for="Gender"
                                         >
-                                          Phone number
+                                          Room Type
                                         </label>
+                                        <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f"></div>
                                       </div>
-                                      <div>
-                                        <div class="w-full rounded-md  border-[#e0e0e0] bg-white py-2 px-6 text-base font-normal text-[#6B7280] outline-none  "></div>
+                                      <div class="md:flex md:items-center mb-6">
+                                        <label
+                                          for="guest"
+                                          class="mb-3 block text-base font-normal text-[#07074D]"
+                                        >
+                                          number of guests
+                                        </label>
+                                        <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f"></div>
                                       </div>
-                                    </div>
-                                    <div class="md:flex md:items-center mb-6">
-                                      <label
-                                        class="block mb-2 text-base font-normal text-gray-700"
-                                        for="Gender"
-                                      >
-                                        Room Type
-                                      </label>
-                                      <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f"></div>
-                                    </div>
-                                    <div class="md:flex md:items-center mb-6">
-                                      <label
-                                        for="guest"
-                                        class="mb-3 block text-base font-normal text-[#07074D]"
-                                      >
-                                        number of guests
-                                      </label>
-                                      <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f"></div>
-                                    </div>
-                                    <div class="md:flex md:items-center mb-6">
-                                      <label
-                                        for="guest"
-                                        class="mb-3 block text-base font-normal text-[#07074D]"
-                                      >
-                                        start Date
-                                      </label>
-                                      <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f"></div>
-                                    </div>
-                                    <div class="md:flex md:items-center mb-6">
-                                      <label
-                                        for="guest"
-                                        class="mb-3 block text-base font-normal text-[#07074D]"
-                                      >
-                                        End Date
-                                      </label>
-                                      <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f"></div>
-                                    </div>
+                                      <div class="md:flex md:items-center mb-6">
+                                        <label
+                                          for="guest"
+                                          class="mb-3 block text-base font-normal text-[#07074D]"
+                                        >
+                                          start Date
+                                        </label>
+                                        <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f"></div>
+                                      </div>
+                                      <div class="md:flex md:items-center mb-6">
+                                        <label
+                                          for="guest"
+                                          class="mb-3 block text-base font-normal text-[#07074D]"
+                                        >
+                                          End Date
+                                        </label>
+                                        <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f"></div>
+                                      </div>
 
-                                    <div>
-                                      <button
-                                        class="hover:shadow-form ml-48 rounded-md bg-rose-900 py-3 px-8 text-center text-base font-semibold text-white outline-none"
-                                        onClick={change}
-                                      >
-                                        Print
-                                      </button>
-                                    </div>
-                                  </form>
+                                      <div>
+                                        <button
+                                          type="button"
+                                          class="hover:shadow-form ml-48 rounded-md bg-rose-900 py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                                          onClick={change}
+                                        >
+                                          Print
+                                        </button>
+                                      </div>
+                                    </form>
+                                  </div>
                                 </div>
                               </div>
                             </div>

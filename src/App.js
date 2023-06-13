@@ -29,6 +29,7 @@ import Hotel_reserve from "./component/Admin/Reservation/Hotel_reserve";
 import Trip_reserve from "./component/Admin/Reservation/Trip_reserve";
 import AddHotel from "./component/Admin/Add Data/AddHotel";
 import HotelList from "./component/Admin/Add Data/HotelList";
+import Attractionplace from "./component/User Page/Trip/Attractionplace";
 
 function App() {
   const location = useLocation();
@@ -57,7 +58,7 @@ function App() {
   return (
     <div className="App w-full flex  bg-gray-100">
       {location.pathname !== "/Trip" &&
-        location.pathname !== "/details/:id" &&
+        // location.pathname !== "/details/:id" &&
         location.pathname !== "/contactus" &&
         location.pathname !== "/flight" &&
         location.pathname !== "/hotel" &&
@@ -67,6 +68,7 @@ function App() {
         location.pathname !== "/home2" &&
         location.pathname !== "/popup" &&
         location.pathname !== "/return" &&
+        location.pathname !== "/attraction" &&
         location.pathname !== "/home" && (
           <div
             ref={ref}
@@ -86,7 +88,7 @@ function App() {
           !showSidebar && "md:w-full"
         } ${
           (location.pathname === "/Trip" ||
-            location.pathname === "/details/:id" ||
+            // location.pathname === "/details/:id" ||
             location.pathname === "/contactus" ||
             location.pathname === "/flight" ||
             location.pathname === "/hotel" ||
@@ -96,6 +98,7 @@ function App() {
             location.pathname === "/home2" ||
             location.pathname === "/return" ||
             location.pathname === "/popup" ||
+            location.pathname === "/attraction" ||
             location.pathname === "/home") &&
           "md:w-full"
         }`}
@@ -115,6 +118,10 @@ function App() {
 
         <Routes>
           <Route exact path="/details/:id" element={<Details />} />
+        </Routes>
+
+        <Routes>
+          <Route exact path="/attraction" element={<Attractionplace />} />
         </Routes>
 
         <Routes>

@@ -47,7 +47,10 @@ function MainNav() {
                   ></path>
                 </svg>
               </button>
-              <a href="/" class="text-xl font-bold flex items-center lg:ml-2.5">
+              <a
+                href="/home2"
+                class="text-xl font-bold flex items-center lg:ml-2.5"
+              >
                 <img
                   src="./image/zuret.png"
                   class="mr-3 h-12 w-24 "
@@ -143,7 +146,7 @@ function MainNav() {
                         href="/"
                         className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >
-                        Settings
+                        Landing page
                       </a>
                     </li>
                     <li>
@@ -205,18 +208,10 @@ function MainNav() {
                     </li>
                     <li>
                       <a
-                        href="/"
+                        href="/home2"
                         className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >
-                        Settings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/"
-                        className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Report
+                        Landing page
                       </a>
                     </li>
                   </ul>

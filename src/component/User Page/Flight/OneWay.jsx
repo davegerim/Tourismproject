@@ -11,7 +11,48 @@ function OneWay() {
   const [countries1, setCountries1] = useState([]);
   const [filteredCountries1, setFilteredCountries1] = useState([]);
   const [showResults1, setShowResults1] = useState(false);
+  const [from, setFrom] = useState();
+  const [to, setTo] = useState();
+  const [calander, setCalander] = useState(null);
+  const [departureDate, setDepartureDate] = useState();
+  const [statuss, setStatuss] = useState();
+  const [male, setMale] = useState(null);
+  const [female, setFemale] = useState();
+  const [child, setChild] = useState();
+  const [cabinClass, setCabinClass] = useState(null);
+  const resetForm = () => {
+    setFrom("");
+    setTo("");
+    setCalander("");
+    setDepartureDate("");
 
+    setMale("");
+    setFemale("");
+    setChild("");
+    setCabinClass("");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    resetForm();
+    fetch("http://localhost:3000/flight/new", {
+      method: "POST",
+      headers: { "Content-Type": "application/JSON" },
+      body: JSON.stringify({
+        statuss: "One way",
+        from: searchTerm,
+        to: search1Term,
+        calander: calander,
+        departureDate: departureDate,
+        male: male,
+        female: female,
+        child: child,
+        cabinClass: cabinClass,
+      }),
+    }).then(() => {
+      console.log("posted");
+    });
+  };
   useEffect(() => {
     axios
       .get("https://restcountries.com/v2/all")
@@ -161,7 +202,7 @@ function OneWay() {
       <div class=" bg-white hover:shadow-xl rounded-xl ml-96 ">
         <div class=" items-center  justify-center p-10">
           <div class="mx-auto  w-full max-w-[550px]">
-            <form className="">
+            <form onSubmit={handleSubmit} className="">
               <div class="-mx-3 flex flex-wrap">
                 <div class="w-full px-3 sm:w-1/2">
                   <div class="mb-5">
@@ -245,6 +286,8 @@ function OneWay() {
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-normal text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                     type="text"
                     placeholder="Gender"
+                    value={calander}
+                    onChange={(e) => setCalander(e.target.value)}
                   >
                     <option>Ethiopian calander</option>
                     <option>Gregorian calander</option>
@@ -264,6 +307,8 @@ function OneWay() {
                     id="firstName"
                     type="date"
                     placeholder="Birth date"
+                    value={departureDate}
+                    onChange={(e) => setDepartureDate(e.target.value)}
                   />
                 </div>
               </div>
@@ -280,6 +325,8 @@ function OneWay() {
                       class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-normal text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       type="number"
                       placeholder=""
+                      value={male}
+                      onChange={(e) => setMale(e.target.value)}
                     ></input>
                   </div>
                   <div>
@@ -294,6 +341,8 @@ function OneWay() {
                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-normal text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                         type="number"
                         placeholder=""
+                        value={female}
+                        onChange={(e) => setFemale(e.target.value)}
                       ></input>
                     </div>
                   </div>
@@ -309,6 +358,8 @@ function OneWay() {
                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-normal text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                         type="number"
                         placeholder=""
+                        value={child}
+                        onChange={(e) => setChild(e.target.value)}
                       ></input>
                     </div>
                   </div>
@@ -326,6 +377,8 @@ function OneWay() {
                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-normal text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                         type="text"
                         placeholder="Gender"
+                        value={cabinClass}
+                        onChange={(e) => setCabinClass(e.target.value)}
                       >
                         <option>Economy</option>
                         <option>Business</option>
