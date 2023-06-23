@@ -11,10 +11,10 @@ export function useUser() {
   useEffect(() => {
     async function getUserDetails() {
       const { authenticated, user } = await getAuthenticatedUser();
-      // if (!authenticated) {
-      //   navigate(APP_ROUTES.SIGN_IN);
-      //   return;
-      // }
+      if (!authenticated) {
+        navigate(APP_ROUTES.SIGN_IN);
+        return;
+      }
       setUser(user);
       setAuthenticated(authenticated);
     }
