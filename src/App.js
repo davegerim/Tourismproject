@@ -110,20 +110,18 @@ function App() {
         <div className="sticky top-0 "></div>
 
         <Routes>
-          {role === "admin" && <Route exact path="/" element={<Dash />} />}
+          <Route exact path="/" element={<Dash />} />
         </Routes>
         <Routes>
           <Route exact path="/home" element={<Home />} />
         </Routes>
 
         <Routes>
-          {role === "user" && <Route exact path="/Trip" element={<Main />} />}
+          <Route exact path="/Trip" element={<Main />} />
         </Routes>
 
         <Routes>
-          {role === "user" && (
-            <Route exact path="/details/:id" element={<Details />} />
-          )}
+          <Route exact path="/details/:id" element={<Details />} />
         </Routes>
 
         <Routes>
@@ -152,14 +150,10 @@ function App() {
         </Routes>
         {/* about city */}
         <Routes>
-          {role === "admin" && (
-            <Route exact path="/addcity" element={<AddCity />} />
-          )}
+          <Route exact path="/addcity" element={<AddCity />} />
         </Routes>
         <Routes>
-          {role === "admin" && (
-            <Route exact path="/citylist" element={<CityList />} />
-          )}
+          <Route exact path="/citylist" element={<CityList />} />
         </Routes>
         {/* about attraction place */}
         <Routes>
@@ -198,9 +192,7 @@ function App() {
           <Route exact path="/addhotel" element={<AddHotel />} />
         </Routes>
         <Routes>
-          {role === "admin" && (
-            <Route exact path="/hotellist" element={<HotelList />} />
-          )}
+          <Route exact path="/hotellist" element={<HotelList />} />
         </Routes>
         <Routes>
           <Route exact path="/tripbook/:id" element={<Tripbook />} />
