@@ -24,7 +24,13 @@ function Hotel() {
   const [startdate, setStartdate] = useState();
   const [enddate, setEnddate] = useState();
   const [abel, setAbel] = useState([]);
+  const [number, setNumber] = useState(0);
 
+  const handleChange = (e) => {
+    const value = parseInt(e.target.value);
+    setNumber(value);
+    document.getElementById("total").innerHTML = value * 99;
+  };
   const resetForm = () => {
     setFirstname("");
     setLastname("");
@@ -274,9 +280,7 @@ function Hotel() {
                                     min="0"
                                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-base font-normal text-[#6B7280] outline-none  "
                                     value={noofguests}
-                                    onChange={(e) =>
-                                      setNoofguests(e.target.value)
-                                    }
+                                    onChange={handleChange}
                                   />
                                 </div>
                                 <div class="mb-5">
@@ -317,13 +321,13 @@ function Hotel() {
                                     onChange={(e) => setEnddate(e.target.value)}
                                   />
                                 </div>
-
-                                <div className="mt-3 mb-3">
+                                <div class="mt-3 mb-3">
                                   <p>
-                                    <span class=" mr-20 font-normal">
-                                      Total Price
+                                    $99 per person{" "}
+                                    <span className="ml-10" id="total">
+                                      Total:
+                                      {number * 99}$
                                     </span>
-                                    $99
                                   </p>
                                 </div>
 

@@ -3,11 +3,12 @@ import "animate.css";
 import Navbarss from "../navbars/Navbarss";
 import axios from "axios";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 function Main() {
   const [files, setFiles] = useState([]);
   const [abel, setAbel] = useState([]);
   const Navigate = useNavigate();
+
   useEffect(() => {
     axios.get("http://localhost:3000/cities").then((res) => {
       setFiles(res.data);
@@ -16,7 +17,9 @@ function Main() {
   }, []);
 
   function city() {
-    Navigate(`/attraction`);
+    console.log("getto");
+    // console.log(id);
+    // Navigate(`/attraction/${id}`);
   }
 
   return (
@@ -62,12 +65,13 @@ function Main() {
           </h1>
         </div>
         <div
-          className=" animate__animated
+          className=" animate__animated grid grid-cols-3 gap-4
                  animate__pulse animate__delay-1s animate__infinite md:flex flex-row md:space-x-4 w-full text-xs mt-8  
                  "
         >
           {files
             .filter((user) => user.cityName.toLowerCase().includes(abel))
+
             .map((user) => {
               return (
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full flex flex-col mb-3 animate__animated animate__backInRight hover:shadow-2xl">
@@ -87,9 +91,10 @@ function Main() {
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                       {user.description}
                     </p>
-                    <button
+                    <Link
+                      type="submit"
+                      to={`/attraction/${user.id}`}
                       class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-900 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none "
-                      onClick={city}
                     >
                       Read more
                       <svg
@@ -105,7 +110,7 @@ function Main() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                    </button>
+                    </Link>
                   </div>
                 </div>
               );

@@ -5,6 +5,7 @@
     "lib": ["dom", "es6"],
     "jsx": "react",
     "sourceMap": true,
+    "esModuleInterop": true,
     "strict": true
   },
   "include": ["src/**/*"]

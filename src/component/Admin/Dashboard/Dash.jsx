@@ -3,7 +3,7 @@ import React from "react";
 function Dash() {
   return (
     <div className="px-8 mt-20">
-      <div class=" bg-rose-900 w-full min-h-screen text-slate-300  py-4">
+      <div class="  w-full min-h-screen text-slate-300  py-4">
         <div class="grid grid-cols-8 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
           {/* <div id="menu" class="bg-white/10 col-span-3 rounded-lg p-4 ">
             <h1 class="font-bold text-lg lg:text-3xl bg-gradient-to-br from-white via-white/50 to-transparent bg-clip-text text-transparent">
@@ -167,14 +167,14 @@ function Dash() {
               v2.0.0.3 | &copy; 2022 Pantazi Soft
             </p>
           </div> */}
-          <div id="content" class="bg-white/10 col-span-9 rounded-lg p-6">
+          <div id="content" class="bg-white col-span-9 rounded-lg p-6">
             <div id="24h">
-              <h1 class="font-bold py-4 uppercase">Last 24h Statistics</h1>
+              <h1 class=" py-4 text-black">Last 24h Statistics</h1>
               <div
                 id="stats"
                 class="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
               >
-                <div class="bg-black/60 to-white/5 p-6 rounded-lg">
+                <div class="bg-rose-900 to-white/5 p-6 rounded-lg">
                   <div class="flex flex-row space-x-4 items-center">
                     <div id="stats-1">
                       <svg
@@ -218,7 +218,7 @@ function Dash() {
                     </div>
                   </div>
                 </div>
-                <div class="bg-black/60 p-6 rounded-lg">
+                <div class="bg-rose-900 p-6 rounded-lg">
                   <div class="flex flex-row space-x-4 items-center">
                     <div id="stats-1">
                       <svg
@@ -262,7 +262,7 @@ function Dash() {
                     </div>
                   </div>
                 </div>
-                <div class="bg-black/60 p-6 rounded-lg">
+                <div class="bg-rose-900 p-6 rounded-lg">
                   <div class="flex flex-row space-x-4 items-center">
                     <div id="stats-1">
                       <svg
@@ -309,18 +309,23 @@ function Dash() {
               </div>
             </div>
             <div id="last-incomes">
-              <h1 class="font-bold py-4 uppercase">Last 24h incomes</h1>
+              <h1
+                class="
+               py-4  text-black "
+              >
+                Last 24h incomes
+              </h1>
               <div
                 id="stats"
                 class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
               >
-                <div class="bg-black/60 to-white/5 rounded-lg">
+                <div class="bg-rose-900 to-white/5 rounded-lg">
                   <div class="flex flex-row items-center">
                     <div class="text-3xl p-4">💰</div>
                     <div class="p-2">
                       <p class="text-xl font-bold">348$</p>
-                      <p class="text-gray-500 font-medium">Amber Gates</p>
-                      <p class="text-gray-500 text-sm">24 Nov 2022</p>
+                      <p class="text-white font-medium">Amber Gates</p>
+                      <p class="text-white text-sm">24 Nov 2022</p>
                     </div>
                   </div>
                   <div class="border-t border-white/5 p-4">
@@ -342,17 +347,17 @@ function Dash() {
                           d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
                         />
                       </svg>
-                      <span>Info</span>
+                      <span class="text-white">Info</span>
                     </a>
                   </div>
                 </div>
-                <div class="bg-black/60 to-white/5 rounded-lg">
+                <div class="bg-rose-900 to-white/5 rounded-lg">
                   <div class="flex flex-row items-center">
                     <div class="text-3xl p-4">💰</div>
                     <div class="p-2">
                       <p class="text-xl font-bold">68$</p>
-                      <p class="text-gray-500 font-medium">Maia Kipper</p>
-                      <p class="text-gray-500 text-sm">23 Nov 2022</p>
+                      <p class="text-white font-medium">Maia Kipper</p>
+                      <p class="text-white   text-sm">23 Nov 2022</p>
                     </div>
                   </div>
                   <div class="border-t border-white/5 p-4">
@@ -374,17 +379,17 @@ function Dash() {
                           d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
                         />
                       </svg>
-                      <span>Info</span>
+                      <span class="text-white">Info</span>
                     </a>
                   </div>
                 </div>
-                <div class="bg-black/60 to-white/5 rounded-lg">
+                <div class="bg-rose-900 to-white/5 rounded-lg">
                   <div class="flex flex-row items-center">
                     <div class="text-3xl p-4">💰</div>
                     <div class="p-2">
                       <p class="text-xl font-bold">12$</p>
-                      <p class="text-gray-500 font-medium">Oprah Milles</p>
-                      <p class="text-gray-500 text-sm">23 Nov 2022</p>
+                      <p class="text-white font-medium">Oprah Milles</p>
+                      <p class="text-white text-sm">23 Nov 2022</p>
                     </div>
                   </div>
                   <div class="border-t border-white/5 p-4">
@@ -406,17 +411,17 @@ function Dash() {
                           d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
                         />
                       </svg>
-                      <span>Info</span>
+                      <span class="text-white">Info</span>
                     </a>
                   </div>
                 </div>
-                <div class="bg-black/60 to-white/5 rounded-lg">
+                <div class="bg-rose-900 to-white/5 rounded-lg">
                   <div class="flex flex-row items-center">
                     <div class="text-3xl p-4">💰</div>
                     <div class="p-2">
                       <p class="text-xl font-bold">105$</p>
-                      <p class="text-gray-500 font-medium">Jonny Nite</p>
-                      <p class="text-gray-500 text-sm">23 Nov 2022</p>
+                      <p class="text-white font-medium">Jonny Nite</p>
+                      <p class="text-white text-sm">23 Nov 2022</p>
                     </div>
                   </div>
                   <div class="border-t border-white/5 p-4">
@@ -438,17 +443,17 @@ function Dash() {
                           d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
                         />
                       </svg>
-                      <span>Info</span>
+                      <span class="text-white">Info</span>
                     </a>
                   </div>
                 </div>
-                <div class="bg-black/60 to-white/5 rounded-lg">
+                <div class="bg-rose-900 to-white/5 rounded-lg">
                   <div class="flex flex-row items-center">
                     <div class="text-3xl p-4">💰</div>
                     <div class="p-2">
                       <p class="text-xl font-bold">52$</p>
-                      <p class="text-gray-500 font-medium">Megane Baile</p>
-                      <p class="text-gray-500 text-sm">22 Nov 2022</p>
+                      <p class=" font-medium">Megane Baile</p>
+                      <p class=" text-sm">22 Nov 2022</p>
                     </div>
                   </div>
                   <div class="border-t border-white/5 p-4">
@@ -470,17 +475,17 @@ function Dash() {
                           d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
                         />
                       </svg>
-                      <span>Info</span>
+                      <span class="text-white">Info</span>
                     </a>
                   </div>
                 </div>
-                <div class="bg-black/60 to-white/5 rounded-lg">
+                <div class="bg-rose-900 to-white/5 rounded-lg">
                   <div class="flex flex-row items-center">
                     <div class="text-3xl p-4">💰</div>
                     <div class="p-2">
                       <p class="text-xl font-bold">28$</p>
-                      <p class="text-gray-500 font-medium">Tony Ankel</p>
-                      <p class="text-gray-500 text-sm">22 Nov 2022</p>
+                      <p class=" font-medium">Tony Ankel</p>
+                      <p class=" text-sm">22 Nov 2022</p>
                     </div>
                   </div>
                   <div class="border-t border-white/5 p-4">
@@ -502,25 +507,25 @@ function Dash() {
                           d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
                         />
                       </svg>
-                      <span>Info</span>
+                      <span class="text-white">Info</span>
                     </a>
                   </div>
                 </div>
               </div>
             </div>
             <div id="last-users">
-              <h1 class="font-bold py-4 uppercase">Last 24h users</h1>
+              <h1 class=" py-4 text-black text-bold">Last 24h users</h1>
               <div class="overflow-x-scroll">
                 <table class="w-full whitespace-nowrap">
-                  <thead class="bg-black/60">
+                  <thead class="bg-rose-900">
                     <th class="text-left py-3 px-2 rounded-l-lg">Name</th>
                     <th class="text-left py-3 px-2">Email</th>
-                    <th class="text-left py-3 px-2">Group</th>
+                    <th class="text-left py-3 px-2">Role</th>
                     <th class="text-left py-3 px-2">Status</th>
                     <th class="text-left py-3 px-2 rounded-r-lg">Actions</th>
                   </thead>
                   <tr class="border-b border-gray-700">
-                    <td class="py-3 px-2 font-bold">
+                    <td class="py-3 px-2  text-black ">
                       <div class="inline-flex space-x-3 items-center">
                         <span>
                           <img
@@ -532,10 +537,10 @@ function Dash() {
                         <span>Thai Mei</span>
                       </div>
                     </td>
-                    <td class="py-3 px-2">thai.mei@abc.com</td>
-                    <td class="py-3 px-2">User</td>
-                    <td class="py-3 px-2">Approved</td>
-                    <td class="py-3 px-2">
+                    <td class="py-3 px-2 text-black">thai.mei@abc.com</td>
+                    <td class="py-3 px-2 text-black">User</td>
+                    <td class="py-3 px-2 text-black">Approved</td>
+                    <td class="py-3 px-2 text-black">
                       <div class="inline-flex items-center space-x-3">
                         <a href="." title="Edit" class="hover:text-white">
                           <svg
@@ -597,7 +602,7 @@ function Dash() {
                     </td>
                   </tr>
                   <tr class="border-b border-gray-700">
-                    <td class="py-3 px-2 font-bold">
+                    <td class="py-3 px-2 text-black">
                       <div class="inline-flex space-x-3 items-center">
                         <span>
                           <img
@@ -609,10 +614,10 @@ function Dash() {
                         <span>Thai Mei</span>
                       </div>
                     </td>
-                    <td class="py-3 px-2">thai.mei@abc.com</td>
-                    <td class="py-3 px-2">User</td>
-                    <td class="py-3 px-2">Approved</td>
-                    <td class="py-3 px-2">
+                    <td class="py-3 px-2 text-black">thai.mei@abc.com</td>
+                    <td class="py-3 px-2 text-black">User</td>
+                    <td class="py-3 px-2 text-black">Approved</td>
+                    <td class="py-3 px-2 text-black">
                       <div class="inline-flex items-center space-x-3">
                         <a href="." title="Edit" class="hover:text-white">
                           <svg
@@ -674,7 +679,7 @@ function Dash() {
                     </td>
                   </tr>
                   <tr class="border-b border-gray-700">
-                    <td class="py-3 px-2 font-bold">
+                    <td class="py-3 px-2 text-black">
                       <div class="inline-flex space-x-3 items-center">
                         <span>
                           <img
@@ -686,10 +691,10 @@ function Dash() {
                         <span>Thai Mei</span>
                       </div>
                     </td>
-                    <td class="py-3 px-2">thai.mei@abc.com</td>
-                    <td class="py-3 px-2">User</td>
-                    <td class="py-3 px-2">Approved</td>
-                    <td class="py-3 px-2">
+                    <td class="py-3 px-2 text-black">thai.mei@abc.com</td>
+                    <td class="py-3 px-2 text-black">User</td>
+                    <td class="py-3 px-2 text-black">Approved</td>
+                    <td class="py-3 px-2 text-black">
                       <div class="inline-flex items-center space-x-3">
                         <a href="." title="Edit" class="hover:text-white">
                           <svg
@@ -751,7 +756,7 @@ function Dash() {
                     </td>
                   </tr>
                   <tr class="border-b border-gray-700">
-                    <td class="py-3 px-2 font-bold">
+                    <td class="py-3 px-2 text-black">
                       <div class="inline-flex space-x-3 items-center">
                         <span>
                           <img
@@ -763,10 +768,12 @@ function Dash() {
                         <span>Marquez Spineli</span>
                       </div>
                     </td>
-                    <td class="py-3 px-2">marquez.spineli@cba.com</td>
-                    <td class="py-3 px-2">User</td>
-                    <td class="py-3 px-2">Approved</td>
-                    <td class="py-3 px-2">
+                    <td class="py-3 px-2 text-black">
+                      marquez.spineli@cba.com
+                    </td>
+                    <td class="py-3 px-2 text-black">User</td>
+                    <td class="py-3 px-2 text-black">Approved</td>
+                    <td class="py-3 px-2 text-black">
                       <div class="inline-flex items-center space-x-3">
                         <a href="." title="Edit" class="hover:text-white">
                           <svg
@@ -828,7 +835,7 @@ function Dash() {
                     </td>
                   </tr>
                   <tr class="border-b border-gray-800">
-                    <td class="py-3 px-2 font-bold">
+                    <td class="py-3 px-2 text-black ">
                       <div class="inline-flex space-x-3 items-center">
                         <span>
                           <img
@@ -840,10 +847,10 @@ function Dash() {
                         <span>Mark Spike</span>
                       </div>
                     </td>
-                    <td class="py-3 px-2">mark.spike@abc.com</td>
-                    <td class="py-3 px-2">Administrator</td>
-                    <td class="py-3 px-2">Approved</td>
-                    <td class="py-3 px-2">
+                    <td class="py-3 px-2 text-black">mark.spike@abc.com</td>
+                    <td class="py-3 px-2 text-black">Administrator</td>
+                    <td class="py-3 px-2 text-black">Approved</td>
+                    <td class="py-3 px-2 text-black">
                       <div class="inline-flex items-center space-x-3">
                         <a href="." title="Edit" class="hover:text-white">
                           <svg

@@ -11,7 +11,11 @@ function Navbarss() {
     <nav class="fixed  w-full shadow  bg-white border-gray-200 px-4 lg:px-6 py-4 dark:bg-gray-800">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
         <a href="https://github.com/davegerim" class="flex  items-center">
-          <img src="./image/zuret.png" class="mr-3 h-12 w-24 " alt=" Logo" />
+          <img
+            src="./image/zuret.png"
+            class="mr-3 h-12 w-24 "
+            alt=" Zuret Tour"
+          />
         </a>
         <div class="flex items-center lg:order-2">
           <a

@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Main from "./component/User Page/Trip/Main";
 import Profile from "./component/Basic/Profile";
@@ -30,20 +30,21 @@ import Trip_reserve from "./component/Admin/Reservation/Trip_reserve";
 import AddHotel from "./component/Admin/Add Data/AddHotel";
 import HotelList from "./component/Admin/Add Data/HotelList";
 import Attractionplace from "./component/User Page/Trip/Attractionplace";
-
+import Tripbook from "./component/Admin/Booking/Tripbook";
+import jwt_decode from "jwt-decode";
 function App() {
   const location = useLocation();
   const [showSidebar, setShowSidebar] = useState(true);
   const ref = useRef(null);
-  // (function (w, d) {
-  //   w.CollectId = "647b0f0ecc21ec7a2e93615b";
-  //   var h = d.head || d.getElementsByTagName("head")[0];
-  //   var s = d.createElement("script");
-  //   s.setAttribute("type", "text/javascript");
-  //   s.async = true;
-  //   s.setAttribute("src", "https://collectcdn.com/launcher.js");
-  //   h.appendChild(s);
-  // })(window, document);
+  const [role, setRole] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      setRole(decodedToken.role);
+    }
+  }, []);
 
   (function (w, d) {
     w.CollectId = "647f5eaecc21ec7a2e936717";
@@ -68,7 +69,9 @@ function App() {
         location.pathname !== "/home2" &&
         location.pathname !== "/popup" &&
         location.pathname !== "/return" &&
-        location.pathname !== "/attraction" &&
+        //
+        !location.pathname.startsWith("/attraction") &&
+        !location.pathname.startsWith("/tripbook") &&
         location.pathname !== "/home" && (
           <div
             ref={ref}
@@ -97,8 +100,9 @@ function App() {
             location.pathname === "/login" ||
             location.pathname === "/home2" ||
             location.pathname === "/return" ||
+            location.pathname === "/tripbook/:id" ||
             location.pathname === "/popup" ||
-            location.pathname === "/attraction" ||
+            location.pathname === "/attraction/:id" ||
             location.pathname === "/home") &&
           "md:w-full"
         }`}
@@ -106,22 +110,24 @@ function App() {
         <div className="sticky top-0 "></div>
 
         <Routes>
-          <Route exact path="/" element={<Dash />} />
+          {role === "admin" && <Route exact path="/" element={<Dash />} />}
         </Routes>
         <Routes>
           <Route exact path="/home" element={<Home />} />
         </Routes>
 
         <Routes>
-          <Route exact path="/Trip" element={<Main />} />
+          {role === "user" && <Route exact path="/Trip" element={<Main />} />}
         </Routes>
 
         <Routes>
-          <Route exact path="/details/:id" element={<Details />} />
+          {role === "user" && (
+            <Route exact path="/details/:id" element={<Details />} />
+          )}
         </Routes>
 
         <Routes>
-          <Route exact path="/attraction" element={<Attractionplace />} />
+          <Route exact path="/attraction/:id" element={<Attractionplace />} />
         </Routes>
 
         <Routes>
@@ -146,10 +152,14 @@ function App() {
         </Routes>
         {/* about city */}
         <Routes>
-          <Route exact path="/addcity" element={<AddCity />} />
+          {role === "admin" && (
+            <Route exact path="/addcity" element={<AddCity />} />
+          )}
         </Routes>
         <Routes>
-          <Route exact path="/citylist" element={<CityList />} />
+          {role === "admin" && (
+            <Route exact path="/citylist" element={<CityList />} />
+          )}
         </Routes>
         {/* about attraction place */}
         <Routes>
@@ -188,7 +198,12 @@ function App() {
           <Route exact path="/addhotel" element={<AddHotel />} />
         </Routes>
         <Routes>
-          <Route exact path="/hotellist" element={<HotelList />} />
+          {role === "admin" && (
+            <Route exact path="/hotellist" element={<HotelList />} />
+          )}
+        </Routes>
+        <Routes>
+          <Route exact path="/tripbook/:id" element={<Tripbook />} />
         </Routes>
       </div>
     </div>

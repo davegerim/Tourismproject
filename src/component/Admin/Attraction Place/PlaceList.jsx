@@ -23,28 +23,17 @@ function PlaceList() {
           </div>
           <div>
             <button
-              className="mb-2 md:mb-0 border   border-gray-700 hover:border-none hover:bg-blue-500 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-gray-900  hover:text-white  rounded-xl hover:shadow-lg "
+              className="mb-2 md:mb-0 border   border-rose-700 hover:border-none hover:bg-rose-700 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-white  hover:text-white  rounded-xl hover:shadow-lg bg-rose-900"
               onClick={go}
             >
               Add Place
             </button>
           </div>
         </div>
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-200 uppercase bg-gray-800 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-sm text-left text-grey-900 dark:text-rose-900">
+          <thead class="text-xs text-white uppercase bg-rose-900 dark:bg-gray-700 dark:text-white">
             <tr>
-              <th scope="col" class="p-4">
-                <div class="flex items-center">
-                  <input
-                    id="checkbox-all-search"
-                    type="checkbox"
-                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label for="checkbox-all-search" class="sr-only">
-                    checkbox
-                  </label>
-                </div>
-              </th>
+              <th scope="col" class="p-4"></th>
               <th scope="col" class="px-6 py-3">
                 Place Name
               </th>
@@ -67,25 +56,14 @@ function PlaceList() {
               files.map((user) => {
                 return (
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="w-4 p-4">
-                      <div class="flex items-center">
-                        <input
-                          id="checkbox-table-search-1"
-                          type="checkbox"
-                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        />
-                        <label for="checkbox-table-search-1" class="sr-only">
-                          checkbox
-                        </label>
-                      </div>
-                    </td>
+                    <td class="w-4 p-4"></td>
                     <th
                       scope="row"
                       class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                     >
                       <img
                         class="w-10 h-10 rounded-full"
-                        src="./image/gondar2.jpg"
+                        src={user?.image.replace(/\\/g, "").replace(/"/g, "")}
                         alt=""
                       />
                       <div class="pl-3" key={user.id}>

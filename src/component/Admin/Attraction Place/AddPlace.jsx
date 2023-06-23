@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 function AddPlace() {
   const [attractionplacename, setAttractionplacename] = useState();
   const [description, setDescription] = useState();
-  const [image, setImage] = useState();
+  const [image, setImage] = useState(null);
   const [price, setPrice] = useState();
   const [rate, setRate] = useState();
   const [doc, setDoc] = useState([]);
@@ -16,6 +16,22 @@ function AddPlace() {
     setPrice("");
     setRate("");
   };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => {
+      const base64Image = reader.result.replace(
+        `/^data:image\/jpeg;base64,/`,
+        ""
+      );
+      const byteArray = JSON.stringify(base64Image);
+      setImage(byteArray);
+    });
+
+    reader.readAsDataURL(file);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     resetForm();
@@ -85,8 +101,8 @@ function AddPlace() {
             <input
               class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="file"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
+              id="fileInput"
+              onChange={handleFileChange}
             />
           </div>
         </div>
@@ -149,7 +165,7 @@ function AddPlace() {
               value={selectedDoc}
               onChange={handleUserChanges}
             >
-              <option value="">Select Doctor</option>
+              <option value="">Select City</option>
               {doc.map((user) => (
                 <option key={user.id} value={user.id}>
                   {user.cityName}

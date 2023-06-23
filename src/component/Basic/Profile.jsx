@@ -2,30 +2,12 @@ import React, { useState } from "react";
 
 function Profile() {
   const [name, setName] = useState();
-  const [middlename, setMiddlename] = useState();
-  const [lastname, setLastname] = useState();
-  const [country, setCountry] = useState();
-  const [city, setCity] = useState();
-  const [subcity, setSubcity] = useState();
-  const [woreda, setWoreda] = useState();
-  const [number, setNumber] = useState();
-  const [birthdate, setBirthdate] = useState();
-  const [gender, setGender] = useState();
-  const [age, setAge] = useState();
+  const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const resetForm = () => {
     setName("");
-    setMiddlename("");
-    setLastname("");
-    setCountry("");
-    setCity("");
-    setSubcity("");
-    setWoreda("");
-    setNumber("");
-    setBirthdate("");
-    setGender("");
-    setAge("");
+    setUsername("");
     setEmail("");
     setPassword("");
   };
@@ -38,15 +20,11 @@ function Profile() {
       method: "POST",
       headers: { "Content-Type": "application/JSON" },
       body: JSON.stringify({
-        firstName: name,
-        lastName: lastname,
-        middleName: middlename,
+        fullName: name,
+        userName: username,
         email: email,
-        role: "",
+        role: "user",
         password: password,
-        birthDate: birthdate,
-        gender: gender,
-        age: age,
       }),
     }).then(() => {
       console.log("posted");
@@ -55,254 +33,89 @@ function Profile() {
 
   return (
     <div>
-      <div class=" px-1">
-        <div class=" p-6 ">
-          <div class="grid h-4 place-items-center ">
-            <div class=" w-full lg:w-3/5 justify-center items-center bg-white p-5 hover:shadow-xl rounded-lg lg:rounded-l-none">
-              <div class="sm:mx-auto sm:w-full sm:max-w-sm pl-16">
-                <img src="./image/zuret.png" className="w-64 h-32" />
+      <div class="relative min-h-screen flex ">
+        <div class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center flex-auto min-w-0 bg-white">
+          <div class="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full  xl:w-2/5 p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white ">
+            <div class="max-w-md w-full space-y-8">
+              <div class="text-center">
+                <div className="items-center inline-block">
+                  <img src="./image/zuret.png" className="w-36" alt="" />
+                </div>
+                <h2 class=" text-2xl font-bold text-gray-900">Welcome Back!</h2>
+                <p class="mt-2 text-sm text-gray-500">
+                  Please sign in to your account
+                </p>
               </div>
-              <h3 class="pt-2 text-2xl text-center">Create an Account!</h3>
-              <form
-                onSubmit={handleSubmit}
-                class="px-8 pt-4  mb-2 bg-white rounded"
-              >
-                <div class="mb-4 md:flex md:justify-between">
-                  <div class="mb-4 md:mr-2 md:mb-0">
-                    <label class="block mb-2 text-sm font-bold text-gray-700">
-                      First Name
-                    </label>
-                    <input
-                      class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      type="text"
-                      placeholder="First Name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </div>
-                  <div class="md:ml-2">
-                    <label
-                      class="block mb-2 text-sm font-bold text-gray-700"
-                      for="middleName"
-                    >
-                      Middle Name
-                    </label>
-                    <input
-                      class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      type="text"
-                      placeholder="Middle Name"
-                      value={middlename}
-                      onChange={(e) => setMiddlename(e.target.value)}
-                    />
-                  </div>
-                  <div class="md:ml-3">
-                    <label
-                      class="block mb-2 text-sm font-bold text-gray-700"
-                      for="middleName"
-                    >
-                      Last name
-                    </label>
-                    <input
-                      class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      type="text"
-                      placeholder="Last name"
-                      value={lastname}
-                      onChange={(e) => setLastname(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div class="mb-4 md:flex md:justify-between">
-                  <div class="mb-4 md:mr-2 md:mb-0">
-                    <label
-                      class="block mb-2 text-sm font-bold text-gray-700"
-                      for="country"
-                    >
-                      Country
-                    </label>
-                    <input
-                      class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      type="text"
-                      placeholder="country"
-                      value={country}
-                      onChange={(e) => setCountry(e.target.value)}
-                    />
-                  </div>
-                  <div class="md:ml-2">
-                    <label
-                      class="block mb-2 text-sm font-bold text-gray-700"
-                      for="city"
-                    >
-                      City
-                    </label>
-                    <input
-                      class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      id="lastName"
-                      type="text"
-                      placeholder="City"
-                      value={city}
-                      onChange={(e) => setCity(e.target.value)}
-                    />
-                  </div>
-                  <div class="md:ml-3">
-                    <label
-                      class="block mb-2 text-sm font-bold text-gray-700"
-                      for="Subcity"
-                    >
-                      Subcity
-                    </label>
-                    <input
-                      class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      type="text"
-                      placeholder="Subcity"
-                      value={subcity}
-                      onChange={(e) => setSubcity(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div class="mb-4 md:flex md:justify-between">
-                  <div class="mb-4 md:mr-2 md:mb-0">
-                    <label
-                      class="block mb-2 text-sm font-bold text-gray-700"
-                      for="woreda"
-                    >
-                      Woreda
-                    </label>
-                    <input
-                      class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      type="text"
-                      placeholder="woreda"
-                      value={woreda}
-                      onChange={(e) => setWoreda(e.target.value)}
-                    />
-                  </div>
-                  <div class="md:ml-2">
-                    <label
-                      class="block mb-2 text-sm font-bold text-gray-700"
-                      for="housenumber"
-                    >
-                      House number
-                    </label>
-                    <input
-                      class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline min=1"
-                      type="number"
-                      placeholder="Housenumber"
-                      min="1"
-                      value={number}
-                      onChange={(e) => setNumber(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div class="mb-4 md:flex md:justify-between">
-                  <div class="mb-4 md:mr-2 md:mb-0">
-                    <label
-                      class="block mb-2 text-sm font-bold text-gray-700"
-                      for="birthdate"
-                    >
-                      Birth date
-                    </label>
-                    <input
-                      class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      id="firstName"
-                      type="date"
-                      placeholder="Birth date"
-                      value={birthdate}
-                      onChange={(e) => setBirthdate(e.target.value)}
 
-                      //
-                    />
-                  </div>
-                  <div class="md:ml-2">
-                    <label
-                      class="block mb-2 text-sm font-bold text-gray-700"
-                      for="Gender"
-                    >
-                      Gender
-                    </label>
-                    <select
-                      class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      type="text"
-                      placeholder="Gender"
-                      value={gender}
-                      onChange={(e) => setGender(e.target.value)}
-                    >
-                      <option></option>
-                      <option>Male</option>
-                      <option>Female</option>
-                    </select>
-                  </div>
-
-                  <div class="md:ml-3">
-                    <label
-                      class="block mb-2 text-sm font-bold text-gray-700"
-                      for="Age"
-                    >
-                      Age
-                    </label>
-                    <input
-                      class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      id="age"
-                      type="number"
-                      placeholder="Age"
-                      min="5"
-                      value={age}
-                      onChange={(e) => setAge(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div class="mb-4">
-                  <label
-                    class="block mb-2 text-sm font-bold text-gray-700"
-                    for="email"
-                  >
-                    Email
+              <form class="mt-8 space-y-6" onSubmit={handleSubmit}>
+                <div class="relative">
+                  <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
+                    Full Name{" "}
                   </label>
                   <input
-                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                    id="email"
+                    class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-green-800"
+                    type=""
+                    placeholder="Dawit Gerim"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+                <div class="relative">
+                  <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
+                    User Name
+                  </label>
+                  <input
+                    class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-green-800"
+                    type=""
+                    placeholder="DaveG21"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </div>
+                <div class="relative">
+                  <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
+                    Email{" "}
+                  </label>
+                  <input
+                    class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-green-800"
                     type="email"
-                    placeholder="Email"
+                    placeholder="mail@gmail.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                <div class="mb-4 md:flex md:justify-between">
-                  <div class="mb-4 md:mr-2 md:mb-0">
-                    <label
-                      class="block mb-2 text-sm font-bold text-gray-700"
-                      for="password"
-                    >
-                      Password
-                    </label>
-                    <input
-                      class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline    required"
-                      id="password"
-                      type="password"
-                      placeholder="******************"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </div>
+
+                <div class="mt-8 content-center relative">
+                  <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
+                    Password
+                  </label>
+                  <input
+                    class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-green-800"
+                    type="password"
+                    placeholder="Enter your password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </div>
-                <div class="mb-6 text-center">
+
+                <div>
+                  {/* button */}
                   <button
-                    class="text-white w-full px-4 py-2 bg-rose-900 border hover:border-rose-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                     type="submit"
+                    class="w-full flex justify-center bg-gradient-to-r from-rose-800 to-rose-700  hover:bg-gradient-to-l hover:from-rose-600 hover:to-rose-700 text-gray-100 p-4  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500"
                   >
-                    Register Account
+                    Sign Up
                   </button>
                 </div>
+                <p class="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500">
+                  <span>If you have an account</span>
+                  <a
+                    href="/login"
+                    class="text-indigo-400 hover:text-blue-500 cursor-pointer transition ease-in duration-300"
+                  >
+                    Sign In
+                  </a>
+                </p>
               </form>
-              <hr class=" border-t" />
-
-              <div class="text-center flex justify-center items-center ">
-                <span className="mr-2 ">Already have an account? </span>
-                <a
-                  class="inline-block  text-rose-800 align-baseline hover:text-rose-500"
-                  href="/login"
-                >
-                  Login!
-                </a>
-              </div>
             </div>
           </div>
         </div>

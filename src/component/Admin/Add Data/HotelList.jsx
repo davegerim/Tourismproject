@@ -134,14 +134,7 @@ function HotelList() {
                         >
                           Edit user
                         </a>
-                        <button
-                          className="mb-4 ml-46   mt-2 md:mb-0 border bg-rose-900   border-gray-700 hover:border-none hover:bg-rose-700 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-white  hover:text-white  rounded-xl hover:shadow-lg "
-                          onClick={() => {
-                            setChoose((prev) => !prev);
-                          }}
-                        >
-                          Detail
-                        </button>
+
                         <button
                           className="mb-4 ml-24  mt-2 md:mb-0 border bg-rose-900   border-gray-700 hover:border-none hover:bg-rose-700 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-white  hover:text-white  rounded-xl hover:shadow-lg "
                           onClick={(e) => deleted(user.id, e)}

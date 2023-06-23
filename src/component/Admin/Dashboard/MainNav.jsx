@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { BsBell } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { removeTokenFromLocalStorage } from "../../../lib/common";
+import { APP_ROUTES } from "../../../utils/constants";
 function MainNav() {
   const [detail, setDetail] = useState(false);
   const [details, setDetails] = useState(false);
@@ -8,6 +11,10 @@ function MainNav() {
   const [shownotf, setShownotf] = useState(false);
   const [shownot1, setShownot1] = useState(false);
 
+  const navigate = useNavigate();
+  // function pass() {
+  //   Navigate(`/trip_reserve/${id}`);
+  // }
   return (
     <div>
       <nav class="bg-white border-b border-gray-200 fixed z-30 w-full">
@@ -159,12 +166,16 @@ function MainNav() {
                     </li>
                   </ul>
                   <div className="py-1">
-                    <a
-                      href="/"
+                    <button
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      onClick={() => {
+                        removeTokenFromLocalStorage();
+
+                        navigate(APP_ROUTES.SIGN_IN);
+                      }}
                     >
                       Log out
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -505,7 +516,10 @@ function MainNav() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="ml-3 flex-1 whitespace-nowrap">
+                      <span
+                        class="ml-3 flex-1 whitespace-nowrap"
+                        // onClick={() => pass(user.id)}
+                      >
                         Trip reservation
                       </span>
                     </a>
