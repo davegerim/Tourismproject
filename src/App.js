@@ -32,6 +32,7 @@ import HotelList from "./component/Admin/Add Data/HotelList";
 import Attractionplace from "./component/User Page/Trip/Attractionplace";
 import Tripbook from "./component/Admin/Booking/Tripbook";
 import jwt_decode from "jwt-decode";
+
 function App() {
   const location = useLocation();
   const [showSidebar, setShowSidebar] = useState(true);
@@ -61,6 +62,7 @@ function App() {
       {location.pathname !== "/Trip" &&
         // location.pathname !== "/details/:id" &&
         location.pathname !== "/contactus" &&
+        location.pathname !== "/" &&
         location.pathname !== "/flight" &&
         location.pathname !== "/hotel" &&
         location.pathname !== "/profile" &&
@@ -94,6 +96,7 @@ function App() {
             // location.pathname === "/details/:id" ||
             location.pathname === "/contactus" ||
             location.pathname === "/flight" ||
+            location.pathname === "/" ||
             location.pathname === "/hotel" ||
             location.pathname === "/profile" ||
             location.pathname === "/Booking" ||
@@ -110,18 +113,22 @@ function App() {
         <div className="sticky top-0 "></div>
 
         <Routes>
-          <Route exact path="/" element={<Dash />} />
+          {role === "admin" && (
+            <Route exact path="/dashboard" element={<Dash />} />
+          )}
         </Routes>
         <Routes>
           <Route exact path="/home" element={<Home />} />
         </Routes>
 
         <Routes>
-          <Route exact path="/Trip" element={<Main />} />
+          {role === "user" && <Route exact path="/Trip" element={<Main />} />}
         </Routes>
 
         <Routes>
-          <Route exact path="/details/:id" element={<Details />} />
+          {role === "user" && (
+            <Route exact path="/details/:id" element={<Details />} />
+          )}
         </Routes>
 
         <Routes>
@@ -129,7 +136,9 @@ function App() {
         </Routes>
 
         <Routes>
-          <Route exact path="/profile" element={<Profile />} />
+          {role === "user" && (
+            <Route exact path="/profile" element={<Profile />} />
+          )}
         </Routes>
 
         <Routes>
@@ -141,61 +150,94 @@ function App() {
         </Routes>
 
         <Routes>
-          <Route exact path="/hotel" element={<Hotel />} />
+          {role === "user" && <Route exact path="/hotel" element={<Hotel />} />}
         </Routes>
 
         {/* contact us */}
         <Routes>
-          <Route exact path="/contactus" element={<Contactus />} />
+          {role === "user" && (
+            <Route exact path="/contactus" element={<Contactus />} />
+          )}
         </Routes>
         {/* about city */}
         <Routes>
-          <Route exact path="/addcity" element={<AddCity />} />
+          {role === "admin" && (
+            <Route exact path="/addcity" element={<AddCity />} />
+          )}
         </Routes>
         <Routes>
-          <Route exact path="/citylist" element={<CityList />} />
+          {role === "admin" && (
+            <Route exact path="/citylist" element={<CityList />} />
+          )}
         </Routes>
         {/* about attraction place */}
         <Routes>
-          <Route exact path="/addplace" element={<AddPlace />} />
+          {role === "admin" && (
+            <Route exact path="/addplace" element={<AddPlace />} />
+          )}
         </Routes>
         <Routes>
-          <Route exact path="/placelist" element={<PlaceList />} />
+          {role === "admin" && (
+            <Route exact path="/placelist" element={<PlaceList />} />
+          )}
         </Routes>
         {/* booking list */}
         <Routes>
-          <Route exact path="/bookinglist" element={<BookingList />} />
+          {role === "admin" && (
+            <Route exact path="/bookinglist" element={<BookingList />} />
+          )}
         </Routes>
+        {/* {role === "user" && (
+          <ProtectedRoute path="/home2">
+            <Home2 />
+          </ProtectedRoute>
+        )} */}
 
         <Routes>
-          <Route exact path="/home2" element={<Home2 />} />
+          <Route exact path="/" element={<Home2 />} />
         </Routes>
         <Routes>
-          <Route exact path="/return" element={<Return />} />
+          {role === "user" && (
+            <Route exact path="/return" element={<Return />} />
+          )}
         </Routes>
         <Routes>
-          <Route exact path="/flight" element={<OneWay />} />
+          {role === "user" && (
+            <Route exact path="/flight" element={<OneWay />} />
+          )}
         </Routes>
         <Routes>
-          <Route exact path="/popup" element={<Popup />} />
+          {role === "user" && <Route exact path="/popup" element={<Popup />} />}
         </Routes>
         <Routes>
-          <Route exact path="/flight_reserve" element={<Flight_reserve />} />
+          {role === "admin" && (
+            <Route exact path="/flight_reserve" element={<Flight_reserve />} />
+          )}
         </Routes>
         <Routes>
-          <Route exact path="/hotel_reserve" element={<Hotel_reserve />} />
+          {role === "admin" && (
+            <Route exact path="/hotel_reserve" element={<Hotel_reserve />} />
+          )}
         </Routes>
         <Routes>
-          <Route exact path="/trip_reserve" element={<Trip_reserve />} />
+          {role === "admin" && (
+            <Route exact path="/trip_reserve" element={<Trip_reserve />} />
+          )}
         </Routes>
         <Routes>
-          <Route exact path="/addhotel" element={<AddHotel />} />
+          {role === "admin" && (
+            <Route exact path="/addhotel" element={<AddHotel />} />
+          )}
         </Routes>
         <Routes>
-          <Route exact path="/hotellist" element={<HotelList />} />
+          {role === "admin" && (
+            <Route exact path="/hotellist" element={<HotelList />} />
+          )}
         </Routes>
         <Routes>
-          <Route exact path="/tripbook/:id" element={<Tripbook />} />
+          {role === "user" && (
+            <Route exact path="/tripbook/:id" element={<Tripbook />} />
+          )}
         </Routes>
       </div>
     </div>

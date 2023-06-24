@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { removeTokenFromLocalStorage } from "../../../lib/common";
+import { APP_ROUTES } from "../../../utils/constants";
 
 function Navbarss() {
   const navigate = useNavigate();
@@ -12,18 +14,23 @@ function Navbarss() {
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
         <a href="https://github.com/davegerim" class="flex  items-center">
           <img
-            src="./image/zuret.png"
+            src="/image/zuret.png"
             class="mr-3 h-12 w-24 "
             alt=" Zuret Tour"
           />
         </a>
         <div class="flex items-center lg:order-2">
-          <a
+          <button
             href="/login"
             class="text-rose-900 hover:text-white border border-rose-900 hover:bg-rose-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            onClick={() => {
+              removeTokenFromLocalStorage();
+
+              navigate(APP_ROUTES.SIGN_IN);
+            }}
           >
             Log in
-          </a>
+          </button>
 
           <div class="flex items-center lg:order-2">
             <button
@@ -74,7 +81,7 @@ function Navbarss() {
           <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
             <li>
               <a
-                href="/home2"
+                href="/"
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-rose-900 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Home

@@ -142,7 +142,7 @@ function MainNav() {
                   >
                     <li>
                       <a
-                        href="/"
+                        href="/dashboard"
                         className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >
                         Dashboard
@@ -230,6 +230,11 @@ function MainNav() {
                     <li
                       href="/login"
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                      onClick={() => {
+                        removeTokenFromLocalStorage();
+
+                        navigate(APP_ROUTES.SIGN_IN);
+                      }}
                     >
                       Log out
                     </li>
@@ -278,7 +283,7 @@ function MainNav() {
                   </li>
                   <li>
                     <a
-                      href="/"
+                      href="/dashboard"
                       class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group"
                     >
                       <svg
@@ -526,10 +531,7 @@ function MainNav() {
                   </li>
 
                   <li>
-                    <a
-                      href="/"
-                      class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
-                    >
+                    <a class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                       <svg
                         class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
                         fill="currentColor"
@@ -542,7 +544,14 @@ function MainNav() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="ml-3 flex-1 whitespace-nowrap">
+                      <span
+                        class="ml-3 flex-1 whitespace-nowrap"
+                        onClick={() => {
+                          removeTokenFromLocalStorage();
+
+                          navigate(APP_ROUTES.SIGN_IN);
+                        }}
+                      >
                         log out{" "}
                       </span>
                     </a>

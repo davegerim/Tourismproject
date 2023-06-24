@@ -9,11 +9,22 @@ function PlaceList() {
   function go() {
     navigate("/addplace");
   }
-  useEffect(() => {
+  const deleted = (id, e) => {
+    e.preventDefault();
+    axios.delete(`http://localhost:3000/attractionplace/${id}`).then((res) => {
+      console.log("delete", res);
+      getUsers();
+    });
+  };
+  function getUsers() {
     axios.get("http://localhost:3000/attractionplace").then((res) => {
       setFiles(res.data);
     });
+  }
+  useEffect(() => {
+    getUsers();
   }, []);
+
   return (
     <div className="px-8 mt-20 py-8">
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -84,12 +95,12 @@ function PlaceList() {
                       <div class="flex items-center">{user.price}</div>
                     </td>
                     <td class="px-6 py-4">
-                      <a
-                        href="/"
-                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      <button
+                        className="mb-4 ml-26  mt-2 md:mb-0 border bg-rose-900   border-gray-700 hover:border-none hover:bg-rose-700 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-white  hover:text-white  rounded-xl hover:shadow-lg "
+                        onClick={(e) => deleted(user.id, e)}
                       >
-                        Edit user
-                      </a>
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );

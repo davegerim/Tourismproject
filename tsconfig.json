@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
+    // "types": ["@types/babel__core"],
     "module": "commonjs",
     "lib": ["dom", "es6"],
     "jsx": "react",

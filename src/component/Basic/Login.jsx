@@ -12,9 +12,12 @@ function Login() {
 
   const navigate = useNavigate();
   const { user, authenticated } = useUser();
-  if (user || authenticated) {
-    navigate(APP_ROUTES.DASHBOARD);
-  }
+  // if (user === "user" && authenticated) {
+  //   navigate(APP_ROUTES.DASHBOARD);
+  // } else {
+  //   navigate(APP_ROUTES.SIGN_UP);
+  // }
+  console.log(user, authenticated);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,13 +43,16 @@ function Login() {
           password,
         },
       });
-
+      console.log(response);
       if (!response?.data?.data?.access_token) {
         console.log("Something went wrong during signing in: ", response);
         return;
       }
       storeTokenInLocalStorage(response?.data?.data?.access_token);
-      navigate(APP_ROUTES.DASHBOARD);
+      if (response && response?.data?.data?.role === "user")
+        navigate(APP_ROUTES.DASHBOARD);
+      else if (response && response?.data?.data?.role === "admin")
+        navigate(APP_ROUTES.SIGN_UP);
     } catch (err) {
       setMessagepass("please insert the correct login");
       console.log("Some error occured during signing in: ", err);

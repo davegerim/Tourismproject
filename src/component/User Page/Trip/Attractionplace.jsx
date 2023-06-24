@@ -39,12 +39,14 @@ function Attractionplace() {
               <div class="px-4 py-6 sm:px-8 sm:py-10">
                 <div class="flow-root">
                   <ul class="-my-8">
-                    {attract && attract.map((user) => <Row user={user} />)}
+                    {attract &&
+                      attract.slice(0, 5).map((user) => <Row user={user} />)}
                   </ul>
                 </div>
               </div>
             </div>
             {/* <div class={` ${!detail && "hidden"} bg-white shadow mb-4 `}>
+            .slice(n-1*5, n-1*5+5)
               <div class="px-4 py-6 sm:px-8 sm:py-10">
                 <div class="flow-root">
                   <ul class="-my-8">

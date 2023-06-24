@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import { APP_ROUTES } from "../../../utils/constants";
+import { useUser } from "../../../lib/customHooks";
 function Row({ user }) {
   const [detail, setDetail] = useState(false);
   const [show, setShow] = useState(false);
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const { id } = useParams();
+  const { users, authenticated } = useUser();
   function pass() {
-    Navigate(`/tripbook/${id}`);
+    if (!authenticated) {
+      navigate(APP_ROUTES.SIGN_IN);
+      return;
+    } else {
+      navigate(`/tripbook/${id}`);
+    }
   }
   return (
     <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">

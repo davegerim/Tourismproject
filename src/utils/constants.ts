@@ -1,4 +1,4 @@
-// const API_URL = `${apiUrl}";
+// const API_URL = "http://localhost:3000";
 const API_URL = process.env.REACT_APP_API_URL;
 export const API_ROUTES = {
   SIGN_UP: `${API_URL}/auth/signup`,
@@ -7,8 +7,7 @@ export const API_ROUTES = {
 };
 
 export const APP_ROUTES = {
-  SIGN_UP: "/signup",
+  SIGN_UP: "/dashboard",
   SIGN_IN: "/login",
   DASHBOARD: "/",
-  LANDING: "/landingpage",
 };
