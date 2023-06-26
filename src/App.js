@@ -136,9 +136,7 @@ function App() {
         </Routes>
 
         <Routes>
-          {role === "user" && (
-            <Route exact path="/profile" element={<Profile />} />
-          )}
+          <Route exact path="/profile" element={<Profile />} />
         </Routes>
 
         <Routes>
