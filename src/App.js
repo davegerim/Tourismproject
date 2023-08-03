@@ -122,7 +122,7 @@ function App() {
         </Routes>
 
         <Routes>
-          {role === "user" && <Route exact path="/Trip" element={<Main />} />}
+          <Route exact path="/Trip" element={<Main />} />
         </Routes>
 
         <Routes>

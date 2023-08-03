@@ -172,6 +172,9 @@ function AddPlace() {
                 </option>
               ))}
             </select>
+            <div>
+              <p>{selectedDoc}</p>
+            </div>
           </div>
         </div>
         <div className="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
