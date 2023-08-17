@@ -32,6 +32,8 @@ import HotelList from "./component/Admin/Add Data/HotelList";
 import Attractionplace from "./component/User Page/Trip/Attractionplace";
 import Tripbook from "./component/Admin/Booking/Tripbook";
 import jwt_decode from "jwt-decode";
+import Hoteldetail from "./component/User Page/Hotel/Hoteldetail";
+import AddRoom from "./component/Admin/Add Data/AddRoom";
 
 function App() {
   const location = useLocation();
@@ -72,6 +74,7 @@ function App() {
         location.pathname !== "/popup" &&
         location.pathname !== "/return" &&
         //
+        !location.pathname.startsWith("/hoteldetail") &&
         !location.pathname.startsWith("/attraction") &&
         !location.pathname.startsWith("/tripbook") &&
         location.pathname !== "/home" && (
@@ -89,9 +92,7 @@ function App() {
         )}
 
       <div
-        className={`w-full md:w-[90%]  h-[100vh] overflow-auto ${
-          !showSidebar && "md:w-full"
-        } ${
+        className={`w-full md:w-[100%]  h-[100%] overflow-auto  ${
           (location.pathname === "/Trip" ||
             // location.pathname === "/details/:id" ||
             location.pathname === "/contactus" ||
@@ -103,6 +104,7 @@ function App() {
             location.pathname === "/login" ||
             location.pathname === "/home2" ||
             location.pathname === "/return" ||
+            location.pathname === "/hoteldetail" ||
             location.pathname === "/tripbook/:id" ||
             location.pathname === "/popup" ||
             location.pathname === "/attraction/:id" ||
@@ -123,6 +125,10 @@ function App() {
 
         <Routes>
           <Route exact path="/Trip" element={<Main />} />
+        </Routes>
+
+        <Routes>
+          <Route exact path="/hoteldetail/:id" element={<Hoteldetail />} />
         </Routes>
 
         <Routes>
@@ -161,6 +167,11 @@ function App() {
         <Routes>
           {role === "admin" && (
             <Route exact path="/addcity" element={<AddCity />} />
+          )}
+        </Routes>
+        <Routes>
+          {role === "admin" && (
+            <Route exact path="/addroom" element={<AddRoom />} />
           )}
         </Routes>
         <Routes>

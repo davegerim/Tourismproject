@@ -10,7 +10,10 @@ function Navbarss() {
   }
   // const [profiles, setProfiles] = useState(false);
   return (
-    <nav class="fixed  w-full shadow  bg-white border-gray-200 px-4 lg:px-6 py-4 dark:bg-gray-800">
+    <nav
+      class="fixed  w-full shadow  bg-white border-gray-200 px-4 lg:px-6 py-4 dark:bg-gray-800 z-50 top-0"
+      style={{ zIndex: 9999 }}
+    >
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
         <a href="https://github.com/davegerim" class="flex  items-center">
           <img

@@ -22,8 +22,10 @@ function Details() {
 
   return (
     <div>
-      <Navbarss className="relative" />
-      <section class="h-screen bg-gray-100 py-12 sm:py-16 lg:py-20">
+      <div>
+        <Navbarss className="relative" />
+      </div>
+      <section class="bg-gray-100 py-12 sm:py-16 lg:py-20 z-10">
         <div class="mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-center">
             <h1 class="text-2xl mt-5 font-semibold text-gray-900">
@@ -32,14 +34,14 @@ function Details() {
           </div>
 
           <div class="mt-8 md:mt-12 ">
-            <div class="bg-white shadow mb-6">
+            <div class="bg-red shadow mb-6">
               <div class="px-4 py-6 sm:px-8 sm:py-10">
                 <div class="flow-root">
                   <ul class="-my-8">
                     {attract &&
                       attract.map((user) => {
                         return (
-                          <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
+                          <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0 ">
                             <div class="shrink-0">
                               <img
                                 class="h-24 w-24 max-w-full rounded-lg object-cover"
