@@ -11,12 +11,12 @@ function Profile() {
     setEmail("");
     setPassword("");
   };
-
+  const apiurl = process.env.REACT_APP_API_URL;
   const handleSubmit = (e) => {
     e.preventDefault();
     resetForm();
 
-    fetch("http://localhost:3000/profile/new", {
+    fetch(`${apiurl}/profile/new`, {
       method: "POST",
       headers: { "Content-Type": "application/JSON" },
       body: JSON.stringify({

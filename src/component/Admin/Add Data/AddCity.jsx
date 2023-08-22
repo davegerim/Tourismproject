@@ -38,10 +38,11 @@ function AddCity() {
     setDescription("");
     setImage("");
   };
+  const apiurl = process.env.REACT_APP_API_URL;
   const handleSubmit = (e) => {
     e.preventDefault();
     resetForm();
-    fetch("http://localhost:3000/cities/new", {
+    fetch(`${apiurl}/cities/new`, {
       method: "POST",
       headers: { "Content-Type": "application/JSON" },
       body: JSON.stringify({
