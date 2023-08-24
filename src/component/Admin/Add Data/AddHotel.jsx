@@ -5,6 +5,7 @@ function AddHotel() {
   const [description, setDescription] = useState();
   const [image, setImage] = useState(null);
 
+  const apiurl = process.env.REACT_APP_API_URL;
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -28,7 +29,7 @@ function AddHotel() {
   const handleSubmit = (e) => {
     e.preventDefault();
     resetForm();
-    fetch("http://localhost:3000/hotel/new", {
+    fetch(`${apiurl}/hotel/new`, {
       method: "POST",
       headers: { "Content-Type": "application/JSON" },
       body: JSON.stringify({
