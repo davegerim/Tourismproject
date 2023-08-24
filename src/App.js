@@ -165,9 +165,7 @@ function App() {
         </Routes>
         {/* about city */}
         <Routes>
-          {role === "admin" && (
-            <Route exact path="/addcity" element={<AddCity />} />
-          )}
+          <Route exact path="/addcity" element={<AddCity />} />
         </Routes>
         <Routes>
           {role === "admin" && (

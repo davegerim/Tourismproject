@@ -27,7 +27,7 @@ function Home2() {
       <Navbarss />
       <section class="bg-white dark:bg-gray-900">
         <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-          <div class="mr-auto place-self-center lg:col-span-7">
+          <div class="mr-auto place-self-center lg:col-span-7 pt-24">
             <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-white">
               <span className="text-rose-800">Zuret</span> Tour Agency
             </h1>
@@ -439,21 +439,27 @@ function Home2() {
                   Address
                 </h2>
                 <ul class="text-gray-600 dark:text-gray-400">
-                  <li class="mb-4">
-                    <p>
-                      {" "}
+                  <li className="mb-4">
+                    <p className="flex items-center">
                       <span className="inline-flex mr-2">
                         <MdEmail className="text-rose-900 hover:text-rose-700 " />
                       </span>
-                      davegerim@gmail.com
+                      <span className="whitespace-nowrap overflow-hidden overflow-ellipsis">
+                        davegerim@gmail.com
+                      </span>
                     </p>
                   </li>
-                  <li>
-                    <div>
+                  <li className="mb-4">
+                    <div className="flex items-center">
                       <span className="inline-flex mr-2">
-                        <ImLocation className="text-rose-900 hover:text-rose-700 " />
+                        <ImLocation className="text-rose-900 hover:text-rose-700" />
                       </span>
-                      Addis Ababa, Ethiopia
+                      <span className="whitespace-nowrap overflow-hidden overflow-ellipsis">
+                        Addis Ababa,
+                      </span>
+                      <span className="whitespace-nowrap overflow-hidden overflow-ellipsis pl-1">
+                        Ethiopia
+                      </span>
                     </div>
                   </li>
                 </ul>
@@ -470,7 +476,7 @@ function Home2() {
               . All Rights Reserved.
             </span>
             <div
-              className="flex sm:justify-center space-x-6 animate__animated
+              className=" pt-2 flex sm:justify-center space-x-6 animate__animated
                  animate__pulse animate__delay-1s animate__infinite"
             >
               <a
