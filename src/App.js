@@ -34,6 +34,7 @@ import Tripbook from "./component/Admin/Booking/Tripbook";
 import jwt_decode from "jwt-decode";
 import Hoteldetail from "./component/User Page/Hotel/Hoteldetail";
 import AddRoom from "./component/Admin/Add Data/AddRoom";
+import SubscriptionForm from "./component/User Page/homeedited/SubscriptionForm";
 
 function App() {
   const location = useLocation();
@@ -119,6 +120,7 @@ function App() {
             <Route exact path="/dashboard" element={<Dash />} />
           )}
         </Routes>
+
         <Routes>
           <Route exact path="/home" element={<Home />} />
         </Routes>
@@ -159,9 +161,7 @@ function App() {
 
         {/* contact us */}
         <Routes>
-          {role === "user" && (
-            <Route exact path="/contactus" element={<Contactus />} />
-          )}
+          <Route exact path="/contactus" element={<Contactus />} />
         </Routes>
         {/* about city */}
         <Routes>

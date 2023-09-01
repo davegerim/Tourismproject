@@ -35,8 +35,8 @@ function AddPlace() {
   const handleSubmit = (e) => {
     e.preventDefault();
     resetForm();
-
-    fetch("http://localhost:3000/attractionplace/new", {
+    const apiurl = process.env.REACT_APP_API_URL;
+    fetch(`${apiurl}/attractionplace/new`, {
       method: "POST",
       headers: { "Content-Type": "application/JSON" },
       body: JSON.stringify({

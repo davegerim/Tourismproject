@@ -74,7 +74,11 @@ function Hoteldetail() {
               <div class=" flex space-x-4 antialiased text-gray-900">
                 <div className="mt-14 ">
                   <img
-                    src={user?.image.replace(/\\/g, "").replace(/"/g, "")}
+                    src={
+                      user?.image
+                        ? user.image.replace(/\\/g, "").replace(/"/g, "")
+                        : ""
+                    }
                     alt=""
                     class="shadow-xl hover:shadow-2xl rounded-lg h-56 w-96 ... m-2 "
                   />

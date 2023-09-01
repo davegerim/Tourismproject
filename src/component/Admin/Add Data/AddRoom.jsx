@@ -40,8 +40,8 @@ function AddRoom() {
   const handleSubmit = (e) => {
     e.preventDefault();
     resetForm();
-
-    fetch(`http://localhost:3000/hotel/addroom/${selectedDoc}`, {
+    const apiurl = process.env.REACT_APP_API_URL;
+    fetch(`${apiurl}/hotel/addroom/${selectedDoc}`, {
       method: "POST",
       headers: { "Content-Type": "application/JSON" },
       body: JSON.stringify({

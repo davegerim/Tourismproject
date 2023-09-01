@@ -1,64 +1,73 @@
+import axios from "axios";
 import React, { useState } from "react";
 
-// function getBuffer(path){
-//   console.log("path", path);
-//   const file = path.target.files[0];
-// const reader = new FileReader();
-// reader.readAsArrayBuffer(file);
-// var byteArray = "";
-// reader.onload = () => {
-//   byteArray = new Uint8Array(reader.result);
-//   // send the byteArray to your backend server using fetch or Axios
-// };
-// console.log("bytw" , byteArray);
-// return byteArray;
-// }
 function AddCity() {
   const [cityname, setCityname] = useState();
   const [description, setDescription] = useState();
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState();
+  const apiurl = process.env.REACT_APP_API_URL;
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
+  const [urls, setUrls] = useState([]);
+  const [images, setImages] = useState([]);
 
-    reader.addEventListener("load", () => {
-      const base64Image = reader.result.replace(
-        `/^data:image\/jpeg;base64,/`,
-        ""
-      );
-      const byteArray = JSON.stringify(base64Image);
-      setImage(byteArray);
+  const handleImageChange = (event, index) => {
+    const fileList = event.target.files;
+    const fileArray = Array.from(fileList);
+    setImages((prevImages) => {
+      const updatedImages = [...prevImages];
+      updatedImages[index] = fileArray[0];
+      return updatedImages;
     });
-
-    reader.readAsDataURL(file);
   };
+
+  const handleSubmit = (e, data) => {
+    e.preventDefault();
+    resetForm();
+    axios
+      .post(`${apiurl}/cities/new`, data)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("posted");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+  const uploadPro = (e) => {
+    e.preventDefault();
+    const uploadImage = async (image) => {
+      const data = new FormData();
+      data.append("file", image);
+      data.append("upload_preset", "daveimage");
+      data.append("cloud_name", "dc5oy2rmy");
+      const url = "`https://api.cloudinary.com/v1_1/image/upload";
+
+      return axios.post(url.data).then(({ data }) => {
+        setImage((prev) => ({ ...prev, image: data.secure_url }));
+
+        return data;
+      });
+    };
+    Promise.all(uploadImage).then((data) => {
+      const updatedData = {
+        cityName: cityname,
+        description: description,
+        image: data[0]?.secure_url,
+      };
+      handleSubmit(e, updatedData);
+    });
+  };
+
   const resetForm = () => {
     setCityname("");
     setDescription("");
     setImage("");
   };
-  const apiurl = process.env.REACT_APP_API_URL;
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    resetForm();
-    fetch(`${apiurl}/cities/new`, {
-      method: "POST",
-      headers: { "Content-Type": "application/JSON" },
-      body: JSON.stringify({
-        cityName: cityname,
-        description: description,
-        image: image,
-      }),
-    }).then(() => {
-      console.log("posted");
-    });
-  };
 
   return (
     <div className=" flex mt-20 justify-center items-center  ">
       <form
-        onSubmit={handleSubmit}
+        onSubmit={uploadPro}
         class="w-full max-w-lg  pl-10 mt-5 bg-white p-8 rounded-xl "
       >
         <div className="flex   mb-10 text-center items-center justify-center font-bold text-xl">
@@ -92,8 +101,8 @@ function AddCity() {
             <input
               class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="file"
+              onChange={(e) => handleImageChange(e)}
               id="fileInput"
-              onChange={handleFileChange}
             />
           </div>
         </div>

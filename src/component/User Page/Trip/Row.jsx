@@ -21,7 +21,9 @@ function Row({ user }) {
       <div class="shrink-0">
         <img
           class="h-24 w-24 max-w-full rounded-lg object-cover"
-          src={user?.image.replace(/\\/g, "").replace(/"/g, "")}
+          src={
+            user?.image ? user.image.replace(/\\/g, "").replace(/"/g, "") : ""
+          }
           alt="image"
         />
       </div>
