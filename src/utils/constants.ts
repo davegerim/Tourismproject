@@ -1,5 +1,5 @@
-const API_URL = "https://tourism-be.onrender.com";
-// const API_URL = "http://localhost:3000";
+// const API_URL = "https://tourism-be.onrender.com";
+const API_URL = "http://localhost:3000";
 // const API_URL = process.env.REACT_APP_API_URL;
 export const API_ROUTES = {
   SIGN_UP: `${API_URL}/auth/signup`,

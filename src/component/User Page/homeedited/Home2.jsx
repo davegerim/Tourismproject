@@ -83,7 +83,7 @@ function Home2() {
                  "
           >
             {files
-              .filter((user) => user.cityName.toLowerCase().includes(abel))
+              // .filter((user) => user.cityName.toLowerCase().includes(abel))
               .slice(0, 4)
               .map((user) => {
                 return (
@@ -91,7 +91,11 @@ function Home2() {
                     <a href="/">
                       <img
                         class="rounded-t-lg h-56 w-96 ..."
-                        src={user?.image.replace(/\\/g, "").replace(/"/g, "")}
+                        src={
+                          user?.image
+                            ? user.image.replace(/\\/g, "").replace(/"/g, "")
+                            : ""
+                        }
                         alt=""
                       />
                     </a>
