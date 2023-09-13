@@ -4,15 +4,19 @@ import Navbarss from "../navbars/Navbarss";
 import axios from "axios";
 
 import { Link, useNavigate, useParams } from "react-router-dom";
+import Loading from "../../Basic/Loading";
 function Main() {
   const [files, setFiles] = useState([]);
   const [abel, setAbel] = useState([]);
   const Navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     axios.get("http://localhost:3000/cities").then((res) => {
       setFiles(res.data);
       console.log("get");
+      setIsLoading(false);
     });
   }, []);
 
@@ -25,6 +29,7 @@ function Main() {
   return (
     <div className="fixed">
       <Navbarss />
+      <div>{isLoading ? <Loading /> : ""}</div>
 
       <div className="px-20 ">
         <div className="mt-20  mr-20 ml-20">

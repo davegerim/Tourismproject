@@ -111,7 +111,11 @@ function CityList() {
                           class="w-10 h-10 rounded-full"
                           // src="./image/gondar2.jpg"
                           //src={}
-                          src={user?.image.replace(/\\/g, "").replace(/"/g, "")}
+                          src={
+                            user?.image
+                              ? user.image.replace(/\\/g, "").replace(/"/g, "")
+                              : ""
+                          }
                           alt=""
                         />
                         <div class="pl-3" key={user.id}>

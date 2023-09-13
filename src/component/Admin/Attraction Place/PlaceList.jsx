@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../Basic/Loading";
 
 function PlaceList() {
   const navigate = useNavigate();
   const [files, setFiles] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(false);
   function go() {
     navigate("/addplace");
   }
@@ -17,8 +18,10 @@ function PlaceList() {
     });
   };
   function getUsers() {
+    setIsLoading(true);
     axios.get("http://localhost:3000/attractionplace").then((res) => {
       setFiles(res.data);
+      setIsLoading(false);
     });
   }
   useEffect(() => {
@@ -41,6 +44,7 @@ function PlaceList() {
             </button>
           </div>
         </div>
+        <div>{isLoading ? <Loading /> : ""}</div>
         <table class="w-full text-sm text-left text-grey-900 dark:text-rose-900">
           <thead class="text-xs text-white uppercase bg-rose-900 dark:bg-gray-700 dark:text-white">
             <tr>

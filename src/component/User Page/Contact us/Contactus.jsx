@@ -1,14 +1,11 @@
 import React from "react";
 import Navbarss from "../navbars/Navbarss";
-import SubscriptionForm from "../homeedited/SubscriptionForm";
 
 function Contactus() {
   return (
     <div>
       <Navbarss />
-      <div className="pt-20">
-        <SubscriptionForm />
-      </div>
+
       <section class=" py-20 md:py-32 overflow-hidden">
         <img
           class="absolute top-0 left-0 md:mt-24"

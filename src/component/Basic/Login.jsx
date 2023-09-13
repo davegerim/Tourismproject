@@ -6,6 +6,7 @@ import { storeTokenInLocalStorage } from "../../lib/common";
 import { useUser } from "../../lib/customHooks";
 import { API_ROUTES, APP_ROUTES } from "../../utils/constants";
 import { useAuthDispatch, doLogin } from "../../context/index";
+import Loading from "./Loading";
 
 function Login() {
   const dispatch = useAuthDispatch();
@@ -83,6 +84,7 @@ function Login() {
   };
   return (
     <div>
+      <div>{isLoading ? <Loading /> : ""}</div>
       <div class="relative min-h-screen flex ">
         <div class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center flex-auto min-w-0 bg-white">
           <div class="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full  xl:w-2/5 p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white ">

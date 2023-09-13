@@ -48,7 +48,7 @@ function AddCity() {
         return data;
       });
     };
-    Promise.all(uploadImage).then((data) => {
+    Promise.all([uploadImage]).then((data) => {
       const updatedData = {
         cityName: cityname,
         description: description,

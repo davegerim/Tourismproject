@@ -34,7 +34,6 @@ import Tripbook from "./component/Admin/Booking/Tripbook";
 import jwt_decode from "jwt-decode";
 import Hoteldetail from "./component/User Page/Hotel/Hoteldetail";
 import AddRoom from "./component/Admin/Add Data/AddRoom";
-import SubscriptionForm from "./component/User Page/homeedited/SubscriptionForm";
 
 function App() {
   const location = useLocation();

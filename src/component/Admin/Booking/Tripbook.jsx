@@ -3,6 +3,7 @@ import Navbarss from "../../User Page/navbars/Navbarss";
 
 function Tripbook() {
   const [choose, setChoose] = useState(false);
+
   const [files, setFiles] = useState([]);
   const ref = useRef();
 
@@ -181,6 +182,12 @@ function Tripbook() {
                   Total:
                   {number * 99}$
                 </span>
+                <a
+                  href="http://checkout.chapa.co/checkout/web/payment/SC-GWCZYuiie1sA"
+                  class="hover:shadow-form  rounded-md ml-10 bg-green-500 hover:bg-green-500 py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                >
+                  pay with chapa
+                </a>
               </p>
             </div>
 
