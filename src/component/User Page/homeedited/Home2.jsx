@@ -22,6 +22,7 @@ function Home2() {
       console.log("get");
     });
   }, []);
+  
   return (
     <div>
       <Navbarss />

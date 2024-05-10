@@ -86,7 +86,7 @@ function CityList() {
             {files &&
               files
                 // .slice(4)
-                .filter((user) => user.cityName.toLowerCase().includes(abel))
+                // .filter((user) => user.cityName.toLowerCase().includes(abel))
 
                 .map((user) => {
                   return (

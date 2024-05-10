@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 
 function Hotel_reserve_row({ user }) {
@@ -12,22 +13,30 @@ function Hotel_reserve_row({ user }) {
     documentTitle: "user List",
     onAfterPrint: () => alert("Data Saved"),
   });
+
+  const [hotel, setHotel] = useState([]);
+
+   useEffect(() => {
+     axios.get(`http://localhost:3000/hotel/${user.hotels}`).then((res) => {
+       setHotel(res.data);
+     });  
+   }, []);
   return (
     <React.Fragment>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
         <th scope="row" class="flex items-center px-6 py-4   ">
           {" "}
           <td class="text-sm font-medium" key={user.id}>
-            {user.firstName}
+            {user.fullname}
           </td>
-        </th>
+        </th> 
 
         {/* <td class="px-6 py-4">{user.returnDate}</td> */}
         {/* <td class="px-6 py-4">{user.statuss}</td> */}
         <td class="px-6 py-4">
           <div class="flex items-center">
             <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
-            {user.lastName}
+            {user.email}
           </div>
         </td>
         <td class="px-6 py-4">
@@ -72,12 +81,12 @@ function Hotel_reserve_row({ user }) {
                                 for="fName"
                                 class=" block  text-base  font-normal text-[#07074D]"
                               >
-                                First Name
+                                Full Name
                               </div>
 
                               <div class="rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none  ">
                                 {" "}
-                                {user.firstName}
+                                {user.fullname}
                               </div>
                             </div>
                           </div>
@@ -88,13 +97,13 @@ function Hotel_reserve_row({ user }) {
                                   for="lName"
                                   class="   font-normal text-base  text-[#07074D]"
                                 >
-                                  Last Name
+                                  Email
                                 </div>
                               </div>
                               <div>
                                 <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f">
                                   {" "}
-                                  {user.lastName}
+                                  {user.email}
                                 </div>
                               </div>
                             </div>
@@ -130,7 +139,7 @@ function Hotel_reserve_row({ user }) {
                               Number of Guest
                             </div>
                             <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f">
-                              {user.noofguests}
+                              {user.noofGuests}
                             </div>
                           </div>
                           <div class="md:flex md:items-center mb-6">
@@ -154,6 +163,17 @@ function Hotel_reserve_row({ user }) {
                             </div>
                             <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f">
                               {user.endDate}
+                            </div>
+                          </div>
+                          <div class="md:flex md:items-center mb-6">
+                            <div
+                              for="guest"
+                              class="mb-3 block text-base font-normal text-[#07074D]"
+                            >
+                             Hotel Name
+                            </div>
+                            <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f">
+                              {hotel.hotelName}
                             </div>
                           </div>
 

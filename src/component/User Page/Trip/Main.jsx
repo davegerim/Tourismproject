@@ -83,7 +83,11 @@ function Main() {
                   <a href="/">
                     <img
                       class="rounded-t-lg h-56 w-96 ..."
-                      src={user?.image.replace(/\\/g, "").replace(/"/g, "")}
+                      src={
+                        user?.image
+                          ? user.image.replace(/\\/g, "").replace(/"/g, "")
+                          : ""
+                      }
                       alt=""
                     />
                   </a>

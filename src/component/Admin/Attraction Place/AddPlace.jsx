@@ -4,52 +4,58 @@ import React, { useEffect, useState } from "react";
 function AddPlace() {
   const [attractionplacename, setAttractionplacename] = useState();
   const [description, setDescription] = useState();
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState();
+  const [images, setImages] = useState([]);
   const [price, setPrice] = useState();
   const [rate, setRate] = useState();
   const [doc, setDoc] = useState([]);
   const [selectedDoc, setSelectedDoc] = useState();
-  const resetForm = () => {
-    setAttractionplacename("");
-    setDescription("");
-    setImage("");
-    setPrice("");
-    setRate("");
-  };
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
+  const [urls, setUrls] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
+  // const resetForm = () => {
+  //   setAttractionplacename("");
+  //   setDescription("");
+  //   setImage("");
+  //   setPrice("");
+  //   setRate("");
+  // };
 
-    reader.addEventListener("load", () => {
-      const base64Image = reader.result.replace(
-        `/^data:image\/jpeg;base64,/`,
-        ""
-      );
-      const byteArray = JSON.stringify(base64Image);
-      setImage(byteArray);
-    });
+  const handleImageUpload = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("file", selectedImage);
 
-    reader.readAsDataURL(file);
-  };
+      formData.append("upload_preset", "pswsogjc");
+      formData.append("cloud_name", "dlga80sph");
+      const url = `https://api.cloudinary.com/v1_1/dlga80sph/image/upload`;
+      const response = await axios.post(url, formData);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    resetForm();
-    const apiurl = process.env.REACT_APP_API_URL;
-    fetch(`${apiurl}/attractionplace/new`, {
-      method: "POST",
-      headers: { "Content-Type": "application/JSON" },
-      body: JSON.stringify({
+      const imageUrl = response.data.secure_url;
+      //   const data = {
+      //     cityName: "imaged",
+      //     description: "try",
+      //     image: imageUrl,
+      //   };
+      const apiurl = process.env.REACT_APP_API_URL;
+      // Save the imageUrl in your database via another API call
+      await axios.post(`${apiurl}/attractionplace/new`, {
         placeName: attractionplacename,
         description: description,
-        image: image,
+
         price: price,
         rate: rate,
         City1: selectedDoc,
-      }),
-    }).then(() => {
-      console.log("posted");
-    });
+        image: imageUrl,
+      });
+
+      // Do something with the image URL (e.g., display it)
+      console.log("Image URL:", imageUrl);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
+  const handleImageChange = (e) => {
+    setSelectedImage(e.target.files[0]);
   };
 
   useEffect(() => {
@@ -68,10 +74,7 @@ function AddPlace() {
   };
   return (
     <div className=" flex mt-20 justify-center items-center  ">
-      <form
-        onSubmit={handleSubmit}
-        class="w-full max-w-lg  pl-10 mt-5 bg-white p-8 rounded-xl "
-      >
+      <div class="w-full max-w-lg  pl-10 mt-5 bg-white p-8 rounded-xl ">
         <div className="flex   mb-10 text-center items-center justify-center font-bold text-xl">
           <h1>Add Attraction Place</h1>
         </div>
@@ -102,7 +105,7 @@ function AddPlace() {
               class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               type="file"
               id="fileInput"
-              onChange={handleFileChange}
+              onChange={(e) => handleImageChange(e)}
             />
           </div>
         </div>
@@ -178,11 +181,14 @@ function AddPlace() {
           </div>
         </div>
         <div className="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
-          <button className="mb-2 md:mb-0 bg-rose-900 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-2xl hover:shadow-lg ">
+          <button
+            className="mb-2 md:mb-0 bg-rose-900 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-2xl hover:shadow-lg "
+            onClick={handleImageUpload}
+          >
             Save
           </button>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

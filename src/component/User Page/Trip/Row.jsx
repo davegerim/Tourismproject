@@ -13,7 +13,7 @@ function Row({ user }) {
       navigate(APP_ROUTES.SIGN_IN);
       return;
     } else {
-      navigate(`/tripbook/${id}`);
+      navigate(`/tripbook/${user.id}`);
     }
   }
   return (

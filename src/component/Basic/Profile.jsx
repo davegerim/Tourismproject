@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 function Profile() {
@@ -16,19 +17,17 @@ function Profile() {
     e.preventDefault();
     resetForm();
 
-    fetch(`${apiurl}/profile/new`, {
-      method: "POST",
-      headers: { "Content-Type": "application/JSON" },
-      body: JSON.stringify({
+    axios
+      .post(`${apiurl}/profile/new`, {
         fullName: name,
         userName: username,
         email: email,
         role: "user",
         password: password,
-      }),
-    }).then(() => {
-      console.log("posted");
-    });
+      })
+      .then(() => {
+        console.log("posted");
+      });
   };
 
   return (

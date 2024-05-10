@@ -318,7 +318,7 @@ function MainNav() {
                   <div class={` ${!detail && "hidden"} ml-8 `}>
                     <li>
                       <a
-                        href="/addcity"
+                        href="/addcity1"
                         class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                       >
                         <svg
@@ -478,6 +478,7 @@ function MainNav() {
                         </span>
                       </a>
                     </li>
+                   
                     <li>
                       <a
                         href="/hotel_reserve"

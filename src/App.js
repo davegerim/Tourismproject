@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
+import "@mantine/core/styles.css";
 import Main from "./component/User Page/Trip/Main";
 import Profile from "./component/Basic/Profile";
 import MainNav from "./component/Admin/Dashboard/MainNav";
@@ -34,6 +35,9 @@ import Tripbook from "./component/Admin/Booking/Tripbook";
 import jwt_decode from "jwt-decode";
 import Hoteldetail from "./component/User Page/Hotel/Hoteldetail";
 import AddRoom from "./component/Admin/Add Data/AddRoom";
+import ImageUpload from "./component/Admin/Add Data/Upload";
+import BookingPage from "./component/Admin/Booking/BookingPage";
+// import Cards from "./component/User Page/Contact us/Cards";
 
 function App() {
   const location = useLocation();
@@ -69,14 +73,14 @@ function App() {
         location.pathname !== "/hotel" &&
         location.pathname !== "/profile" &&
         location.pathname !== "/login" &&
-        location.pathname !== "/Booking" &&
+        location.pathname !== "/booking/:id" &&
         location.pathname !== "/home2" &&
         location.pathname !== "/popup" &&
         location.pathname !== "/return" &&
-        //
         !location.pathname.startsWith("/hoteldetail") &&
         !location.pathname.startsWith("/attraction") &&
         !location.pathname.startsWith("/tripbook") &&
+        !location.pathname.startsWith("/booking") &&
         location.pathname !== "/home" && (
           <div
             ref={ref}
@@ -100,64 +104,59 @@ function App() {
             location.pathname === "/" ||
             location.pathname === "/hotel" ||
             location.pathname === "/profile" ||
-            location.pathname === "/Booking" ||
             location.pathname === "/login" ||
             location.pathname === "/home2" ||
             location.pathname === "/return" ||
-            location.pathname === "/hoteldetail" ||
+            location.pathname === "/hoteldetail/:id" ||
             location.pathname === "/tripbook/:id" ||
             location.pathname === "/popup" ||
+            location.pathname === "/booking/:id" ||
             location.pathname === "/attraction/:id" ||
             location.pathname === "/home") &&
           "md:w-full"
         }`}
       >
         <div className="sticky top-0 "></div>
-
         <Routes>
           {role === "admin" && (
             <Route exact path="/dashboard" element={<Dash />} />
           )}
         </Routes>
-
         <Routes>
           <Route exact path="/home" element={<Home />} />
         </Routes>
-
         <Routes>
           <Route exact path="/Trip" element={<Main />} />
         </Routes>
-
+        {/* <Routes>
+          <Route exact path="/cards" element={<Cards />} />
+        </Routes> */}
         <Routes>
           <Route exact path="/hoteldetail/:id" element={<Hoteldetail />} />
         </Routes>
-
+        <Routes>
+          <Route exact path="addcity1" element={<ImageUpload />} />
+        </Routes>
         <Routes>
           {role === "user" && (
             <Route exact path="/details/:id" element={<Details />} />
           )}
         </Routes>
-
         <Routes>
           <Route exact path="/attraction/:id" element={<Attractionplace />} />
         </Routes>
-
         <Routes>
           <Route exact path="/profile" element={<Profile />} />
         </Routes>
-
         <Routes>
           <Route exact path="/login" element={<Login />} />
         </Routes>
-
-        <Routes>
+        {/* <Routes>
           <Route exact path="/booking" element={<Booking />} />
-        </Routes>
-
+        </Routes> */}
         <Routes>
           {role === "user" && <Route exact path="/hotel" element={<Hotel />} />}
         </Routes>
-
         {/* contact us */}
         <Routes>
           <Route exact path="/contactus" element={<Contactus />} />
@@ -198,7 +197,6 @@ function App() {
             <Home2 />
           </ProtectedRoute>
         )} */}
-
         <Routes>
           <Route exact path="/" element={<Home2 />} />
         </Routes>
@@ -245,6 +243,12 @@ function App() {
             <Route exact path="/tripbook/:id" element={<Tripbook />} />
           )}
         </Routes>
+        <Routes>
+          {role === "user" && (
+            <Route exact path="/booking/:id" element={<BookingPage />} />
+          )}
+        </Routes>
+        
       </div>
     </div>
   );

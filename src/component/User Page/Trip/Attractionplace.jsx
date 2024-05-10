@@ -9,6 +9,14 @@ function Attractionplace() {
   const [detail, setDetail] = useState(false);
   const [show, setShow] = useState(false);
   const [attract, setAttract] = useState([]);
+  const [type, setType] = useState([]);
+   const [rates, setRates] = useState([]);
+  const [abel, setAbel] = useState([]);
+  const [city, setCity] = useState([]);
+
+
+
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -25,8 +33,76 @@ function Attractionplace() {
   return (
     <div>
       <Navbarss className="fixed" />
+      <div class="m-2 w-full px-8 pb-6 pt-32">
+        <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-lg">
+          <h2 class="text-stone-700 text-xl font-bold">Apply filters</h2>
+          <p class="mt-1 text-sm">Use filters to further refine search</p>
+          <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div class="flex flex-col">
+              <label for="name" class="text-stone-600 text-sm font-medium">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                placeholder="skylight"
+                class="mt-2 block w-full rounded-md border border-gray-200 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                onChange={(e) => setAbel(e.target.value)}
+              />
+            </div>
 
-      <section class="h-screen bg-gray-100 py-12 sm:py-16 lg:py-20">
+            <div class="flex flex-col">
+              <label for="status" class="text-stone-600 text-sm font-medium">
+                City
+              </label>
+
+              <select
+                class="mt-2 block w-full rounded-md border border-gray-200 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                onChange={(e) => setCity(e.target.value)}
+              >
+                <option></option>
+                <option>DireDawa</option>
+
+                <option>Addis Abeba</option>
+                <option>Adama</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col">
+              <label for="date" class="text-stone-600 text-sm font-medium">
+                Rate
+              </label>
+              <select
+                type="date"
+                id="date"
+                class="mt-2 block w-full rounded-md border border-gray-200 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                onChange={(e) => setRates(e.target.value)}
+              >
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+
+                <option>3</option>
+
+                <option>4</option>
+
+                <option>5</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-6 grid w-full grid-cols-2 justify-end space-x-4 md:flex">
+            <button class="active:scale-95 rounded-lg bg-gray-200 px-8 py-2 font-medium text-gray-600 outline-none focus:ring hover:opacity-90">
+              Reset
+            </button>
+            <button class="active:scale-95 rounded-lg bg-blue-600 px-8 py-2 font-medium text-white outline-none focus:ring hover:opacity-90">
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <section class="h-screen bg-gray-100 py-12 sm:py-16 lg:py-10">
         <div class="mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-center">
             <h1 class="text-2xl mt-5 font-semibold text-gray-900">
@@ -40,201 +116,16 @@ function Attractionplace() {
                 <div class="flow-root">
                   <ul class="-my-8">
                     {attract &&
-                      attract.slice(0, 5).map((user) => <Row user={user} />)}
+                      attract
+                        .filter((user) =>
+                          user.placeName.toLowerCase().includes(abel)
+                        )
+                        .slice(0, 5)
+                        .map((user) => <Row user={user} />)}
                   </ul>
                 </div>
               </div>
             </div>
-            {/* <div class={` ${!detail && "hidden"} bg-white shadow mb-4 `}>
-            .slice(n-1*5, n-1*5+5)
-              <div class="px-4 py-6 sm:px-8 sm:py-10">
-                <div class="flow-root">
-                  <ul class="-my-8">
-                    <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
-                      <div class="shrink-0"></div>
-
-                      <div class="relative flex flex-1 flex-col justify-between">
-                        <div class="sm:col-gap-5 sm:grid sm:grid-cols-2">
-                          <div class="pr-8 sm:pr-5">
-                            <p class="text-base font-semibold text-gray-900">
-                              The Fasil Ghebbi (Amharic: ፋሲል ግቢ) is a fortress
-                              located in Gondar, Amhara Region, Ethiopia. It was
-                              founded in the 17th century by Emperor Fasilides
-                              and was the home of Ethiopian emperors.
-                            </p>
-                            <p class="mx-0 mt-1 mb-0 text-sm text-gray-400">
-                              The complex of buildings includes Fasilides'
-                              castle, Iyasu I's palace, Dawit III's Hall,
-                              Empress Mentewab's castle, a chancellery and
-                              library from Yohannes I, a banqueting hall from
-                              the emperor Bakaffa, stables, and three churches:
-                              Asasame Qeddus Mikael, Elfign Giyorgis and
-                              Gemjabet Mariyam.
-                            </p>
-                          </div>
-
-                          <div class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
-                            <div class="sm:order-1"></div>
-                          </div>
-                        </div>
-
-                        <div class="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">
-                          <button
-                            type="button"
-                            class="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-gray-900"
-                            onClick={() => setDetail((prev) => !prev)}
-                          >
-                            <svg
-                              class="h-5 w-5"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12"
-                                class=""
-                              ></path>
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div> */}
-            {/* <div class={` ${!show && "hidden"} bg-white shadow mb-4 `}>
-              <div class="flex items-center justify-center p-12">
-                <div class="mx-auto w-full max-w-[550px]">
-                  <form>
-                    <div class="-mx-3 flex flex-wrap">
-                      <div class="w-full px-3 sm:w-1/2">
-                        <div class="mb-5">
-                          <label
-                            for="fName"
-                            class="mb-3 block text-base font-medium text-[#07074D]"
-                          >
-                            First Name
-                          </label>
-                          <input
-                            type="text"
-                            name="fName"
-                            id="fName"
-                            placeholder="First Name"
-                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                          />
-                        </div>
-                      </div>
-                      <div class="w-full px-3 sm:w-1/2">
-                        <div class="mb-5">
-                          <label
-                            for="lName"
-                            class="mb-3 block text-base font-medium text-[#07074D]"
-                          >
-                            Last Name
-                          </label>
-                          <input
-                            type="text"
-                            name="lName"
-                            id="lName"
-                            placeholder="Last Name"
-                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mb-5">
-                      <label
-                        for="guest"
-                        class="mb-3 block text-base font-medium text-[#07074D]"
-                      >
-                        number of guests
-                      </label>
-                      <input
-                        type="number"
-                        name="guest"
-                        id="guest"
-                        placeholder="5"
-                        min="0"
-                        class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                      />
-                    </div>
-
-                    <div class="-mx-3 flex flex-wrap">
-                      <div class="w-full px-3 sm:w-1/2">
-                        <div>
-                          <div date-rangepicker class="flex items-center">
-                            <div class="relative">
-                              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg
-                                  aria-hidden="true"
-                                  class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    fill-rule="evenodd"
-                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                    clip-rule="evenodd"
-                                  ></path>
-                                </svg>
-                              </div>
-                              <input
-                                name="start"
-                                type="date"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Select date start"
-                              />
-                            </div>
-                            <span class="mx-4 text-gray-500">to</span>
-                            <div class="relative">
-                              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg
-                                  aria-hidden="true"
-                                  class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    fill-rule="evenodd"
-                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                    clip-rule="evenodd"
-                                  ></path>
-                                </svg>
-                              </div>
-                              <input
-                                name="end"
-                                type="date"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Select date end"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-full px-3 sm:w-1/2"></div>
-                    </div>
-                    <div class="mt-3 mb-3">
-                      <p>
-                        $99 * 1 person <span className="ml-10">99$</span>
-                      </p>
-                    </div>
-
-                    <div>
-                      <button class="hover:shadow-form rounded-md bg-rose-900 py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                        Submit
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div> */}
 
             <div class="mt-6 text-center">
               <button

@@ -4,11 +4,6 @@ import axios from "axios";
 const ImageUpload = () => {
   const [cityname, setCityname] = useState("");
   const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
-
-  const [rating, setRating] = useState("");
-  const [hotelType, setHotelType] = useState("");
-
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageUpload = async () => {
@@ -22,18 +17,11 @@ const ImageUpload = () => {
       const response = await axios.post(url, formData);
 
       const imageUrl = response.data.secure_url;
-      //   const data = {
-      //     cityName: "imaged",
-      //     description: "try",
-      //     image: imageUrl,
-      //   };
       const apiurl = process.env.REACT_APP_API_URL;
-      await axios.post(`${apiurl}/hotel/new`, {
-        hotelName: cityname,
+      // Save the imageUrl in your database via another API call
+      await axios.post(`${apiurl}/cities/new`, {
+        cityName: cityname,
         description: description,
-        cityLocation: location,
-        rating: rating,
-        hotelType: hotelType,
         image: imageUrl,
       });
 
@@ -52,7 +40,7 @@ const ImageUpload = () => {
     <div className=" flex mt-20 justify-center items-center  ">
       <div class="w-full max-w-lg  pl-10 mt-5 bg-white p-8 rounded-xl ">
         <div className="flex   mb-10 text-center items-center justify-center font-bold text-xl">
-          <h1>Add Hotel</h1>
+          <h1>Add City</h1>
         </div>
         <div class="flex  -mx-3 mb-6 ">
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -60,7 +48,7 @@ const ImageUpload = () => {
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               for="grid-first-name"
             >
-              Hotel Name
+              City Name
             </label>
             <input
               type="text"
@@ -86,75 +74,7 @@ const ImageUpload = () => {
               onChange={handleImageChange}
             />
           </div>
-        </div>
-        <div class="flex  -mx-3 mb-6 ">
-          <div class="w-full md:w-1/2 px-3">
-            <label
-              class="block  tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-last-name"
-            >
-              Hotel Type
-            </label>
-            <select
-              class="appearance-none block w-full bg-gray-50 text-gray-700 border
-            border-gray-200 rounded-lg py-3 px-4 leading-tight
-            focus:outline-none focus:bg-white focus:border-gray-500"
-              type="text"
-              value={hotelType}
-              onChange={(e) => setHotelType(e.target.value)}
-            >
-              <option value="Luxury Hotel">Luxury Hotel</option>
-
-              <option value="Classic Hotel">Classic Hotel</option>
-              <option value="Resort">Resort</option>
-            </select>
-          </div>
-          <div class="w-full md:w-1/2 px-3">
-            <label
-              class="block  tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-last-name"
-            >
-              City
-            </label>
-            <select
-              class="appearance-none block w-full bg-gray-50 text-gray-700 border
-            border-gray-200 rounded-lg py-3 px-4 leading-tight
-            focus:outline-none focus:bg-white focus:border-gray-500"
-              type="text"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            >
-              <option value="DireDawa">DireDawa</option>
-
-              <option value="Addis Abeba">Addis Abeba</option>
-              <option value="Adama">Adama</option>
-            </select>
-          </div>
-          <div class="w-full md:w-1/2 px-3">
-            <label
-              class="block  tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-last-name"
-            >
-              Rating
-            </label>
-            <select
-              class="appearance-none block w-full bg-gray-50 text-gray-700 border
-            border-gray-200 rounded-lg py-3 px-4 leading-tight
-            focus:outline-none focus:bg-white focus:border-gray-500"
-              type="text"
-              value={rating}
-              onChange={(e) => setRating(e.target.value)}
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-
-              <option value="3">3</option>
-
-              <option value="4">4</option>
-
-              <option value="5">5</option>
-            </select>
-          </div>
+         
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
           <label

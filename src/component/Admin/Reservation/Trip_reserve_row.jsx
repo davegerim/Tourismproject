@@ -1,10 +1,31 @@
-import React, { useRef, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 
 function Trip_reserve_row({ user }) {
   const [detail, setDetail] = useState(false);
   const [choose, setChoose] = useState(false);
+
+  const [files, setFiles] = useState([]);
+   const [place, setPlace] = useState([]);
   const refs = useRef(null);
+
+  const deleted = (id, e) => {
+    e.preventDefault();
+    axios.delete(`http://localhost:3000/tripreservation/${id}`).then((res) => {
+      console.log("delete", res);
+      getUsers();
+    });
+  };
+  function getUsers() {
+    axios.get("http://localhost:3000/tripreservation").then((res) => {
+      setFiles(res.data);
+    });
+  }
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   const exports = useRef();
   const change = useReactToPrint({
@@ -12,6 +33,15 @@ function Trip_reserve_row({ user }) {
     documentTitle: "user List",
     onAfterPrint: () => alert("Data Saved"),
   });
+ 
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/attractionplace/${user.placeId}`)
+      .then((res) => {
+        setPlace(res.data);
+      });
+  }, []);
   return (
     <React.Fragment>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -49,6 +79,12 @@ function Trip_reserve_row({ user }) {
             onClick={() => setDetail((prev) => !prev)}
           >
             Detail
+          </button>
+          <button
+            className="mb-4 ml-6   mt-2 md:mb-0 border bg-rose-900   border-gray-700 hover:border-none hover:bg-rose-700 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-white  hover:text-white  rounded-xl hover:shadow-lg "
+            onClick={(e) => deleted(user.id, e)}
+          >
+            Delete
           </button>
         </td>
       </tr>
@@ -128,6 +164,18 @@ function Trip_reserve_row({ user }) {
                             </div>
                             <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f">
                               {user.endDate}
+                            </div>
+                          </div>
+
+                          <div class="md:flex md:items-center mb-6">
+                            <div
+                              for="guest"
+                              class="mb-3 block text-base font-normal text-[#07074D]"
+                            >
+                              Attractionplace Name
+                            </div>
+                            <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f">
+                              {place.placeName} 
                             </div>
                           </div>
 

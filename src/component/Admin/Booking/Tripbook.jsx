@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Navbarss from "../../User Page/navbars/Navbarss";
+import { useParams } from "react-router-dom";
 
 function Tripbook() {
   const [choose, setChoose] = useState(false);
@@ -13,7 +14,7 @@ function Tripbook() {
   const [startdate, setStartdate] = useState();
   const [enddate, setEnddate] = useState();
   const [number, setNumber] = useState(0);
-
+const {id} = useParams()
   const handleChange = (e) => {
     const value = parseInt(e.target.value);
     setNumber(value);
@@ -25,7 +26,7 @@ function Tripbook() {
     setLastname("");
     setNoofguests("");
     setStartdate("");
-    setEnddate("");
+    setEnddate(""); 
   };
 
   const handleSubmit = (e) => {
@@ -42,6 +43,7 @@ function Tripbook() {
         noofGuests: noofguests,
         startDate: startdate,
         endDate: enddate,
+        placeId: id
       }),
     }).then(() => {
       console.log("posted");
@@ -108,7 +110,10 @@ function Tripbook() {
                 min="0"
                 class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 value={noofguests}
-                onChange={handleChange}
+                onChange={(e) => {
+                  setNoofguests(e.target.value);
+                  handleChange(e); // Call the handleChange function
+                }}
               />
               <p>
                 Total: $<span id="total">{number * 99}</span>
