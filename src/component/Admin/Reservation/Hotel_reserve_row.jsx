@@ -29,7 +29,7 @@ function Hotel_reserve_row({ user }) {
           <td class="text-sm font-medium" key={user.id}>
             {user.fullname}
           </td>
-        </th> 
+        </th>
 
         {/* <td class="px-6 py-4">{user.returnDate}</td> */}
         {/* <td class="px-6 py-4">{user.statuss}</td> */}
@@ -53,6 +53,14 @@ function Hotel_reserve_row({ user }) {
             class="font-medium mb-10 mr-10 text-blue-600 dark:text-blue-500 hover:underline"
           >
             {user.roomType}
+          </a>
+        </td>
+        <td class="px-6 py-4">
+          <a
+            href="/"
+            class="font-medium mb-10 mr-10 text-blue-600 dark:text-blue-500 hover:underline"
+          >
+            {user.status}
           </a>
         </td>
         <td>
@@ -136,6 +144,17 @@ function Hotel_reserve_row({ user }) {
                               for="guest"
                               class="mb-3 block text-base font-normal text-[#07074D]"
                             >
+                              Status
+                            </div>
+                            <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f">
+                              {user.status}
+                            </div>
+                          </div>
+                          <div class="md:flex md:items-center mb-6">
+                            <div
+                              for="guest"
+                              class="mb-3 block text-base font-normal text-[#07074D]"
+                            >
                               Number of Guest
                             </div>
                             <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f">
@@ -170,7 +189,7 @@ function Hotel_reserve_row({ user }) {
                               for="guest"
                               class="mb-3 block text-base font-normal text-[#07074D]"
                             >
-                             Hotel Name
+                              Hotel Name
                             </div>
                             <div class=" rounded-md  border-[#e0e0e0] bg-white py-2 px-6 ml-10 text-base font-normal text-[#6B7280] outline-none f">
                               {hotel.hotelName}

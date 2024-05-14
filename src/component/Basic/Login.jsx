@@ -161,7 +161,7 @@ function Login() {
 
                   <div class="text-sm">
                     <a
-                      href="/newreset"
+                      href="/reset"
                       class="text-indigo-400 hover:text-blue-500"
                     >
                       Forgot your password?

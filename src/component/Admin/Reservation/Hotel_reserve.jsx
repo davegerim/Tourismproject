@@ -48,31 +48,98 @@ function Hotel_reserve() {
           <div className="flex-1">
             <h1 className="font-medium"> Hotel reservation list</h1>
           </div>
-          <div></div>
         </div>
-        <div className="flex flex-col">
-          <input
-            type="text"
-            id="name"
-            placeholder="search any city name"
-            class="mt-2 bg-gray-50 border mb-6 border-gray-300 text-gray-900 text-sm rounded-lg w-60 p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:border-purple-400 "
-            onChange={(e) => setAbel(e.target.value)}
-          />
+        <div class="m-2 w-full pb-6">
+          <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-lg">
+           
+            <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div class="flex flex-col">
+                <label for="name" class="text-stone-600 text-sm font-medium">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="skylight"
+                  class="mt-2 block w-full rounded-md border border-gray-200 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                  onChange={(e) => setAbel(e.target.value)}
+                />
+              </div>
+
+              <div class="flex flex-col">
+                <label for="status" class="text-stone-600 text-sm font-medium">
+                  Room Type
+                </label>
+
+                <select
+                  class="mt-2 block w-full rounded-md border border-gray-200 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                  // onChange={(e) => setType(e.target.value)}
+                >
+                  <option></option>
+                  <option>Standard Room</option>
+
+                  <option>Deluxe Room</option>
+                  <option>Suite Room</option>
+                  <option>Speciality Room</option>
+                </select>
+              </div>
+              <div class="flex flex-col">
+                <label for="status" class="text-stone-600 text-sm font-medium">
+                  Number of Guest
+                </label>
+
+                <select
+                  class="mt-2 block w-full rounded-md border border-gray-200 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                  // onChange={(e) => setNumbers(e.target.value)}
+                >
+                  <option></option>
+                  <option>1</option>
+
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="flex flex-col">
+                <label for="date" class="text-stone-600 text-sm font-medium">
+                  Status
+                </label>
+                <select
+                  type="date"
+                  id="date"
+                  class="mt-2 block w-full rounded-md border border-gray-200 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                  // onChange={(e) => setStatusroom(e.target.value)}
+                >
+                  <option></option>
+                  <option>available</option>
+                  <option>reserved</option>
+                </select>
+              </div>
+            </div>
+
+            
+          </div>
         </div>
+       
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-200 uppercase bg-rose-900 dark:bg-rose-900 dark:text-gray-400">
+          <thead class="text-xs text-gray-200  bg-rose-900 dark:bg-rose-900 dark:text-gray-400">
             <tr>
               <th scope="col" class="px-6 py-3">
-                FIRST Name
+                First Name
               </th>
               <th scope="col" class="px-6 py-3">
-                LAST Name
+                Email
               </th>
               <th scope="col" class="px-6 py-3">
                 Phone Number
               </th>
               <th scope="col" class="px-6 py-3">
                 Room Type
+              </th>
+              <th scope="col" class="px-6 py-3">
+                status
               </th>
               <th scope="col" class="px-6 py-3">
                 Action

@@ -37,6 +37,9 @@ import Hoteldetail from "./component/User Page/Hotel/Hoteldetail";
 import AddRoom from "./component/Admin/Add Data/AddRoom";
 import ImageUpload from "./component/Admin/Add Data/Upload";
 import BookingPage from "./component/Admin/Booking/BookingPage";
+import Forgot from "./component/Basic/forgot";
+import OtpVerify from "./component/Basic/otpverify";
+import Changepassword from "./component/Basic/Changepassword";
 // import Cards from "./component/User Page/Contact us/Cards";
 
 function App() {
@@ -75,9 +78,12 @@ function App() {
         location.pathname !== "/login" &&
         location.pathname !== "/booking/:id" &&
         location.pathname !== "/home2" &&
+        location.pathname !== "/reset" &&
         location.pathname !== "/popup" &&
         location.pathname !== "/return" &&
         !location.pathname.startsWith("/hoteldetail") &&
+        !location.pathname.startsWith("/verify") &&
+        !location.pathname.startsWith("/changepassword") &&
         !location.pathname.startsWith("/attraction") &&
         !location.pathname.startsWith("/tripbook") &&
         !location.pathname.startsWith("/booking") &&
@@ -97,23 +103,24 @@ function App() {
 
       <div
         className={`w-full md:w-[100%]  h-[100%] overflow-auto  ${
-          (location.pathname === "/Trip" ||
-            // location.pathname === "/details/:id" ||
-            location.pathname === "/contactus" ||
-            location.pathname === "/flight" ||
-            location.pathname === "/" ||
-            location.pathname === "/hotel" ||
-            location.pathname === "/profile" ||
-            location.pathname === "/login" ||
-            location.pathname === "/home2" ||
-            location.pathname === "/return" ||
-            location.pathname === "/hoteldetail/:id" ||
-            location.pathname === "/tripbook/:id" ||
-            location.pathname === "/popup" ||
-            location.pathname === "/booking/:id" ||
-            location.pathname === "/attraction/:id" ||
-            location.pathname === "/home") &&
-          "md:w-full"
+          location.pathname === "/Trip" ||
+          // location.pathname === "/details/:id" ||
+          location.pathname === "/contactus" ||
+          location.pathname === "/flight" ||
+          location.pathname === "/" ||
+          location.pathname === "/hotel" ||
+          location.pathname === "/changepassword/:id" ||
+          location.pathname === "/profile" ||
+          location.pathname === "/login" ||
+          location.pathname === "/home2" ||
+          location.pathname === "/return" ||
+          location.pathname === "/verify/:id" ||
+          location.pathname === "/hoteldetail/:id" ||
+          location.pathname === "/tripbook/:id" ||
+          location.pathname === "/popup" ||
+          location.pathname === "/booking/:id" ||
+          location.pathname === "/attraction/:id" ||
+          (location.pathname === "/home" && "md:w-full")
         }`}
       >
         <div className="sticky top-0 "></div>
@@ -125,6 +132,14 @@ function App() {
         <Routes>
           <Route exact path="/home" element={<Home />} />
         </Routes>
+
+        <Routes>
+          <Route exact path="/reset" element={<Forgot />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/verify/:id" element={<OtpVerify />} />
+        </Routes>
+
         <Routes>
           <Route exact path="/Trip" element={<Main />} />
         </Routes>
@@ -150,6 +165,9 @@ function App() {
         </Routes>
         <Routes>
           <Route exact path="/login" element={<Login />} />
+        </Routes>
+        <Routes>
+          <Route exact path="/changepassword/:id" element={<Changepassword />} />
         </Routes>
         {/* <Routes>
           <Route exact path="/booking" element={<Booking />} />
@@ -248,7 +266,6 @@ function App() {
             <Route exact path="/booking/:id" element={<BookingPage />} />
           )}
         </Routes>
-        
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { AiFillStar } from "react-icons/ai";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "@mantine/core/styles.css";
+import Navbarss from "../navbars/Navbarss";
 
 function Hoteldetail() {
   const ref = useRef();
@@ -17,7 +18,6 @@ function Hoteldetail() {
   const [startdate, setStartdate] = useState();
   const [enddate, setEnddate] = useState();
   const { id } = useParams();
-  const [attract, setAttract] = useState([]);
   const [number, setNumber] = useState(0);
   const [choose, setChoose] = useState(false);
   const [files, setFiles] = useState();
@@ -27,7 +27,6 @@ function Hoteldetail() {
   const [statusroom, setStatusroom] = useState([]);
 
   const [numbers, setNumbers] = useState([]);
-  const [rates, setRates] = useState([]);
   const handleChange = (e) => {
     const value = parseInt(e.target.value);
     setNumber(value);
@@ -78,6 +77,8 @@ function Hoteldetail() {
   }
   return (
     <div>
+      <Navbarss />
+
       <div className="mt-20  mr-20 ml-20 pt-10"></div>
       <div class="m-2 w-full px-8 pb-6">
         <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-lg">
@@ -178,18 +179,19 @@ function Hoteldetail() {
             .map((user) => {
               return (
                 <div class=" flex space-x-4 antialiased text-gray-900">
-                  <div className="mt-14 ">
+                  <div className="mt-14 " key={user.id}>
                     <img
-                      src={
-                        user?.image
-                          ? user.image.replace(/\\/g, "").replace(/"/g, "")
-                          : ""
-                      }
+                      src={user.image}
+                      // src={
+                      //   user.image
+                      //     ? user.image.replace(/\\/g, "").replace(/"/g, "")
+                      //     : ""
+                      // }
                       alt=""
                       class="shadow-xl hover:shadow-2xl rounded-lg h-56 w-96 ... m-2 "
                     />
 
-                    <div class="relative px-4 py-8 -mt-16  " key={user.id}>
+                    <div class="relative px-4 py-8 -mt-16  ">
                       <div class="bg-white hover:shadow-2xl p-4 rounded-lg shadow-lg">
                         <div class="flex justify-between mb-2">
                           <span class=" bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
@@ -252,7 +254,7 @@ function Hoteldetail() {
                         <div class="mt-2 font-bold text-rose-900 text-sm">
                           {user.status}
                         </div>
-
+{user.status === 'reserved' ? null : (
                         <div className=" flex justify-end mt-3">
                           <button
                             class="bg-rose-900 text-white  p-2 px-4 rounded-lg"
@@ -264,6 +266,7 @@ function Hoteldetail() {
                             Reserve
                           </button>
                         </div>
+)}
                         <div
                           ref={ref}
                           tabindex="-1"
