@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
 import { FaLinkedinIn, FaReact, FaTelegramPlane } from "react-icons/fa";
@@ -11,18 +11,54 @@ import "animate.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link, useParams } from "react-router-dom";
+import emailjs from "@emailjs/browser";
+import { Center } from "@mantine/core";
 
 function Home2() {
   const [files, setFiles] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
   const [abel, setAbel] = useState([]);
+  const [email, setEmail] = useState();
   const Navigate = useNavigate();
+  const resetEmail = () => {
+    setEmail("");
+  };
   useEffect(() => {
     axios.get("http://localhost:3000/cities").then((res) => {
       setFiles(res.data);
       console.log("get");
     });
   }, []);
-  
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_j6mkety",
+        "template_p0ydfih",
+        form.current,
+        "zfRZFSqOIoz-Tpjbc"
+      )
+      .then(
+        (result) => {
+          // setIsLoading(true);
+          setSubmitted(true);
+          resetEmail();
+
+          setTimeout(() => {
+            setSubmitted(false);
+          }, 3000);
+
+          console.log(result.text);
+        },
+        (error) => {
+          // setIserror(true);
+          console.log(error.text);
+        }
+      );
+  };
+
   return (
     <div>
       <Navbarss />
@@ -133,128 +169,6 @@ function Home2() {
                   </div>
                 );
               })}
-            {/* <div class="max-w-sm bg-white border hover: border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full flex flex-col mb-3 animate__animated animate__backInRight hover:shadow-2xl">
-              <a href="/">
-                <img
-                  class="rounded-t-lg h-56 w-96 ..."
-                  src="./image/lalibela.jpg"
-                  alt=""
-                />
-              </a>
-              <div class="p-5">
-                <a href="/">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Lalibela
-                  </h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Lalibela (Amharic: ላሊበላ) is a town in the Amhara Region of
-                  Ethiopia. Located in the Lasta district and North Wollo Zone,
-                  it is a tourist site for its famous rock-cut monolithic
-                  churches...
-                </p>
-                <a
-                  href="/Details"
-                  class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-900 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none "
-                >
-                  Read more
-                  <svg
-                    aria-hidden="true"
-                    class="w-4 h-4 ml-2 -mr-1"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full flex flex-col mb-3 animate__animated animate__backInRight hover:shadow-2xl">
-              <a href="/">
-                <img
-                  class="rounded-t-lg h-56 w-96 ..."
-                  src="./image/volcano.jpg"
-                  alt=""
-                />
-              </a>
-              <div class="p-5">
-                <a href="/">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Erta Ale
-                  </h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Erta Ale (or Ertale or Irta'ale; Amharic: ኤርታሌ) is a
-                  continuously active basaltic shield volcano in the Afar Region
-                  of northeastern Ethiopia. It is situated in the Afar
-                  Depression, a desert area. ...
-                </p>
-                <a
-                  href="/Details"
-                  class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-900 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none "
-                >
-                  Read more
-                  <svg
-                    aria-hidden="true"
-                    class="w-4 h-4 ml-2 -mr-1"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full flex flex-col mb-3 animate__animated animate__backInRight hover:shadow-2xl">
-              <a href="/">
-                <img
-                  class="rounded-t-lg h-56 w-96 ..."
-                  src="./image/kids.jpg"
-                  alt=""
-                />
-              </a>
-              <div class="p-5">
-                <a href="/">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Abuna Yemata
-                  </h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Abuna Yemata Guh is a monolithic church located in the Hawzen
-                  woreda of the Tigray Region, Ethiopia. It is situated at a
-                  height of 2,580 metres (8,460 ft) ...
-                </p>
-                <a
-                  href="/Details"
-                  class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-900 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none "
-                >
-                  Read more
-                  <svg
-                    aria-hidden="true"
-                    class="w-4 h-4 ml-2 -mr-1"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </a>
-              </div>
-            </div> */}
           </div>
         </div>
       </section>
@@ -346,7 +260,11 @@ function Home2() {
       </section>
       <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-          <div class="mx-auto max-w-screen-sm text-center">
+          <form
+            ref={form}
+            onSubmit={sendEmail}
+            class="mx-auto max-w-screen-sm text-center"
+          >
             <h2 class="mb-4 text-4xl font-extrabold leading-tight text-gray-900 dark:text-white">
               Subscribe Our Website
             </h2>
@@ -359,16 +277,24 @@ function Home2() {
             <input
               class="text-gray-700 border border-rose-900   font-small rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 "
               placeholder="email"
+              name="user_email"
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             ></input>
 
-            <a
-              href="/"
-              class=" text-white bg-rose-900 hover:bg-rose-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            <button
+              type="submit"
+              class=" text-white bg-rose-900 hover:bg-rose-700 focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 "
             >
               Submit
-            </a>
-          </div>
+            </button>
+          </form>
+          <Center>
+            {submitted && (
+              <div className="text-green-700 ">Successfully submitted!</div>
+            )}
+          </Center>
         </div>
       </section>
 

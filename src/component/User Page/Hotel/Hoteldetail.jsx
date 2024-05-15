@@ -7,7 +7,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "@mantine/core/styles.css";
 import Navbarss from "../navbars/Navbarss";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+// Default theme
+import "@splidejs/react-splide/css";
 
+// or other themes
+import "@splidejs/react-splide/css/skyblue";
+import "@splidejs/react-splide/css/sea-green";
+
+// or only core styles
+import "@splidejs/react-splide/css/core";
+import Demo from "./CardSlide";
 function Hoteldetail() {
   const ref = useRef();
   const [firstname, setFirstname] = useState();
@@ -167,6 +177,20 @@ function Hoteldetail() {
       <h2 class="mb-8 :mb-16 mt-10 text-3xl text-gray-700 tracking-tight leading-tight text-center  dark:text-white md:text-4xl">
         Choose your room
       </h2>
+      <div className="flex flex-row space-x-4 px-4">
+        <div>
+          <Demo />
+        </div>
+        <div>
+          <Demo />
+        </div>
+        <div>
+          <Demo />
+        </div>
+        <div>
+          <Demo />
+        </div>
+      </div>
 
       <div class=" flex  justify-center">
         {files &&
@@ -180,16 +204,29 @@ function Hoteldetail() {
               return (
                 <div class=" flex space-x-4 antialiased text-gray-900">
                   <div className="mt-14 " key={user.id}>
-                    <img
-                      src={user.image}
-                      // src={
-                      //   user.image
-                      //     ? user.image.replace(/\\/g, "").replace(/"/g, "")
-                      //     : ""
-                      // }
-                      alt=""
-                      class="shadow-xl hover:shadow-2xl rounded-lg h-56 w-96 ... m-2 "
-                    />
+                    <Splide className="splide-container">
+                      <SplideSlide>
+                        <img
+                          src={user.image}
+                          alt=""
+                          className="shadow-xl hover:shadow-2xl rounded-lg object-cover h-56 w-full m-2"
+                        />
+                      </SplideSlide>
+                      <SplideSlide>
+                        <img
+                          src={user.image2}
+                          alt=""
+                          className="shadow-xl hover:shadow-2xl rounded-lg object-cover h-56 w-full m-2"
+                        />
+                      </SplideSlide>
+                      <SplideSlide>
+                        <img
+                          src={user.image3}
+                          alt=""
+                          className="shadow-xl hover:shadow-2xl rounded-lg object-cover h-56 w-full m-2"
+                        />
+                      </SplideSlide>
+                    </Splide> 
 
                     <div class="relative px-4 py-8 -mt-16  ">
                       <div class="bg-white hover:shadow-2xl p-4 rounded-lg shadow-lg">
@@ -254,19 +291,19 @@ function Hoteldetail() {
                         <div class="mt-2 font-bold text-rose-900 text-sm">
                           {user.status}
                         </div>
-{user.status === 'reserved' ? null : (
-                        <div className=" flex justify-end mt-3">
-                          <button
-                            class="bg-rose-900 text-white  p-2 px-4 rounded-lg"
-                            onClick={() => bookpage(id)}
-                            // onClick={() => {
-                            //   setChoose((prev) => !prev);
-                            // }}
-                          >
-                            Reserve
-                          </button>
-                        </div>
-)}
+                        {user.status === "reserved" ? null : (
+                          <div className=" flex justify-end mt-3">
+                            <button
+                              class="bg-rose-900 text-white  p-2 px-4 rounded-lg"
+                              onClick={() => bookpage(id)}
+                              // onClick={() => {
+                              //   setChoose((prev) => !prev);
+                              // }}
+                            >
+                              Reserve
+                            </button>
+                          </div>
+                        )}
                         <div
                           ref={ref}
                           tabindex="-1"

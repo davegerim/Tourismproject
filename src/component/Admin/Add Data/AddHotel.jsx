@@ -86,6 +86,7 @@ const ImageUpload = () => {
               onChange={handleImageChange}
             />
           </div>
+          
         </div>
         <div class="flex  -mx-3 mb-6 ">
           <div class="w-full md:w-1/2 px-3">

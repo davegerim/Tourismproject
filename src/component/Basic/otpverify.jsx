@@ -45,7 +45,7 @@ function OtpVerify() {
       } else {
         setSeconds((prevSeconds) => prevSeconds - 1);
       }
-    }, 10000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [seconds, navigate]);
   return (

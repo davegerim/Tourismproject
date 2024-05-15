@@ -16,38 +16,71 @@ function AddRoom() {
   const [doc, setDoc] = useState([]);
   const [selectedDoc, setSelectedDoc] = useState();
   const [selectedImage, setSelectedImage] = useState(null);
+const [selectedImages, setSelectedImages] = useState({
+  image1: null,
+  image2: null,
+  image3: null,
+});
 
-  const handleImageUpload = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("file", selectedImage);
+const handleImageChanges = (event, identifier) => {
+  const file = event.target.files[0];
+  setSelectedImages({ ...selectedImages, [identifier]: file });
+};
+const handleImageUpload = async () => {
+  try {
+    const formData = new FormData();
 
-      formData.append("upload_preset", "pswsogjc");
-      formData.append("cloud_name", "dlga80sph");
-      const url = `https://api.cloudinary.com/v1_1/dlga80sph/image/upload`;
-      const response = await axios.post(url, formData);
+    // Upload the first image
+    formData.append("file", selectedImages.image1);
+    formData.append("upload_preset", "pswsogjc");
+    formData.append("cloud_name", "dlga80sph");
+    const response1 = await axios.post(
+      `https://api.cloudinary.com/v1_1/dlga80sph/image/upload`,
+      formData
+    );
+    const imageUrl1 = response1.data.secure_url;
 
-      const imageUrl = response.data.secure_url;
-      const apiurl = process.env.REACT_APP_API_URL;
-      await axios.post(`${apiurl}/hotel/addroom/{id}`, {
-        roomName: roomName,
-        description: description,
-        area: area,
-        bed: bed,
-        image: imageUrl,
-        person: person,
-        price: price,
-        rate: rate,
-        roomType: roomType,
-        Hotel1: selectedDoc,
-      });
+    // Upload the second image
+    formData.delete("file"); // Clear formData for the next image
+    formData.append("file", selectedImages.image2);
+    const response2 = await axios.post(
+      `https://api.cloudinary.com/v1_1/dlga80sph/image/upload`,
+      formData
+    );
+    const imageUrl2 = response2.data.secure_url;
 
-      // Do something with the image URL (e.g., display it)
-      console.log("Image URL:", imageUrl);
-    } catch (error) {
-      console.error("Error uploading image:", error);
-    }
-  };
+    // Upload the third image
+    formData.delete("file"); // Clear formData for the next image
+    formData.append("file", selectedImages.image3);
+    const response3 = await axios.post(
+      `https://api.cloudinary.com/v1_1/dlga80sph/image/upload`,
+      formData
+    );
+    const imageUrl3 = response3.data.secure_url;
+
+    // Send all image URLs to your backend
+    const apiurl = process.env.REACT_APP_API_URL;
+    await axios.post(`${apiurl}/hotel/addroom/{id}`, {
+      roomName: roomName,
+      description: description,
+      area: area,
+      bed: bed,
+      image: imageUrl1,
+      image2: imageUrl2,
+      image3: imageUrl3,
+      person: person,
+      price: price,
+      rate: rate,
+      roomType: roomType,
+      Hotel1: selectedDoc,
+    });
+
+    console.log("Images uploaded successfully");
+  } catch (error) {
+    console.error("Error uploading images:", error);
+  }
+};
+
   const handleUserChanges = (e) => {
     setSelectedDoc(e.target.value);
   };
@@ -96,20 +129,7 @@ function AddRoom() {
               onChange={(e) => setRoomName(e.target.value)}
             />
           </div>
-          <div class="w-full md:w-1/2 px-3">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-last-name"
-            >
-              Image
-            </label>
-            <input
-              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              type="file"
-              id="fileInput"
-              onChange={handleImageChange}
-            />
-          </div>
+
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -133,6 +153,52 @@ function AddRoom() {
             </select>
           </div>
         </div>
+        <div class="flex  -mx-3 mb-6 ">
+          <div class="w-full md:w-1/2 px-3">
+            <label
+              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              for="grid-last-name"
+            >
+              Image 1
+            </label>
+            <input
+              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              type="file"
+              id="image1"
+              onChange={(event) => handleImageChanges(event, "image1")}
+            />
+          </div>
+
+          <div class="w-full md:w-1/2 px-3">
+            <label
+              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              for="grid-last-name"
+            >
+              Image 2
+            </label>
+            <input
+              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              type="file"
+              id="image2"
+              onChange={(event) => handleImageChanges(event, "image2")}
+            />
+          </div>
+          <div class="w-full md:w-1/2 px-3">
+            <label
+              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              for="grid-last-name"
+            >
+              Image 3
+            </label>
+            <input
+              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              type="file"
+              id="image3"
+              onChange={(event) => handleImageChanges(event, "image3")}
+            />
+          </div>
+        </div>
+
         <div class="flex flex-wrap -mx-3 mb-2">
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label
