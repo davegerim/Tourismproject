@@ -177,7 +177,7 @@ function Hoteldetail() {
       <h2 class="mb-8 :mb-16 mt-10 text-3xl text-gray-700 tracking-tight leading-tight text-center  dark:text-white md:text-4xl">
         Choose your room
       </h2>
-      <div className="flex flex-row space-x-4 px-4">
+      {/* <div className="flex flex-row space-x-4 px-4">
         <div>
           <Demo />
         </div>
@@ -190,7 +190,7 @@ function Hoteldetail() {
         <div>
           <Demo />
         </div>
-      </div>
+      </div> */}
 
       <div class=" flex  justify-center">
         {files &&
@@ -226,7 +226,7 @@ function Hoteldetail() {
                           className="shadow-xl hover:shadow-2xl rounded-lg object-cover h-56 w-full m-2"
                         />
                       </SplideSlide>
-                    </Splide> 
+                    </Splide>
 
                     <div class="relative px-4 py-8 -mt-16  ">
                       <div class="bg-white hover:shadow-2xl p-4 rounded-lg shadow-lg">

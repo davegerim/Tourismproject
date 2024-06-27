@@ -28,13 +28,15 @@ function Forgot() {
       const userId = response.data.user.id;
       console.log(userId);
       console.log("otpsample", otpCode); // Check if you're getting the OTP code here
-setUserId(userId);
+      setUserId(userId);
       // Send email with the OTP code
       await sendEmail(otpCode);
 
       // Set the OTP code for display
       setOtpCodes(otpCode);
     } catch (error) {
+      alert("Email was not found");
+
       console.error("Error generating OTP:", error);
     }
   };
@@ -63,19 +65,18 @@ setUserId(userId);
       console.error("Error sending email:", error.text);
     }
   };
- const [opened, { open, close }] = useDisclosure(false);
+  const [opened, { open, close }] = useDisclosure(false);
 
- const navigate = useNavigate();
- const verify = () => {
-   navigate(`/verify/${userId}`);
- };
+  const navigate = useNavigate();
+  const verify = () => {
+    navigate(`/verify/${userId}`);
+  };
 
-const handleClick = () => {
-  sendEmail(); // Assuming this function is defined and works as expected
-  verify(); 
-};
+  const handleClick = () => {
+    sendEmail(); // Assuming this function is defined and works as expected
+    verify();
+  };
 
- 
   return (
     <div>
       <div className="relative min-h-screen flex">
@@ -135,14 +136,9 @@ const handleClick = () => {
                     Reset
                   </button>
                 </div>
-                <Modal
-                  opened={opened}
-                  onClose={close}
-                  title="Are you Sure"
-                  
-                >
+                <Modal opened={opened} onClose={close} title="Are you Sure">
                   <div className="flex justify-center space-x-7">
-                    <Button variant="filled" color="teal"onClick={handleClick}>
+                    <Button variant="filled" color="teal" onClick={handleClick}>
                       Yes
                     </Button>
                     <Button variant="filled" color="red">
@@ -153,7 +149,7 @@ const handleClick = () => {
                 <p className="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500">
                   <span>Don't have an account?</span>
                   <a
-                    href="/profile"
+                    href="/login"
                     className="text-indigo-400 hover:text-blue-500 cursor-pointer transition ease-in duration-300"
                   >
                     Sign In

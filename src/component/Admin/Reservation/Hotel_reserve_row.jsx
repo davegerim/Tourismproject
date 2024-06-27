@@ -1,12 +1,15 @@
+import { Modal } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 
 function Hotel_reserve_row({ user }) {
   const [detail, setDetail] = useState(false);
+  const [opened, { open, close }] = useDisclosure(false);
   const [choose, setChoose] = useState(false);
   const refs = useRef(null);
-
+  const [roomstatus, setRoomstatus] = useState();
   const exports = useRef();
   const change = useReactToPrint({
     content: () => exports.current,
@@ -16,11 +19,24 @@ function Hotel_reserve_row({ user }) {
 
   const [hotel, setHotel] = useState([]);
 
-   useEffect(() => {
-     axios.get(`http://localhost:3000/hotel/${user.hotels}`).then((res) => {
-       setHotel(res.data);
-     });  
-   }, []);
+  useEffect(() => {
+    axios.get(`http://localhost:3000/hotel/${user.hotels}`).then((res) => {
+      setHotel(res.data);
+    });
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .put(`http://localhost:3000/hotelreservation/${user.id}`, {
+        status: roomstatus,
+      })
+      .then(() => {
+        setRoomstatus();
+        window.location.reload(); // Auto refresh the page
+      });
+  };
+
   return (
     <React.Fragment>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -63,14 +79,64 @@ function Hotel_reserve_row({ user }) {
             {user.status}
           </a>
         </td>
-        <td>
+        <td className="space-x-2">
           <button
-            className="mb-4 ml-46   mt-2 md:mb-0 border bg-rose-900   border-gray-700 hover:border-none hover:bg-rose-700 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-white  hover:text-white  rounded-xl hover:shadow-lg "
+            className="mb-4 ml-46   mt-2 md:mb-0  bg-yellow-600   border-gray-700 hover:border-none hover:bg-yellow-700 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-white  hover:text-white  rounded-xl hover:shadow-lg "
+            onClick={() => open(user.id)}
+          >
+            Update
+          </button>
+          <button
+            className="mb-4 ml-46   mt-2 md:mb-0  bg-rose-900   border-gray-700 hover:border-none hover:bg-rose-700 px-5 py-2 text-sm shadow-sm font-small tracking-wider text-white  hover:text-white  rounded-xl hover:shadow-lg "
             onClick={() => setDetail((prev) => !prev)}
           >
             Detail
           </button>
         </td>
+        <Modal opened={opened} onClose={close} centered title="Update Status">
+          <div className="w-full  ">
+            <div className="text-center">
+              {/* <div className=" flex justify-center mb-4 ">
+          <img src="./image/logo.png" alt="" className="h-16 w-auto" />
+        </div> */}
+              <p className="mt-2 mb-6 text-sm font-bold text-gray-500">
+                Update Project
+              </p>
+            </div>
+
+            <div className=" px-8">
+              <form onSubmit={handleSubmit}>
+                <div className="flex flex-wrap -mx-3 mb-2">
+                  <div className="w-full px-3">
+                    <label className="block  tracking-wide text-gray-700 text-xs font-bold mb-1">
+                      Status
+                    </label>
+                    <select
+                      className="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-lg py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      value={roomstatus}
+                      onChange={(e) => setRoomstatus(e.target.value)}
+                      required
+                    >
+                      <option value=""></option>
+                      <option value="Reserved">Reserved</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Cancel">Cancel</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="">
+                  <button
+                    className=" space-x-3 w-full mb-6 rounded-md text-white py-2 px-4   bg-green-600 hover:bg-green-700 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                    type="submit"
+                  >
+                    <span className="mt-1">Update</span>
+                  </button>{" "}
+                </div>
+              </form>
+            </div>
+          </div>
+        </Modal>
       </tr>
       <tr class={` ${!detail && "hidden"} bg-white w-{}100vw mt-5 min-w-full `}>
         <td colSpan="12">

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import Navbarss from "../../User Page/navbars/Navbarss";
 import { useParams } from "react-router-dom";
+import Payment from "./Payment";
 
 function Tripbook() {
   const [choose, setChoose] = useState(false);
@@ -14,7 +15,15 @@ function Tripbook() {
   const [startdate, setStartdate] = useState();
   const [enddate, setEnddate] = useState();
   const [number, setNumber] = useState(0);
-const {id} = useParams()
+  const [amount, setAmount] = useState();
+  const [method, setMethod] = useState();
+  const [email, setEmail] = useState();
+  const [checkOuted, setcheckOuted] = useState(false);
+  const [showQRCode, setShowQRCode] = useState(false);
+  const toggleQRCode = () => {
+    setShowQRCode(!showQRCode);
+  };
+  const { id } = useParams();
   const handleChange = (e) => {
     const value = parseInt(e.target.value);
     setNumber(value);
@@ -26,7 +35,7 @@ const {id} = useParams()
     setLastname("");
     setNoofguests("");
     setStartdate("");
-    setEnddate(""); 
+    setEnddate("");
   };
 
   const handleSubmit = (e) => {
@@ -43,12 +52,16 @@ const {id} = useParams()
         noofGuests: noofguests,
         startDate: startdate,
         endDate: enddate,
-        placeId: id
+        placeId: id,
       }),
     }).then(() => {
       console.log("posted");
     });
   };
+
+  const totalprice = noofguests * 99;
+  const tx_ref = firstname;
+  const public_key = "CHAPUBK_TEST-eptq0Rd4NLo7nNxhS42toLwvJpYYScv7";
   return (
     <div>
       <Navbarss className="relative" />
@@ -176,8 +189,34 @@ const {id} = useParams()
                       />
                     </div>
                   </div>
+                  <div className="mt-2   space-y-4">
+                    <label class=" text-sm font-normal text-gray-700 tracking-wide">
+                      Payment Method
+                    </label>
+                    <select
+                      class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      type="number"
+                      value={method}
+                      onChange={(e) => setMethod(e.target.value)}
+                    >
+                      <option value=""></option>
+                      <option value="Chapa">Pay Chape</option>
+                      <option value="On Cash">Pay OnCash</option>
+                    </select>
+                  </div>
                 </div>
               </div>
+              <Payment
+                toggleQRCode={toggleQRCode}
+                showQRCode={showQRCode}
+                setShowQRCode={setShowQRCode}
+                fname={firstname}
+                lname={firstname}
+                email={email}
+                amount={totalprice}
+                tx_ref={tx_ref}
+                public_key={public_key}
+              />
               <div class="w-full px-3 sm:w-1/2"></div>
             </div>
             <div class="mt-3 mb-3">
@@ -187,19 +226,32 @@ const {id} = useParams()
                   Total:
                   {number * 99}$
                 </span>
-                <a
-                  href="http://checkout.chapa.co/checkout/web/payment/SC-GWCZYuiie1sA"
-                  class="hover:shadow-form  rounded-md ml-10 bg-green-500 hover:bg-green-500 py-3 px-8 text-center text-base font-semibold text-white outline-none"
-                >
-                  pay with chapa
-                </a>
               </p>
             </div>
-
             <div>
-              <button class="hover:shadow-form rounded-md bg-rose-900 hover:bg-rose-800 py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                Submit
-              </button>
+              {method === "On Cash" && (
+                <button
+                  onClick={() => {
+                    setcheckOuted((prev) => !prev);
+                    // handleRefreshClick();
+                  }}
+                  class="hover:shadow-form w-full rounded-md bg-rose-900 py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                >
+                  Book By Cash
+                </button>
+              )}
+
+              {method === "Chapa" && (
+                <button
+                  onClick={() => {
+                    setcheckOuted((prev) => !prev);
+                    toggleQRCode();
+                  }}
+                  class="hover:shadow-form w-full rounded-md bg-rose-900 py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                >
+                  Book With Chapa
+                </button>
+              )}
             </div>
           </form>
         </div>
