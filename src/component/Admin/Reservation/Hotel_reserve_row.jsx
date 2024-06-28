@@ -118,7 +118,7 @@ function Hotel_reserve_row({ user }) {
                       required
                     >
                       <option value=""></option>
-                      <option value="Reserved">Reserved</option>
+                      <option value="reserved">Reserved</option>
                       <option value="Pending">Pending</option>
                       <option value="Cancel">Cancel</option>
                     </select>

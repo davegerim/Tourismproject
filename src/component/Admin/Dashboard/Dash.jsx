@@ -83,7 +83,7 @@ function Dash() {
                         Income
                       </p>
                       <p class="text-white font-bold text-2xl inline-flex items-center space-x-2">
-                        <span>$2,873.88</span>
+                        <span>2,873.88</span>
                         <span>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +165,7 @@ function Dash() {
                   <div class="flex flex-row items-center">
                     <div class="text-3xl p-4">💰</div>
                     <div class="p-2">
-                      <p class="text-xl font-bold">348$</p>
+                      <p class="text-xl font-bold">348</p>
                       <p class="text-white font-medium">Amber Gates</p>
                       <p class="text-white text-sm">24 Nov 2022</p>
                     </div>
@@ -197,7 +197,7 @@ function Dash() {
                   <div class="flex flex-row items-center">
                     <div class="text-3xl p-4">💰</div>
                     <div class="p-2">
-                      <p class="text-xl font-bold">68$</p>
+                      <p class="text-xl font-bold">68</p>
                       <p class="text-white font-medium">Maia Kipper</p>
                       <p class="text-white   text-sm">23 Nov 2022</p>
                     </div>
@@ -229,7 +229,7 @@ function Dash() {
                   <div class="flex flex-row items-center">
                     <div class="text-3xl p-4">💰</div>
                     <div class="p-2">
-                      <p class="text-xl font-bold">12$</p>
+                      <p class="text-xl font-bold">12</p>
                       <p class="text-white font-medium">Oprah Milles</p>
                       <p class="text-white text-sm">23 Nov 2022</p>
                     </div>
@@ -261,7 +261,7 @@ function Dash() {
                   <div class="flex flex-row items-center">
                     <div class="text-3xl p-4">💰</div>
                     <div class="p-2">
-                      <p class="text-xl font-bold">105$</p>
+                      <p class="text-xl font-bold">105</p>
                       <p class="text-white font-medium">Jonny Nite</p>
                       <p class="text-white text-sm">23 Nov 2022</p>
                     </div>
@@ -293,7 +293,7 @@ function Dash() {
                   <div class="flex flex-row items-center">
                     <div class="text-3xl p-4">💰</div>
                     <div class="p-2">
-                      <p class="text-xl font-bold">52$</p>
+                      <p class="text-xl font-bold">52</p>
                       <p class=" font-medium">Megane Baile</p>
                       <p class=" text-sm">22 Nov 2022</p>
                     </div>
@@ -325,7 +325,7 @@ function Dash() {
                   <div class="flex flex-row items-center">
                     <div class="text-3xl p-4">💰</div>
                     <div class="p-2">
-                      <p class="text-xl font-bold">28$</p>
+                      <p class="text-xl font-bold">28</p>
                       <p class=" font-medium">Tony Ankel</p>
                       <p class=" text-sm">22 Nov 2022</p>
                     </div>
@@ -372,14 +372,14 @@ function Dash() {
                         <span>
                           <img
                             class="rounded-full w-8 h-8"
-                            src="https://images.generated.photos/tGiLEDiAbS6NdHAXAjCfpKoW05x2nq70NGmxjxzT5aU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTM4ODM1LmpwZw.jpg"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmpoQaaw13BKAmYv1iRPzkz9AkM0ZskCqK_g&s"
                             alt=""
                           />
                         </span>
-                        <span>Thai Mei</span>
+                        <span>Dawit Gerim</span>
                       </div>
                     </td>
-                    <td class="py-3 px-2 text-black">thai.mei@abc.com</td>
+                    <td class="py-3 px-2 text-black">dawitG@gmail.com</td>
                     <td class="py-3 px-2 text-black">User</td>
                     <td class="py-3 px-2 text-black">Approved</td>
                     <td class="py-3 px-2 text-black">
@@ -449,14 +449,14 @@ function Dash() {
                         <span>
                           <img
                             class="rounded-full w-8 h-8"
-                            src="https://images.generated.photos/tGiLEDiAbS6NdHAXAjCfpKoW05x2nq70NGmxjxzT5aU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTM4ODM1LmpwZw.jpg"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmpoQaaw13BKAmYv1iRPzkz9AkM0ZskCqK_g&s"
                             alt=""
                           />
                         </span>
-                        <span>Thai Mei</span>
+                        <span>Dawit Gerim</span>
                       </div>
                     </td>
-                    <td class="py-3 px-2 text-black">thai.mei@abc.com</td>
+                    <td class="py-3 px-2 text-black">dawitG@gmail.com</td>
                     <td class="py-3 px-2 text-black">User</td>
                     <td class="py-3 px-2 text-black">Approved</td>
                     <td class="py-3 px-2 text-black">
@@ -526,14 +526,14 @@ function Dash() {
                         <span>
                           <img
                             class="rounded-full w-8 h-8"
-                            src="https://images.generated.photos/tGiLEDiAbS6NdHAXAjCfpKoW05x2nq70NGmxjxzT5aU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTM4ODM1LmpwZw.jpg"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmpoQaaw13BKAmYv1iRPzkz9AkM0ZskCqK_g&s"
                             alt=""
                           />
                         </span>
-                        <span>Thai Mei</span>
+                        <span>Dawit Gerim</span>
                       </div>
                     </td>
-                    <td class="py-3 px-2 text-black">thai.mei@abc.com</td>
+                    <td class="py-3 px-2 text-black">dawitG@gmail.com</td>
                     <td class="py-3 px-2 text-black">User</td>
                     <td class="py-3 px-2 text-black">Approved</td>
                     <td class="py-3 px-2 text-black">
@@ -603,16 +603,14 @@ function Dash() {
                         <span>
                           <img
                             class="rounded-full w-8 h-8"
-                            src="https://images.generated.photos/niCVbIBAm4hahzwS83HoEtcVEIactkKohOzgXWYY4lM/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NTk4ODczLmpwZw.jpg"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmpoQaaw13BKAmYv1iRPzkz9AkM0ZskCqK_g&s"
                             alt=""
                           />
                         </span>
-                        <span>Marquez Spineli</span>
+                        <span>Natnael Alemu</span>
                       </div>
                     </td>
-                    <td class="py-3 px-2 text-black">
-                      marquez.spineli@cba.com
-                    </td>
+                    <td class="py-3 px-2 text-black">nati.spineli@cba.com</td>
                     <td class="py-3 px-2 text-black">User</td>
                     <td class="py-3 px-2 text-black">Approved</td>
                     <td class="py-3 px-2 text-black">
@@ -682,14 +680,14 @@ function Dash() {
                         <span>
                           <img
                             class="rounded-full w-8 h-8"
-                            src="https://images.generated.photos/f_xU7q780YXiKG7IwKVV05eU6Sj2nIodEkN1S8GyM2M/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NDk2MTc4LmpwZw.jpg"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmpoQaaw13BKAmYv1iRPzkz9AkM0ZskCqK_g&s"
                             alt=""
                           />
                         </span>
-                        <span>Mark Spike</span>
+                        <span>Miki Abrham</span>
                       </div>
                     </td>
-                    <td class="py-3 px-2 text-black">mark.spike@abc.com</td>
+                    <td class="py-3 px-2 text-black">miki.spike@abc.com</td>
                     <td class="py-3 px-2 text-black">Administrator</td>
                     <td class="py-3 px-2 text-black">Approved</td>
                     <td class="py-3 px-2 text-black">
